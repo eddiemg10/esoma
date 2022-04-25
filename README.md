@@ -17,7 +17,7 @@
 
 <br><hr>
 
->`php artisan serve` should now work and you should see this
+>`php artisan serve` should now work and you should see this <br><br>
 ![image](https://user-images.githubusercontent.com/59659920/165180895-c0c60818-e296-46bc-9ae6-8efb8b83ad39.png)
 
 
