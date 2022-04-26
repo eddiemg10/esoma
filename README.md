@@ -4,7 +4,7 @@
 
 1. Fork the repositoty
 2. Clone the forked repository to your computer 
-> If you're using github desktop, use the `URL` tab instead of the `Github.com` tab and paste the url of your forked repository
+> If you're using github desktop, use the `URL` tab instead of the `Github.com` tab and paste the url of your forked repository <br><br>
 ![image](https://user-images.githubusercontent.com/59659920/165234102-9a5b3c05-313d-4e74-b086-c05346c4c6f8.png)
 
 3. Make sure you have [composer](https://getcomposer.org/download/) and [node.js](https://nodejs.org/en/) installed on your computer
