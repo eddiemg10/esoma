@@ -11,9 +11,9 @@
 
 
 <div class="flex flex-col  pb-[600px] font-roboto">
-    <div class="font-thin flex items-end py-3 mt-7">
+    <div class="font-light flex items-end py-3 mt-7">
         <span class="w-[25%]"></span>
-        <span class="text-slate-400">Esoma | Classrooms  {{'user '.$user}}</span>
+        <span class="text-slate-400 hover:cursor-pointer"><a href={{url('/')}}>Esoma</a> | <a href="#" class="text-blue-rich font-normal">Classrooms</a> </span>
     </div>
 
     <div class="flex w-full justify-center">
