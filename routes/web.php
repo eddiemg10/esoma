@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ClassroomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home', ['title'=>'Welcome Page']);
+    return view('home', ['title'=>'Home']);
 });
+
+Route::get('/classroom', function(){
+    return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
+
+});
+
+Route::get('/classroom/student', [ClassroomController::class, 'index']);
+
+Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
+
 
 Route::get('/welcome', function(){
     return view('welcome');

@@ -5,7 +5,7 @@
 @section('layoutContent')
 <x-navbar />
  
-@yield('content');
+@yield('content')
 
 <x-footer />
 
