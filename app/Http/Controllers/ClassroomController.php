@@ -24,7 +24,7 @@ class ClassroomController extends Controller
             "title" => "EClassroom | Student",
             "classrooms" => $classrooms
         ];
-        return view('eclassroom/student_classes', $data);
+        return view('eclassroom/student/classrooms/index', $data);
     }
 
     public function show($id){
@@ -43,7 +43,8 @@ class ClassroomController extends Controller
             "page" => $classroom[0]->name,
             "classroom" => $classroom[0]
         ];
-        return view('eclassroom/show', $data);
+        return view('eclassroom/student/classrooms/show', $data);
 
     }
+
 }

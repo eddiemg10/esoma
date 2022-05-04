@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\AssignmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,9 @@ Route::get('/classroom', function(){
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
 
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
+
+Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
+
 
 
 Route::get('/welcome', function(){

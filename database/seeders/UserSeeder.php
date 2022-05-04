@@ -10,6 +10,8 @@ use App\Models\User;
 use App\Models\Classroom;
 use App\Models\ClassroomStudent;
 use App\Models\Teacher;
+use App\Models\Assignment;
+
 
 
 class UserSeeder extends Seeder
@@ -55,6 +57,14 @@ class UserSeeder extends Seeder
             ]);
 
             
+        }
+
+        for($i=0; $i < 2; $i++){
+            Assignment::create([
+                'classroom_id' => 1,
+                'due_date'=> now(),
+                'total_marks' => 30
+            ]);
         }
     }
 }
