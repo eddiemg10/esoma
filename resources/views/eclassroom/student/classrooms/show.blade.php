@@ -18,7 +18,7 @@
 
     <div class="flex w-[full] px-5 gap-10 justify-center flex-wrap" id="content">
         
-        <div class="bg-white w-[80%] h-[70vh] pb-10 text-center shadow-md rounded-3xl classroom flex flex-col gap-y-10" id={{$classroom->id}}>
+        <div class="bg-white w-[80%] pb-20 text-center shadow-md rounded-3xl classroom flex flex-col gap-y-10" id={{$classroom->id}}>
             <div>
                 <div class="bg-green-500 py-4 text-xl font-bold text-white rounded-t-3xl">{{$classroom->name}}</div>
 
