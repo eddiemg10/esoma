@@ -8,7 +8,7 @@
 @section('layoutContent')
 <x-side-bar />
  
-@yield('content');
+@yield('content')
 
 <x-footer />
 
