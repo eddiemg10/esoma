@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class AssignmentQuestion extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'choices' => 'array',
+    ];
 }
