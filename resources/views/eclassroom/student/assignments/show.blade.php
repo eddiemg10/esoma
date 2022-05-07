@@ -40,10 +40,10 @@
                     @if(count($quiz) == 0)
                     <div class="bg-sky-100 text-xl w-full py-4 text-zinc-400 shadow-md transition assignment">
                     This quiz has no questions
-                    
+                    <button id="submit" class="bg-green-200 py-2 px-8 mt-10 rounded-md shadow-md text-zinc-700">Mark as done</button>
                     </div>
                     @else
-                    <button class="bg-green-500 py-2 px-8 mt-10 rounded-md shadow-md text-white">Submit</button>
+                    <button id="submit" class="bg-green-500 py-2 px-8 mt-10 rounded-md shadow-md text-white">Submit</button>
 
                     @endif
                 </form>
@@ -58,7 +58,7 @@
 
     <script>
         $(document).ready(function(){
-            let answers = [];
+            let answers = [{assignment : <?= $assignment ?>}];
 
             function containsObject(obj, list) {
                 var i;
@@ -89,12 +89,24 @@
                 else{
                     answers.push(response);
                 }
-                
-
-
-            console.log(answers)
 
             });
+
+            $("#submit").click(function(e){
+                e.preventDefault();
+
+                $.post("/assignments/submit", 
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    data: JSON.stringify(answers),
+                    user: 1,
+                },
+
+                function(data, status){
+                    console.log(JSON.parse(data));
+                }
+                )
+            })
 
         });
     </script>
