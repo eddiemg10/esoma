@@ -47,7 +47,7 @@
                 <div class="flex flex-col items-start w-full ">
                     <h1 class="text-4xl text-zinc-500">Assignment Results</h1>
                     <p class="font-light text-sm ml-3 mt-2 text-zinc-500">@if($results ===1)1 item available @else {{$results}} items available @endif</p>
-                    <a href="#" class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access Assignment Results</a>
+                    <a href={{url()->current()."/results"}} class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access Assignment Results</a>
                 </div>
                 
                 

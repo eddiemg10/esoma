@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 
 /*
@@ -30,6 +31,9 @@ Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
 
 Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
 Route::get('/classroom/student/{id}/assignments/{asmt}', [AssignmentController::class, 'show']);
+
+Route::get('/classroom/student/{id}/results', [AssignmentResultController::class, 'index']);
+Route::get('/classroom/student/{id}/results/{asmt}', [AssignmentResultController::class, 'show']);
 
 Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
