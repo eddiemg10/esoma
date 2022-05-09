@@ -50,6 +50,10 @@ Route::get('/assignmentform/{counter}', function($counter){
     return view('components/question-form', ['counter' =>$counter]);
 });
 
+Route::get('/submitnotification', function(){
+    return view('components/submitted-notification');
+});
+
 
 
 
