@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +36,6 @@ Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
-
-
-
 Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
 
 
@@ -50,12 +48,10 @@ Route::get('/assignmentform/{counter}', function($counter){
     return view('components/question-form', ['counter' =>$counter]);
 });
 
-
-
-
-
-
-
 Route::get('/welcome', function(){
     return view('welcome');
 });
+Route::get('/upload',[UploadController::class,'create']);
+Route::post('/upload',[UploadController::class,'store']);
+Route::get('/show',[UploadController::class,'show']);
+
