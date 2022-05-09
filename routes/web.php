@@ -34,3 +34,13 @@ Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 
 Route::get('/welcome', function(){
     return view('welcome');
 });
+
+Route::get('/elib', function(){
+    return view('elib/user/libuser_dash');
+});
+
+Route::get('/elibrary/pp1/1', function(){
+    return view('elib/user/show');
+});
+
+
