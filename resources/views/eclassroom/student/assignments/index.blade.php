@@ -23,12 +23,10 @@
 
             <div class="flex flex-col gap-y-5 px-5 mt-10">
                 @foreach ($assignments as $assignment)
-                    <div class="bg-sky-200 pl-7 w-full py-3 shadow-md hover:cursor-pointer transition assignment text-left" id={{$assignment->id}}>
-                        <a href="#">
-                            Due date: {{$assignment->due_date}}
-                        </a>
-                    
-                    </div>
+
+                    <a href={{"/classroom/student/".$pageID."/assignments/".$assignment->id}} class="bg-sky-200 pl-7 w-full py-3 shadow-md hover:cursor-pointer transition assignment text-left" id={{$assignment->id}}>
+                        {{$assignment->title}}
+                    </a>
 
                 @endforeach
 

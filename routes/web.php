@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\TeacherController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +26,33 @@ Route::get('/classroom', function(){
 });
 
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
-
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
 
 Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
+Route::get('/classroom/student/{id}/assignments/{asmt}', [AssignmentController::class, 'show']);
+
+Route::post('/assignments', [AssignmentController::class, 'store']);
+Route::post('/assignments/submit', [AssignmentController::class, 'check']);
+Route::get('/test', [AssignmentController::class, 'test']);
+
+
+
+
+Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
+
+
+// Components
+Route::get('/choiceinput/{counter}', function($counter){
+    return view('components/choice-input', ['counter' =>$counter]);
+});
+
+Route::get('/assignmentform/{counter}', function($counter){
+    return view('components/question-form', ['counter' =>$counter]);
+});
+
+
+
+
 
 
 
