@@ -11,7 +11,7 @@ class UploadController extends Controller
     public function create()
     {
         $data=Uploadeddoc::all();
-        return view ('eclassroom/student/uploads/upload');
+        return view ('eclassroom/teacher/content/upload');
     }
 
     public function store(Request $request)
