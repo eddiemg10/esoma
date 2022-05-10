@@ -21,15 +21,16 @@
         <div class="bg-white w-[80%] pb-20 text-center shadow-md rounded-3xl classroom flex flex-col gap-y-10" id={{$classroom->id}}>
             <div>
                 <div class="bg-green-500 py-4 text-xl font-bold text-white rounded-t-3xl">{{$classroom->name}}</div>
-
-                <p class="font-thin">{{$classroom->description}}</p>
-                <p class="font-thin">Subject: {{$classroom->subject}}</p>
-                <p>Teacher: {{$classroom->teacher}}</p>
-                <p>Created: {{$classroom->created_at}}</p>
-                <p>Joined: {{ \Carbon\Carbon::parse($classroom->joined_on)->diffForHumans()}}</p>
-                <p class="p-3 {{$classroom->status == 1 ? 'bg-green-300' : 'bg-red-400'}}">{{$classroom->status == 1? 'Active' : 'Innactive'}}</p>
             </div>
-        
+
+            <div class="relative flex flex-col items-start px-10">
+                <p class="font-light">{{$classroom->description}}</p>
+                <p class="absolute right-10 top-0 text-sm text-zinc-500"><span class="font-bold">Joined</span> {{ \Carbon\Carbon::parse($classroom->joined_on)->diffForHumans()}}</p>
+                <p class=" inline-block absolute top-10 right-10 py-1 rounded-full px-4 font-bold text-md {{$classroom->status == 1 ? 'bg-green-300' : 'bg-red-400'}}">{{$classroom->status == 1? 'Active' : 'Innactive'}}</p>
+                <p class="text-lg mt-12 mb-5">Subject: <span class="bg-zinc-100 font-light py-1 px-3 rounded-full"> {{$classroom->subject}} </span></p>
+                <p class="text-lg">Teacher: <span class="bg-zinc-100 font-light py-1 px-3 rounded-full">{{$classroom->teacher}}</span> </p>
+            </div>
+                    
             <div class="flex flex-col gap-y-[80px] items-start px-10">
                 <div class="flex flex-col items-start w-full ">
                     <h1 class="text-4xl text-zinc-500">Class Material</h1>
@@ -39,14 +40,14 @@
 
                 <div class="flex flex-col items-start w-full ">
                     <h1 class="text-4xl text-zinc-500">Assignments</h1>
-                    <p class="font-light text-sm ml-3 mt-2 text-zinc-500">2 new items</p>
+                    <p class="font-light text-sm ml-3 mt-2 text-zinc-500">@if ($assignments > 1) {{$assignments." new items"}}<x-notification-bubble /> @elseif($assignments === 1)1 new item <x-notification-bubble /> @else No new assignments @endif </p>
                     <a href={{url()->current()."/assignments"}} class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access Assignments</a>
                 </div>
 
                 <div class="flex flex-col items-start w-full ">
                     <h1 class="text-4xl text-zinc-500">Assignment Results</h1>
-                    <p class="font-light text-sm ml-3 mt-2 text-zinc-500">4 items available</p>
-                    <a href="#" class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access Assignment Results</a>
+                    <p class="font-light text-sm ml-3 mt-2 text-zinc-500">@if($results ===1)1 item available @else {{$results}} items available @endif</p>
+                    <a href={{url()->current()."/results"}} class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access Assignment Results</a>
                 </div>
                 
                 

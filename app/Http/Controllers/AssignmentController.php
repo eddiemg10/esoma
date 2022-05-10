@@ -36,7 +36,7 @@ class AssignmentController extends Controller
     public function show($id, $asmt){
 
         $classroom = Classroom::select('name')->where('id', $id)->get()[0]->name;
-        $assignment = Assignment::where('id', $asmt)->get()[0]->id;
+        $assignment = Assignment::where('id', $asmt)->get()[0];
         $quiz = AssignmentQuestion::where('assignment_id', $asmt)->get()->toArray();
 
         foreach($quiz as &$que){
@@ -110,6 +110,7 @@ class AssignmentController extends Controller
 
         foreach($data as $res){
             if(isset($res->question)){
+                if ($res->choice===null) $res->choice="*&6^415./";
                 if($this->markQuestion($res->question, $res->choice)){
                     $score++;
                 }

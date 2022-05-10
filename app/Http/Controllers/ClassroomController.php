@@ -38,11 +38,24 @@ class ClassroomController extends Controller
                         ->select('classrooms.*', 'teachers.name as teacher', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
                         ->get();
 
+        $total_assignments = DB::table('assignments')
+                          ->where('assignments.classroom_id', $id)
+                          ->count();
+        $marked_assignments = DB::table('assignment_results')
+                          ->where('user_id', 1)
+                          ->count();
+
+
+        $results = DB::table('assignment_results')
+                      ->where('user');
+        
 
         $data = [
             "title" => "EClassroom | ".$classroom[0]->name,
             "page" => $classroom[0]->name,
-            "classroom" => $classroom[0]
+            "classroom" => $classroom[0],
+            "assignments" => $total_assignments - $marked_assignments,
+            "results" => $marked_assignments
         ];
         return view('eclassroom/student/classrooms/show', $data);
 
