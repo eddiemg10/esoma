@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\ClassroomStudent;
+use App\Models\Uploadedoc;
 
 class ClassroomController extends Controller
 {
