@@ -77,4 +77,10 @@ Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
 
+Route::get('/aboutus', function(){
+    return view('aboutus', ['title'=>'Aboutus Page']);
+});
+Route::get('/eclassroom', function(){
+    return view('eclassroom', ['title'=>'Eclassroom Page']);
+});
 
