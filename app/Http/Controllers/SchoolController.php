@@ -14,4 +14,12 @@ class SchoolController extends Controller
         
         return view("eclassroom/school/classes/index");
     }
+
+    public function student_management(){
+        return view ("eclassroom/school/student_management");
+    }
+    public function teacher_management(){
+        return view ("eclassroom/school/teacher_management");
+    }
+    
 }
