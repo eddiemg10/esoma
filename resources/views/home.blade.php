@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
     <style>
@@ -334,7 +334,7 @@
         <div class="inner-nav-bar">
             <div><a href="">Home</a></div>
             <div><a href="">E-library</a></div>
-            <div><a href="">E-classroom</a></div>
+            <div><a href=" {{ url('/eclassroom') }}">E-classroom</a></div>
             <div><a href="">About Us</a></div>
             <div><a href="">Blog</a></div>
         </div>

@@ -30,6 +30,9 @@ class CreateAssignmentQuestionsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('assignmentquestions');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

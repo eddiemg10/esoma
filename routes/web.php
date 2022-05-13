@@ -6,6 +6,8 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\SchoolController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,9 @@ Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
+Route::get('/classroom/school', [SchoolController::class, 'classrooms']);
+
+
 Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
 
 
@@ -53,8 +58,8 @@ Route::get('/assignmentform/{counter}', function($counter){
 });
 
 
-Route::get('/submitnotification', function(){
-    return view('components/submitted-notification');
+Route::get('/submitnotification/{classID}/{assignment}', function($classID, $assignment){
+    return view('components/submitted-notification', ['classID' => $classID, 'assignment'=>$assignment]);
 });
 
 Route::get('/upload',[UploadController::class,'create']);
@@ -77,4 +82,10 @@ Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
 
+Route::get('/aboutus', function(){
+    return view('aboutus', ['title'=>'Aboutus Page']);
+});
+Route::get('/eclassroom', function(){
+    return view('eclassroom', ['title'=>'Eclassroom Page']);
+});
 
