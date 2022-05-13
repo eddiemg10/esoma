@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\ClassroomStudent;
+use App\Models\Classroom;
 use App\Models\Uploadedoc;
 
 class ClassroomController extends Controller
@@ -29,6 +30,7 @@ class ClassroomController extends Controller
     }
 
     public function show($id){
+
 
         $classroom = DB::table('classrooms')
                         ->join('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
@@ -56,6 +58,15 @@ class ClassroomController extends Controller
             "results" => $marked_assignments
         ];
         return view('eclassroom/student/classrooms/show', $data);
+
+    }
+
+    public function update(Request $request){
+
+        $id = $request->get('classroom');
+        $classroom = Classroom::find($id);
+        $classroom->status = !$classroom->status;
+        $classroom->save();
 
     }
 

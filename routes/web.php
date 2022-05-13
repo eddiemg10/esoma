@@ -31,6 +31,8 @@ Route::get('/classroom', function(){
 
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
+Route::put('/classroom', [ClassroomController::class, 'update']);
+
 
 Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
 Route::get('/classroom/student/{id}/assignments/{asmt}', [AssignmentController::class, 'show']);
@@ -42,7 +44,9 @@ Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
-Route::get('/classroom/school', [SchoolController::class, 'classrooms']);
+Route::get('/classroom/school', [SchoolController::class, 'allClassrooms']);
+Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']);
+
 
 
 Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
