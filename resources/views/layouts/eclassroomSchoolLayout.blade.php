@@ -16,22 +16,25 @@
         @yield('bread_crumbs')
     </div>
 
-    <div class="flex w-full justify-center">
+    <div class="flex w-full justify-center gap-4">
         <div class="md:w-[20%] md:flex flex-col pl-16 hidden">
-            <p class="text-blue-rich font-bold text-xl mb-3 mt-10">Student Account</p>
+            <p class="text-blue-rich font-bold text-xl mb-3 mt-10">School Institution Account</p>
 
-            <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">
+            <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-sm font-light">
                 <li class="bg-zinc-100 rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav"
                     id="classroom">
-                    My Classes</li>
+                    Manage Classes</li>
+                <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav mb-6"
+                    id="help">
+                    Manage Teachers</li>
                 <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav"
                     id="help">
-                    Help</li>
+                    Manage Students</li>
             </ul>
         </div>
         <div class="md:w-[80%] w-[90%] flex md:justify-start justify-center">
             <div class="bg-zinc-100 w-[90%] pb-10 rounded-xl shadow-md">
-                <h1 class="text-blue-rich font-bold text-4xl text-center mt-10 mb-20">Your Classrooms</h1>
+                <h1 class="text-blue-rich font-bold text-4xl text-center mt-10 mb-20">Registered Classes</h1>
                 <div id="content">
                     @yield('main_content')
 

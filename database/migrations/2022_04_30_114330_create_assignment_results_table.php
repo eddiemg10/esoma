@@ -17,6 +17,7 @@ class CreateAssignmentResultsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('assignment_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->json('failed_questions');
             $table->double('score');
             $table->timestamps();
         });
@@ -29,6 +30,9 @@ class CreateAssignmentResultsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('assignmentresults');
+        Schema::enableForeignKeyConstraints();
+
     }
 }

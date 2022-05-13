@@ -26,6 +26,8 @@ class UserSeeder extends Seeder
 
         for($i=0; $i<5; $i++){
             User::create([
+                'firstName' =>Str::random(5),
+                'secondName' => Str::random(7),
                 'email' => Str::random(7).'@gmail.com',
                 'email_verified_at' => null,
                 'password' => Hash::make('password'),
@@ -38,7 +40,7 @@ class UserSeeder extends Seeder
 
         Teacher::create([
             'user_id' => 1,
-            'name'=>'Mr. James Smith',
+            'displayName'=>'Mr. James Smith',
             'tsc_number' => 10926,
         ]);
 
@@ -59,12 +61,5 @@ class UserSeeder extends Seeder
             
         }
 
-        for($i=0; $i < 2; $i++){
-            Assignment::create([
-                'classroom_id' => 1,
-                'due_date'=> now(),
-                'total_marks' => 30
-            ]);
-        }
     }
 }

@@ -71,7 +71,6 @@ class AssignmentController extends Controller
 
         $assignment->classroom_id = 1;
         $assignment->title = $request->input('assignment-title');
-        $assignment->due_date = now();
         $assignment->total_marks = $marks;
         
         $assignment->save();
@@ -128,21 +127,10 @@ class AssignmentController extends Controller
 
         $results->save();
 
-        return json_encode($results);
+        return json_encode($results->id);
 
     }
 
-    public function test(){
-
-       
-        if($this->markQuestion('1', "True")){
-            return "Correct!";
-        }
-        else{
-            return("Wrong!");
-        }
-        
-    }
 
     public function markQuestion($question, $choice){
 

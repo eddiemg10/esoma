@@ -17,7 +17,7 @@ class ClassroomController extends Controller
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
                         ->where('classroom_student.user_id', $id)
-                        ->select('classrooms.*', 'teachers.name as teacher', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
+                        ->select('classrooms.*', 'teachers.displayName as teacher', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
                         ->get();
 
         
@@ -35,19 +35,17 @@ class ClassroomController extends Controller
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
                         ->where('classrooms.id', $id)
-                        ->select('classrooms.*', 'teachers.name as teacher', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
+                        ->select('classrooms.*', 'teachers.displayName as teacher', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
                         ->get();
 
         $total_assignments = DB::table('assignments')
                           ->where('assignments.classroom_id', $id)
                           ->count();
         $marked_assignments = DB::table('assignment_results')
-                          ->where('user_id', 1)
-                          ->count();
-
-
-        $results = DB::table('assignment_results')
-                      ->where('user');
+                                ->join('assignments', 'assignment_results.assignment_id', '=', 'assignments.id')
+                                ->where('assignments.classroom_id', $id)
+                                ->where('user_id', 1)
+                                ->count();
         
 
         $data = [
