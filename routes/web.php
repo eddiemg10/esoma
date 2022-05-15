@@ -90,8 +90,7 @@ Route::get('/eclassroom', function(){
 });
 
 Route::get('/student_management',[SchoolController::class,'student_management']);
-Route::get('/addteacher',[SchoolController::class,'addteacher']);
 Route::get('/teacher_management',[SchoolController::class,'teacher_management']);
-Route::get('/viewteacher',[SchoolController::class,'viewteacher']);
+
 
 

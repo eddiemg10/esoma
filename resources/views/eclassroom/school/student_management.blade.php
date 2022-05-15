@@ -21,12 +21,15 @@
             <th>Names</th>
             <th>Email Address</th>
         </tr>
+
+        @foreach($data as $data)
         <tr>
             <!-- will have a foreach -->
             <td >example example</td>
             <td >example@gmail.com</td>
         </tr>
     </table>
+    @endforeach
 </div>
 
 
