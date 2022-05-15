@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class submitted-notification extends Component
+class submittedNotification extends Component
 {
     /**
      * Create a new component instance.

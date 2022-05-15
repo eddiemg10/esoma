@@ -4,16 +4,20 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class questionForm extends Component
+class StudentsTable extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+
+     public $students; 
+     
+    public function __construct($students)
+
     {
-        //
+        $this->students = $students;
     }
 
     /**
@@ -23,6 +27,6 @@ class questionForm extends Component
      */
     public function render()
     {
-        return view('components.question-form');
+        return view('components.students-table');
     }
 }

@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class choice-input extends Component
+class choiceInput extends Component
 {
     /**
      * Create a new component instance.

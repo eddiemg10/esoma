@@ -7,6 +7,10 @@ use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
+use Illuminate\Support\Facades\DB;
+use App\Models\Uploadeddoc;
+
+
 
 
 /*
@@ -32,6 +36,8 @@ Route::get('/classroom', function(){
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
 Route::put('/classroom', [ClassroomController::class, 'update']);
+Route::post('/classroom', [SchoolController::class, 'store']);
+
 
 
 Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
@@ -64,6 +70,20 @@ Route::get('/assignmentform/{counter}', function($counter){
 
 Route::get('/submitnotification/{classID}/{assignment}', function($classID, $assignment){
     return view('components/submitted-notification', ['classID' => $classID, 'assignment'=>$assignment]);
+});
+
+Route::get('/classroom/students/{classID}', function($classID){
+    $students = DB::table('classroom_student')
+                       ->join('users', 'classroom_student.user_id', '=', 'users.id')
+                       ->where('classroom_student.classroom_id', $classID)
+                       ->select('users.firstName', 'users.secondName', 'users.email', 'classroom_student.created_at as joined_on')
+                       ->get();
+    return view('components/students-table', ['students' => $students]);
+});
+Route::get('/classroom/uploads/{classID}', function($classID){
+
+    $uploads=Uploadeddoc::all();
+    return view('components/class-uploads', ['uploads' => $uploads]);
 });
 
 Route::get('/upload',[UploadController::class,'create']);

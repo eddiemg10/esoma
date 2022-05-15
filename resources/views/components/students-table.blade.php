@@ -1,0 +1,30 @@
+<table class="table-auto rounded-md">
+    <thead class="text-white bg-gray-700">
+        <th class="px-6 py-3">First Name</th>
+        <th class="px-6 py-3">Last Name</th>
+        <th class="px-6 py-3">email</th>
+        <th class="px-6 py-3">Joined</th>
+    </thead>
+
+    <tbody>
+
+        @foreach($students as $student)
+        <tr class=" border-b odd:bg-white even:bg-gray-50">
+            <td class="px-6 py-4">{{$student->firstName}}</td>
+            <td class="px-6 py-4">{{$student->secondName}}</td>
+            <td class="px-6 py-4">{{$student->email}}</td>
+            <td class="px-6 py-4">{{$student->joined_on}}</td>
+
+        </tr>
+        @endforeach
+
+
+        <tr class=" border-b odd:bg-white even:bg-gray-50">
+            <td class="px-6 py-4">Eddie</td>
+            <td class="px-6 py-4">Gikundi</td>
+            <td class="px-6 py-4">eddiemwiti10@gmail.com</td>
+            <td class="px-6 py-4">12/03/11</td>
+
+        </tr>
+    </tbody>
+</table>

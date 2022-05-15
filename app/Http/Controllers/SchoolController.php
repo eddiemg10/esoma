@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\School;
+use App\Models\Classroom;
+use App\Models\SchoolClassroom;
+use App\Models\Uploadeddoc;
+use Illuminate\Support\Str;
+
+
+
 
 
 class SchoolController extends Controller
@@ -22,9 +29,16 @@ class SchoolController extends Controller
                         ->select('classrooms.*', 'teachers.displayName as teacher', 'teachers.tsc_number', 'classrooms.created_at as created_on')
                         ->get();
 
+        $teachers = DB::table('school_teacher')
+                      ->join('users', 'school_teacher.user_id', '=', 'users.id')
+                      ->select('users.id', 'users.firstName', 'secondName', 'users.email')
+                      ->get();
+
+
         $data = [
             "school" => $school,
             "classrooms" => $classrooms,
+            "teachers" => $teachers
             
         ];
 
@@ -42,15 +56,55 @@ class SchoolController extends Controller
                         ->select('classrooms.*', 'teachers.user_id' ,'teachers.displayName as teacher', 'teachers.tsc_number', 'classrooms.created_at as created_on')
                         ->first();
 
-        // return $classrooms;
+        $students = DB::table('classroom_student')
+                       ->join('users', 'classroom_student.user_id', '=', 'users.id')
+                       ->where('classroom_student.classroom_id', $id)
+                       ->select('users.firstName', 'users.secondName', 'users.email', 'classroom_student.created_at as joined_on')
+                       ->get();
+
+        $uploads=Uploadeddoc::all();
 
         $data = [
             "school" => $school,
             "classroom" => $classroom,
+            "students" => $students,
+            "uploads" => $uploads,
             
         ];
 
         return view("eclassroom/school/classes/show", $data);
 
+    }
+
+    public function store(Request $request){
+
+        try{
+            $classroom = new Classroom();
+            $schoolClassroom = new SchoolClassroom();
+
+
+            $classroom->access_code = Str::random(7);
+    
+            $classroom->name = $request->input('className');
+            $classroom->description = $request->input('description');
+            $classroom->teacher = $request->input('teacher');
+            $classroom->subject = ($request->input('custom_subject') !== null) ? $request->input('custom_subject') :$request->input('subject');    
+            $classroom->save();
+
+            $schoolClassroom->classroom_id = $classroom->id;
+            $schoolClassroom->school_id = $request->input('school');
+            $schoolClassroom->save();
+
+
+
+
+            return redirect('/classroom/school')->with('success', 'Class successfully added');
+
+        }
+        catch(Exception $e){
+            return redirect('/classroom/school')->with('error', 'An error occured');
+            
+        }
+                
     }
 }
