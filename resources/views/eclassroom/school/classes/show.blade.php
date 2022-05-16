@@ -24,8 +24,9 @@
             class="{{$classroom->status == 1 ? 'bg-purple-700' : 'bg-slate-500'}} py-4 relative text-xl font-bold text-white rounded-t-3xl w-full">
             {{$classroom->name}}
             <div class="flex items-center absolute right-10 top-0 h-full gap-4">
+                {{--
                 <x-fas-edit class="w-[30px] " id="edit" />
-                <x-gmdi-delete class="w-[30px]" id="delete" />
+                <x-gmdi-delete class="w-[30px]" id="delete" /> --}}
             </div>
 
         </div>
@@ -132,11 +133,6 @@
     $("#uploads").click(function(e){
         $("#uploads-data").removeClass('hidden');
         $("#students-data").addClass('hidden');
-    });
-
-    $("#delete").hover(function() {
-        $(this).attr('title', 'This is the hover-over text');
-    }
     });
     
     });

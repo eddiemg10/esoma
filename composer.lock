@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0e8abc56e64540fd7db5422aaaabc77",
+    "content-hash": "aeefa3e90afcffb43e1425c4d34e43c3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -263,79 +263,6 @@
                 "source": "https://github.com/brunocfalcao/blade-feather-icons/tree/v2.1.0"
             },
             "time": "2022-02-19T20:24:59+00:00"
-        },
-        {
-            "name": "codeat3/blade-google-material-design-icons",
-            "version": "1.10.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/codeat3/blade-google-material-design-icons.git",
-                "reference": "79480fc84d94a88dcca850c89030dfd5d4393bcc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/codeat3/blade-google-material-design-icons/zipball/79480fc84d94a88dcca850c89030dfd5d4393bcc",
-                "reference": "79480fc84d94a88dcca850c89030dfd5d4393bcc",
-                "shasum": ""
-            },
-            "require": {
-                "blade-ui-kit/blade-icons": "^1.1",
-                "illuminate/support": "^8.0|^9.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "codeat3/blade-icon-generation-helpers": "^0.1",
-                "codeat3/phpcs-styles": "^1.0",
-                "orchestra/testbench": "^6.0|^7.0",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Codeat3\\BladeGoogleMaterialDesignIcons\\BladeGoogleMaterialDesignIconsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Codeat3\\BladeGoogleMaterialDesignIcons\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Swapnil Sarwe",
-                    "homepage": "https://swapnilsarwe.com"
-                },
-                {
-                    "name": "Dries Vints",
-                    "homepage": "https://driesvints.com"
-                }
-            ],
-            "description": "A package to easily make use of \"Google Fonts Material Icons\" in your Laravel Blade views.",
-            "homepage": "https://github.com/codeat3/blade-google-material-design-icons",
-            "keywords": [
-                "blade",
-                "google",
-                "icons",
-                "laravel",
-                "material"
-            ],
-            "support": {
-                "issues": "https://github.com/codeat3/blade-google-material-design-icons/issues",
-                "source": "https://github.com/codeat3/blade-google-material-design-icons/tree/1.10.2"
-            },
-            "funding": [
-                {
-                    "url": "https://www.buymeacoffee.com/swapnilsarwe",
-                    "type": "custom"
-                }
-            ],
-            "time": "2022-04-04T17:01:35+00:00"
         },
         {
             "name": "codeat3/blade-teeny-icons",
@@ -2475,66 +2402,6 @@
                 "source": "https://github.com/opis/closure/tree/3.6.3"
             },
             "time": "2022-01-27T09:35:39+00:00"
-        },
-        {
-            "name": "owenvoke/blade-fontawesome",
-            "version": "v1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/owenvoke/blade-fontawesome.git",
-                "reference": "4d9a8518a51fb13559428ae09e9d7c6924631286"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/owenvoke/blade-fontawesome/zipball/4d9a8518a51fb13559428ae09e9d7c6924631286",
-                "reference": "4d9a8518a51fb13559428ae09e9d7c6924631286",
-                "shasum": ""
-            },
-            "require": {
-                "blade-ui-kit/blade-icons": "^1.1.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.4 || ^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0",
-                "pestphp/pest": "^1.8",
-                "phpstan/phpstan": "^0.12.82",
-                "spatie/pest-plugin-snapshots": "^1.0.1",
-                "symfony/var-dumper": "^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "OwenVoke\\BladeFontAwesome\\BladeFontAwesomeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "OwenVoke\\BladeFontAwesome\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A package to easily make use of Font Awesome in your Laravel Blade views",
-            "support": {
-                "issues": "https://github.com/owenvoke/blade-fontawesome/issues",
-                "source": "https://github.com/owenvoke/blade-fontawesome/tree/v1.10.0"
-            },
-            "funding": [
-                {
-                    "url": "https://ecologi.com/owenvoke?gift-trees",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/owenvoke",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-10-20T12:06:31+00:00"
         },
         {
             "name": "phpoption/phpoption",
