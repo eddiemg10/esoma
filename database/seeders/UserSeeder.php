@@ -11,6 +11,8 @@ use App\Models\Classroom;
 use App\Models\ClassroomStudent;
 use App\Models\Teacher;
 use App\Models\Assignment;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Schema;
 
 
 
@@ -23,6 +25,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Teacher::truncate();
+        Classroom::truncate();
+        Schema::enableForeignKeyConstraints();
 
         for($i=0; $i<5; $i++){
             User::create([
@@ -30,19 +37,19 @@ class UserSeeder extends Seeder
                 'secondName' => Str::random(7),
                 'email' => Str::random(7).'@gmail.com',
                 'email_verified_at' => null,
+                'user_type'=>Arr::random(['teacher','student']),
                 'password' => Hash::make('password'),
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
             ]);
 
             
+            
         }
-
-        Teacher::create([
-            'user_id' => 1,
-            'displayName'=>'Mr. James Smith',
-            'tsc_number' => 10926,
-        ]);
+        \App\Models\User::factory(10)->create();
+        \App\Models\Teacher::factory(10)->create();
+        
+        
 
         for($i=0; $i<4; $i++){
             Classroom::create([

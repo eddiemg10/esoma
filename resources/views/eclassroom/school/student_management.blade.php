@@ -10,26 +10,26 @@
 
 <br><input class= "ml-20 p-2 rounded-lg bg-sky-300 shadow-md hover:bg-gray-400 cursor-pointer transition assignment text-left" type = "submit" name="sstudent" value="Search Student"> <br>
 
-<div>
-    <br><span class="ml-20 p-5"> OR</span><br>
-    <br><input class= "ml-20 p-2 rounded-lg bg-sky-300 shadow-md hover:bg-gray-400 cursor-pointer transition assignment text-left" type = "submit" name="allstudent" value="View All Students"><br>
-</div>
 </div>
 <div>
     <table class="mr-20 snap-center border-separate [border-spacing:2.75rem]">
+        <thead>
         <tr>
             <th>Names</th>
             <th>Email Address</th>
         </tr>
-
-        @foreach($data as $data)
+        </thead>
+        <tbody>
+            @forelse($students as $student)
         <tr>
-            <!-- will have a foreach -->
-            <td >example example</td>
-            <td >example@gmail.com</td>
+            <td>{{$student->firstName}}  {{$student->secondName}}</td>
+            <td>{{$student->email}}</td>
         </tr>
+            @empty
+            @endforelse
+        </tbody>
     </table>
-    @endforeach
+
 </div>
 
 
