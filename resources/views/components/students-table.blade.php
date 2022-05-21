@@ -17,14 +17,5 @@
 
         </tr>
         @endforeach
-
-
-        <tr class=" border-b odd:bg-white even:bg-gray-50">
-            <td class="px-6 py-4">Eddie</td>
-            <td class="px-6 py-4">Gikundi</td>
-            <td class="px-6 py-4">eddiemwiti10@gmail.com</td>
-            <td class="px-6 py-4">12/03/11</td>
-
-        </tr>
     </tbody>
 </table>
