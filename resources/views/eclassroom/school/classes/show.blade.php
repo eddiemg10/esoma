@@ -48,7 +48,8 @@
             <p class="text-lg mt-12 mb-5">Subject: <span class="bg-zinc-100 font-light py-1 px-3 rounded-full">
                     {{$classroom->subject}} </span></p>
             <p class="text-lg mb-5">Teacher: <span
-                    class="bg-zinc-100 font-light py-1 px-3 hover:cursor-pointer hover:bg-purple-50 transition rounded-full">{{$classroom->teacher}}</span>
+                    class="bg-zinc-100 font-light py-1 px-3 hover:cursor-pointer hover:bg-purple-50 transition rounded-full">{{$classroom->firstName."
+                    ".$classroom->secondName}}</span>
             </p>
 
         </div>

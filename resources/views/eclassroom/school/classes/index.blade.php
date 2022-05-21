@@ -178,7 +178,8 @@
 
                     <div class="mt-20 flex flex-col gap-y-4 items-start ml-5">
                         <p>Teacher: <span
-                                class="bg-zinc-100 font-light py-1 px-3 rounded-full mt-20">{{$classroom->teacher}}
+                                class="bg-zinc-100 font-light py-1 px-3 rounded-full mt-20">{{$classroom->firstName."
+                                ".$classroom->secondName}}
                             </span></p>
                         <p>Subject: <span
                                 class="bg-zinc-100 font-light py-1 px-3 rounded-full">{{$classroom->subject}}</span>

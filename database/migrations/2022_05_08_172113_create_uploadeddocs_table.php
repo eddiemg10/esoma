@@ -16,7 +16,7 @@ class CreateUploadeddocsTable extends Migration
         Schema::create('uploadeddocs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->foreignId('classroom_id')->contrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('doc');
             $table->timestamps();
         });

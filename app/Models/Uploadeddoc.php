@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Uploadeddoc extends Model
 {
     use HasFactory;
-    protected $fillable=['name','description','doc'];
+    protected $fillable=['name','classroom_id','doc'];
     protected $table='uploadeddocs';
 }

@@ -17,6 +17,7 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->integer('tsc_number')->unique();
+            $table->boolean('blocked')->default(0);
             $table->timestamps();
         });
     }

@@ -17,18 +17,18 @@ class ClassroomSeeder extends Seeder
         Classroom::insert([
             [
                 'name'=>'MSB 6',
-                'teacher'=>'1',
+                'teacher'=>'11',
                 'access_code'=>'rcfijb',
                 'description'=>'Masomo muhimu',
                 'subject'=>'Catology',
             ],
             [
                 'name'=>'Shabba',
-                'teacher'=>'1',
+                'teacher'=>'11',
                 'access_code'=>'cfgyui',
                 'description'=>'abc',
                 'subject'=>'Biology',
             ]
             ]);
-            }
+    }
 }

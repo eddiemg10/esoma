@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Uploadeddoc;
+use App\Models\Classroom;
 use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
@@ -24,10 +25,18 @@ class UploadController extends Controller
        
         return back();
     }
-    public function show()
+    public function show($id)
     {
-        $data=Uploadeddoc::all();
-        return view('eclassroom/student/uploads/show',compact('data'));
+        $docs=Uploadeddoc::where('classroom_id', $id)->get();
+        $classroom = Classroom::select('name')->where('id', $id)->get()[0]->name;
+
+        $data = [
+            "title" => "EClassroom | ".$classroom,
+            "page" => $classroom,
+            "pageID" => $id,
+            "uploads" => $docs
+        ];
+        return view('eclassroom/student/uploads/show',$data);
     }
 }   
 

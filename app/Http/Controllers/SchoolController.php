@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\School;
 use App\Models\Classroom;
 use App\Models\SchoolClassroom;
+use App\Models\SchoolTeacher;
 use App\Models\Uploadeddoc;
 use Illuminate\Support\Str;
 use App\Models\Teacher;
@@ -26,7 +27,7 @@ class SchoolController extends Controller
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
                         ->where('school_classroom.school_id', $school->id)
-                        ->select('classrooms.*', 'teachers.displayName as teacher', 'teachers.tsc_number', 'classrooms.created_at as created_on')
+                        ->select('classrooms.*', 'users.firstName', 'users.secondName' , 'teachers.tsc_number', 'classrooms.created_at as created_on')
                         ->get();
 
         $teachers = DB::table('school_teacher')
@@ -38,7 +39,8 @@ class SchoolController extends Controller
         $data = [
             "school" => $school,
             "classrooms" => $classrooms,
-            "teachers" => $teachers
+            "teachers" => $teachers,
+            "tab" => "classes"
             
         ];
 
@@ -53,7 +55,7 @@ class SchoolController extends Controller
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
                         ->where('classrooms.id', $id)
-                        ->select('classrooms.*', 'teachers.user_id' ,'teachers.displayName as teacher', 'teachers.tsc_number', 'classrooms.created_at as created_on')
+                        ->select('classrooms.*', 'teachers.user_id' ,'users.firstName', 'users.secondName', 'teachers.tsc_number', 'classrooms.created_at as created_on')
                         ->first();
 
         $students = DB::table('classroom_student')
@@ -62,13 +64,14 @@ class SchoolController extends Controller
                        ->select('users.firstName', 'users.secondName', 'users.email', 'classroom_student.created_at as joined_on')
                        ->get();
 
-        $uploads=Uploadeddoc::all();
+        $uploads=Uploadeddoc::where('classroom_id', $id)->get();
 
         $data = [
             "school" => $school,
             "classroom" => $classroom,
             "students" => $students,
             "uploads" => $uploads,
+            "tab" => "classes"
             
         ];
 
@@ -109,14 +112,39 @@ class SchoolController extends Controller
     }
 
     public function student_management(){
+
+        $user = 1;
+        $school = School::where('user_id', $user)->first();
+
+        $students = DB::table('users')
+                        ->join('classroom_student', 'users.id', '=', 'classroom_student.user_id')
+                        ->join('school_classroom', 'classroom_student.classroom_id', '=' ,'school_classroom.classroom_id')
+                        ->where('school_classroom.school_id', $school->id)
+                        ->groupBy('users.id')
+                        ->select('users.id', 'users.firstName', 'users.secondName', 'users.email')
+                        ->get();
+
         $data=[
-            'students' => User::whereUserType('student')->get(),
+            'students' => $students,
+            "tab" => "students"
         ];
         return view ("eclassroom/school/student_management",$data);
     }
     public function teacher_management(){
+
+        $user = 1;
+        $school = School::where('user_id', $user)->first();
+
+        $teachers = DB::table('users')
+                       ->join('teachers', 'users.id', '=', 'teachers.user_id')
+                       ->join('school_teacher', 'users.id', '=', 'school_teacher.user_id')
+                       ->where('school_teacher.school_id', $school->id)
+                       ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'teachers.blocked')
+                       ->get();
+
         $data=[
-            'users' => User::whereUserType('teacher')->with('teacher')->get(),
+            'users' => $teachers,
+            "tab" => "teachers"
         ];
         // dd($data['teachers']);
         return view ("eclassroom/school/teacher_management",$data);

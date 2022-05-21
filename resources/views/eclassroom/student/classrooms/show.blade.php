@@ -36,14 +36,17 @@
             <p class="text-lg mt-12 mb-5">Subject: <span class="bg-zinc-100 font-light py-1 px-3 rounded-full">
                     {{$classroom->subject}} </span></p>
             <p class="text-lg">Teacher: <span
-                    class="bg-zinc-100 font-light py-1 px-3 rounded-full">{{$classroom->teacher}}</span> </p>
+                    class="bg-zinc-100 font-light py-1 px-3 rounded-full">{{$classroom->firstName."
+                    ".$classroom->secondName}}</span> </p>
         </div>
 
         <div class="flex flex-col gap-y-[80px] items-start px-10">
             <div class="flex flex-col items-start w-full ">
                 <h1 class="text-4xl text-zinc-500">Class Material</h1>
-                <p class="font-light text-sm ml-3 mt-2 text-zinc-500">2 items available</p>
-                <a href="#" class="bg-blue-rich hover:cursor-pointer text-white text-xl mt-10 w-full py-[6px] ">Access
+                <p class="font-light text-sm ml-3 mt-2 text-zinc-500">@if($uploads ===1)1 item available @else
+                    {{$uploads}} items available @endif</p>
+                <a href={{url()->current()."/uploads"}} class="bg-blue-rich hover:cursor-pointer text-white text-xl
+                    mt-10 w-full py-[6px] ">Access
                     Uploaded Material</a>
             </div>
 

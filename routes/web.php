@@ -39,6 +39,8 @@ Route::put('/classroom', [ClassroomController::class, 'update']);
 Route::post('/classroom', [SchoolController::class, 'store']);
 
 
+Route::get('/classroom/student/{id}/uploads',[UploadController::class,'show']);
+
 
 Route::get('/classroom/student/{id}/assignments', [AssignmentController::class, 'index']);
 Route::get('/classroom/student/{id}/assignments/{asmt}', [AssignmentController::class, 'show']);
@@ -50,10 +52,13 @@ Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
+
+
+Route::get('/classroom/school/students',[SchoolController::class,'student_management']);
+Route::get('/classroom/school/teachers',[SchoolController::class,'teacher_management']);
+
 Route::get('/classroom/school', [SchoolController::class, 'allClassrooms']);
 Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']);
-
-
 
 Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
 
@@ -88,7 +93,6 @@ Route::get('/classroom/uploads/{classID}', function($classID){
 
 Route::get('/upload',[UploadController::class,'create']);
 Route::post('/upload',[UploadController::class,'store']);
-Route::get('/show',[UploadController::class,'show']);
 
 
 
@@ -113,8 +117,7 @@ Route::get('/eclassroom', function(){
     return view('eclassroom', ['title'=>'Eclassroom Page']);
 });
 
-Route::get('/student_management',[SchoolController::class,'student_management']);
-Route::get('/teacher_management',[SchoolController::class,'teacher_management']);
+
 
 
 
