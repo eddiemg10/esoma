@@ -113,3 +113,8 @@ Route::get('/eclassroom', function(){
     return view('eclassroom', ['title'=>'Eclassroom Page']);
 });
 
+Route::get('/student_management',[SchoolController::class,'student_management']);
+Route::get('/teacher_management',[SchoolController::class,'teacher_management']);
+
+
+
