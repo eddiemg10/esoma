@@ -160,3 +160,12 @@ Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showsub']);
 Route::get('/eclassroom', function () {
     return view('eclassroom', ['title' => 'Eclassroom Page']);
 });
+Route::get('/elib', function(){
+    return view('elib/user/libuser_dash');
+});
+
+Route::get('/elibrary/pp1/1', function(){
+    return view('elib/user/show');
+});
+
+
