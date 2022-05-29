@@ -32,6 +32,7 @@ class ClassroomController extends Controller
 
 
         $uploads = Uploadeddoc::where('classroom_id', $id)->count();
+        
         $classroom = DB::table('classrooms')
                         ->join('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
                         ->join('users', 'classrooms.teacher', '=', 'users.id')

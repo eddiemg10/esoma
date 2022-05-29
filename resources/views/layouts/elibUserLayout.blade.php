@@ -4,6 +4,24 @@
 <div class="container min-h-screen min-w-full bg-white font-roboto">
 
     <div class="flex-row flex">
+
+
+        <div class="hidden md:flex flex-col pl-16 w-[20%] mt-20">
+            @foreach ($schools as $school)
+            <p class="text-blue-rich font-bold text-xl mb-3 mt-10"><a href='#'>{{$school->schoollevel_name}}</a></p>
+            @foreach($classes as $class)
+            @if($school->id===$class->school_level_id)
+            <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">
+                <!-- <li class="bg-zinc-100 rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-3 nav"></li> -->
+                <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3"><a href={{url('elib/'.$class->id)}}>{{$class->classlevel_name}}</a></li>
+                <!-- <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3">Grade 1</li>
+                <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3">Grade 2</li>
+                <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3">Grade 3</li> -->
+              @endif
+            </ul>
+            @endforeach
+           
+            <!-- <p class="text-blue-rich font-bold text-xl mb-3 mt-10">Primary School</p>
         <!-- <div class="justify-center mt-10 flex max-h-full w-80 flex-col gap-5">
             <table>
                 <thead>
@@ -107,6 +125,8 @@
                 <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3">Form 3</li>
                 <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3">Form 4</li>
 
+            </ul> -->
+            @endforeach
             </ul>
         </div>
 
