@@ -33,7 +33,7 @@
 
         <button
             class="mt-5 inline-block w-[60%] lg:w-[20%] py-2 px-2 rounded-md hover:cursor-pointer hover:shadow-md transition lg:absolute right-10 top-[90px] bg-red-500"
-            id="delete-assignment" data-assignment={{$assignment->id}} data-classroom={{$classroom}}
+            id="delete-assignment" data-assignment={{$assignment->id}} data-classroom={{$classroom->id}}
             >
             <div class="" id="del-icon"> <i class="fa-solid fa-trash-can text-white"></i> <span
                     class="pl-2 text-sm text-white">Delete
