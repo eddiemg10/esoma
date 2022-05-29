@@ -13,7 +13,7 @@
             <td class="px-6 py-4">{{$student->firstName}}</td>
             <td class="px-6 py-4">{{$student->secondName}}</td>
             <td class="px-6 py-4">{{$student->email}}</td>
-            <td class="px-6 py-4">{{$student->joined_on}}</td>
+            <td class="px-6 py-4">{{\Carbon\Carbon::parse($student->joined_on)->format('d M Y')}}</td>
 
         </tr>
         @endforeach

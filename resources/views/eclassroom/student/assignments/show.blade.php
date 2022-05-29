@@ -146,7 +146,6 @@
                 },
 
                 function(data, status){
-                    console.log(data);
                     $(this).prop('disabled', false);
 
                     if(status==='success'){

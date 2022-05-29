@@ -42,8 +42,16 @@
 
             <button id="status" data-classroom={{$classroom->id}}
                 class="inline-block absolute top-24 right-10 py-1 rounded-md px-4 font-bold text-white text-md
-                {{$classroom->status == 1 ? 'bg-red-700' : 'bg-green-500'}}">{{$classroom->status
-                == 1? 'Deactivate' : 'Activate'}}</button>
+                {{$classroom->status == 1 ? 'bg-red-700' : 'bg-green-500'}}">
+
+                <div id="activation" class="">{{$classroom->status == 1? 'Deactivate' : 'Activate'}}</div>
+
+                <div id="loading" class="hidden">
+                    <x-loading-button width="4" fill="purple-700" />
+                    <span class="text-white text-xs">loading...</span>
+                </div>
+            </button>
+
 
             <p class="text-lg mt-12 mb-5">Subject: <span class="bg-zinc-100 font-light py-1 px-3 rounded-full">
                     {{$classroom->subject}} </span></p>
@@ -100,7 +108,12 @@
     $("#status").click(function(e){
 
         if (confirm('Are you sure you want to activate/deactivate this class?')) {
-        
+            $(this).prop('disabled', true);
+            $(this).addClass('opacity-75');
+            $(this).removeClass('hover:cursor-pointer');
+            $("#activation").hide();
+            $("#loading").show();
+
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '/classroom',

@@ -50,6 +50,7 @@ Route::get('/classroom/student/{id}/results/{asmt}', [AssignmentResultController
 
 Route::post('/assignments', [AssignmentController::class, 'store']);
 Route::post('/assignments/submit', [AssignmentController::class, 'check']);
+Route::post('/assignments/delete', [AssignmentController::class, 'delete']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
 
@@ -58,9 +59,17 @@ Route::get('/classroom/school/students',[SchoolController::class,'student_manage
 Route::get('/classroom/school/teachers',[SchoolController::class,'teacher_management']);
 
 Route::get('/classroom/school', [SchoolController::class, 'allClassrooms']);
-Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']);
+Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']); 
 
-Route::get('/classroom/teacher/', [TeacherController ::class, 'show']);
+Route::get('/classroom/teacher/', [TeacherController ::class, 'showSchools']);
+Route::get('/classroom/teacher/school/{id}', [TeacherController ::class, 'index']);
+Route::get('/classroom/teacher/{id}', [TeacherController ::class, 'show']);
+Route::get('/classroom/teacher/{id}/assignments', [TeacherController ::class, 'showAllAssignments']);
+Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController ::class, 'store']);
+Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController ::class, 'showAssignment']);
+
+
+Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignments/store');});
 
 
 // Components

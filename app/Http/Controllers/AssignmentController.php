@@ -58,7 +58,8 @@ class AssignmentController extends Controller
     public function store(Request $request){
 
         $quiz = $request->all();
-        
+        $classroom = $request->input('classroom');
+
         $marks = 0;
         foreach($quiz as $value){
             if(is_array($value)){
@@ -68,8 +69,9 @@ class AssignmentController extends Controller
 
         $assignment = new Assignment();
 
+        $assignment->classroom_id = $classroom;
 
-        $assignment->classroom_id = 1;
+
         $assignment->title = $request->input('assignment-title');
         $assignment->total_marks = $marks;
         
@@ -91,7 +93,9 @@ class AssignmentController extends Controller
                 }
             }
             
-        }
+        }   
+        
+        return redirect('/classroom/teacher/'.$classroom.'/assignments')->with('success', 'Assignment has been successfully created');
                 
     }
 
@@ -136,5 +140,18 @@ class AssignmentController extends Controller
 
         $que = AssignmentQuestion::find($question);
         return $choice === $que->answer ? true : false;
+    }
+
+    public function delete(Request $request){
+
+
+        $assignmentID = $request->input('data')['assignment'];
+        $classroom = $request->input('data')['classroom'];
+
+        $assignment = Assignment::find($assignmentID);
+        $assignment->delete();
+
+        $request->session()->flash('success', 'Assignment successfully deleted');
+        return json_encode("/classroom/teacher/".$classroom."/assignments");
     }
 }

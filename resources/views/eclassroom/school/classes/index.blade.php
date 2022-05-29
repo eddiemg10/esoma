@@ -12,23 +12,6 @@
 
 @endsection
 
-<style>
-    @keyframes fades {
-        from {
-            opacity: 1
-        }
-
-        to {
-            opacity: 0
-        }
-    }
-
-    .flash {
-        animation-name: fade;
-        animation-duration: 5s;
-        -webkit-animation-iteration-count: 1;
-    }
-</style>
 <div class="flex flex-col w-[full] px-5 gap-y-5 justify-center items-center" id="content">
 
     <div class="bg-white w-[90%] min-h-[70vh] pb-20 text-center shadow-md  rounded-3xl flex flex-col items-center">
@@ -37,21 +20,23 @@
         <h1 class="text-3xl mt-10 text-zinc-500">Your Classes</h1>
 
         <button
-            class="bg-blue-rich py-2 px-4 text-lg text-white w-[30%] mt-10 rounded-md hover:cursor-pointer hover:shadow-md shadow-sm"
+            class="bg-zinc-700 py-2 px-4 text-lg text-white w-[30%] mt-10 rounded-md hover:cursor-pointer hover:shadow-md shadow-sm"
             data-modal-toggle="add-class-modal" id="add-class">
             Add a new Class
         </button>
 
         <div class="w-full relative flex justify-center">
             @if(session('success'))
-            <div class="bg-green-300 flash mt-5 p-2 w-[90%] opacity-60 absolute rounded-md">
-                {{session('success')}}
+            <div
+                class="flash mt-5 text-green-500 font-bold border text-sm border-green-500 bg-green-50 text-center py-2 rounded-md absolute w-[40%]">
+                {{ session('success') }}
             </div>
             @endif
 
             @if(session('error'))
-            <div class="bg-red-300 flash mt-5 p-2 w-[90%] opacity-60 absolute rounded-md">
-                {{session('error')}}
+            <div
+                class="flash mt-5 text-red-500 font-bold border text-sm border-red-500 bg-red-50 text-center py-2 rounded-md absolute w-[40%]">
+                {{session('error') }}
             </div>
             @endif
 

@@ -18,6 +18,12 @@
     <script src="https://kit.fontawesome.com/347b9e054d.js" crossorigin="anonymous"></script>
     <title>{{$title ?? 'esoma'}}</title>
 
+    <script>
+        $(document).ready(function(){
+            $(".flash").fadeOut(6000);
+
+        });
+    </script>
 </head>
 
 <body>

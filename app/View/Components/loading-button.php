@@ -11,9 +11,10 @@ class loadingButton extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($width, $fill)
     {
-        //
+        $this->width = $width;
+        $this->fill = $fill;
     }
 
     /**
