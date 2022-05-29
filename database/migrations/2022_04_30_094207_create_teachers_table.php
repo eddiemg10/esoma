@@ -16,8 +16,8 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
             $table->integer('tsc_number')->unique();
+            $table->boolean('blocked')->default(0);
             $table->timestamps();
         });
     }

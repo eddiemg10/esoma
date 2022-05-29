@@ -3,10 +3,9 @@
 
 
 <style>
-    .active{
+    .active {
         @apply bg-yellow-600;
     }
-    
 </style>
 
 
@@ -22,15 +21,21 @@
             <p class="text-blue-rich font-bold text-xl mb-3 mt-10">Student Account</p>
 
             <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">
-                <li class="bg-zinc-100 rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav">My Classes</li>
-                <li class=" rounded-full  w-[50%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav">Help</li>
+                <li class="bg-zinc-100 rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav"
+                    id="classroom">
+                    My Classes</li>
+                <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav"
+                    id="help">
+                    Help</li>
             </ul>
         </div>
         <div class="md:w-[80%] w-[90%] flex md:justify-start justify-center">
             <div class="bg-zinc-100 w-[90%] pb-10 rounded-xl shadow-md">
                 <h1 class="text-blue-rich font-bold text-4xl text-center mt-10 mb-20">Your Classrooms</h1>
-                
-                @yield('main_content')
+                <div id="content">
+                    @yield('main_content')
+
+                </div>
 
             </div>
         </div>
@@ -39,8 +44,7 @@
 
 
 <script>
-
-$(document).ready(()=>{
+    $(document).ready(()=>{
 
     $(".nav").click((e)=>{
         $(e.target).addClass('bg-zinc-100 shadow-md');
@@ -52,6 +56,14 @@ $(document).ready(()=>{
             return false;
         }
     })
+
+    // $("#classroom").click(function(e)){
+
+    // }
+
+    // $("#help").click(function(e)){
+
+    // }
     
 });
 
