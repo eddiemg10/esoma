@@ -12,8 +12,8 @@
 @endif
 
 <div class="text-center p-15 text-3xl mt-10 text-amber-700 mb-10">Teacher Management</div>
-<div class="w-full flex justify-center mb-10">
-
+<form action="{{route('add-teacher')}}" method="POST" class="w-full flex justify-center mb-5">
+@csrf
     <input
         class="shadow appearance-none border rounded w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline0"
         type="text" name="tsc" placeholder="Enter TSC number"> <br>
@@ -25,10 +25,17 @@
 
 
 
+</form>
+    @if ($errors->any())
+<div class="flex justify-center mb-5">
+    <div
+        class="w-[25%] flash text-red-500 font-bold border text-sm border-red-500 bg-red-50 text-center py-2 rounded-md">
+        {{$errors->first()}}
+    </div>
+
 </div>
-<div class="w-full flex justify-center mb-20" id="matching-teachers">
-    This is where matching result should appear
-</div>
+@endif
+  
 
 <div class="w-full flex justify-center">
     <table class="table-auto rounded-md">
