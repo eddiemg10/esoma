@@ -140,7 +140,7 @@ class SchoolController extends Controller
                        ->join('teachers', 'users.id', '=', 'teachers.user_id')
                        ->join('school_teacher', 'users.id', '=', 'school_teacher.user_id')
                        ->where('school_teacher.school_id', $school->id)
-                       ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'teachers.blocked')
+                       ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'school_teacher.id as teacher', 'school_teacher.blocked')
                        ->get();
 
         $data=[
