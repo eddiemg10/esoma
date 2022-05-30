@@ -9,6 +9,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
@@ -74,6 +75,10 @@ Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherCo
 
 
 Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignments/store');});
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 // Components
