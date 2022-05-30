@@ -7,6 +7,7 @@ use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SchoolTeacherController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\PostController;
@@ -186,6 +187,9 @@ Route::get('/elibrary/pp1/1', function(){
 });
 //live search
 Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
+
+Route::post('/teacher/delete', [SchoolTeacherController::class, 'delete']);
+Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
 
 
 

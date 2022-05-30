@@ -25,4 +25,27 @@ class SchoolTeacherController extends Controller
         $schoolTeacher->save();
         
 }
+
+public function delete(Request $request){
+
+    $teacher  = $request->input('teacher');
+    $schoolTeacher = SchoolTeacher::find($teacher);
+    $schoolTeacher->delete();
+
+    $request->session()->flash('success', 'Teacher successfully removed from your school');
+    return true;
+    
+}
+
+public function block(Request $request){
+
+    $teacher  = $request->input('teacher');
+    $schoolTeacher = SchoolTeacher::find($teacher);
+    $schoolTeacher->blocked = !$schoolTeacher->blocked;
+    $schoolTeacher->save();
+
+    $request->session()->flash('success', $schoolTeacher->blocked ? 'Teacher has been blocked' : 'Teacher has been unblocked');
+    return true;
+    
+}
 }
