@@ -9,6 +9,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
@@ -27,6 +28,13 @@ use App\Models\SubjectLevel;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
+    Route::resource('posts', PostController::class);
+});
+
+
+
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
