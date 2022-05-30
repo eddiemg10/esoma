@@ -176,5 +176,8 @@ Route::get('/elib', function(){
 Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
+//live search
+Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
+
 
 
