@@ -49,6 +49,7 @@ public function block(Request $request){
     
 }
 
+
 public function addTeacher(Request $request){
     $teacher = Teacher::whereTscNumber($request->input('tsc'))->first();
     if (!$teacher) {
@@ -57,4 +58,5 @@ public function addTeacher(Request $request){
     SchoolTeacher::create(['user_id'=>$teacher->user_id,'school_id'=>1]);
     return back()->with('success','Teacher Added');
 }
-}
+
+

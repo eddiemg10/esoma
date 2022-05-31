@@ -11,9 +11,11 @@
 </div>
 @endif
 
+
 <div class="text-center p-15 text-3xl mt-10 text-amber-700 mb-10">Teacher Management</div>
 <form action="{{route('add-teacher')}}" method="POST" class="w-full flex justify-center mb-5">
 @csrf
+
     <input
         class="shadow appearance-none border rounded w-[50%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline0"
         type="text" name="tsc" placeholder="Enter TSC number"> <br>
@@ -22,6 +24,7 @@
     <input
         class="ml-3 py-2 px-5 rounded-md bg-sky-600 text-white shadow-md hover:bg-gray-400 cursor-pointer transition assignment text-left"
         type="submit" name="addteacher" value="Add Teacher">
+
 
 
 
@@ -36,6 +39,7 @@
 </div>
 @endif
   
+
 
 <div class="w-full flex justify-center">
     <table class="table-auto rounded-md">

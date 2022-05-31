@@ -190,7 +190,9 @@ Route::post('/students/search', [SchoolController::class, 'searchStudent'])->nam
 
 Route::post('/teacher/delete', [SchoolTeacherController::class, 'delete']);
 Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
+
 Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])->name('add-teacher');
+
 
 
 
