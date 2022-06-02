@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
@@ -31,6 +32,8 @@ use App\Models\SubjectLevel;
 
 Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
     Route::resource('posts', PostController::class);
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+    Route::get('/{id}', [BlogController::class, 'show'])->name('show');
 });
 
 

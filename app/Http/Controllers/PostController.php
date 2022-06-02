@@ -26,6 +26,7 @@ class PostController extends Controller
         print_r($posts);
         echo "</pre>";*/
 
+
         return view('blog.posts.index')->withPosts($posts);
     }
 
@@ -53,16 +54,7 @@ class PostController extends Controller
     {
         //
         //dd($request);
-        $request->validate([
-                'title' => 'required|max:255',
-                'slug' => 'required|max:255|unique:posts,slug',
-                'image' => 'required',
-                'content' => 'required',
-                'tags' => 'required',
-                'category' =>'required|integer',
 
-
-            ]);
 
 
             echo "<pre>";
@@ -136,10 +128,18 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
+
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('blog.posts.edit')->withPost($post)->withCategories($categories)->withTags($tags);
+        
+        $postTags = [];
+        foreach ($post->tags as $tag) {
+            // code...
+            $postTags[] = $tag->id;
+        }
+
+        return view('blog.posts.edit')->withPost($post)->withCategories($categories)->withTags($tags)->withPostTags($postTags);
 
     }
 
@@ -153,6 +153,69 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+       // dd($request); 
+        $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|max:255',
+
+            'content' => 'required',
+            'tags' => 'required',
+            'category' =>'required|integer',
+            ]); 
+        echo "<pre>";
+        
+        $post = Post::find($id);
+
+    
+
+        if (isset($request->image)) {
+            // code...
+            
+
+            $fileName = $request->file('image')->hashName();
+            $extension = $request->file('image')->extension();
+
+            echo "<br>\n";
+           
+
+            echo $fileName;
+
+
+
+            if ($request->file('image')->move(public_path('images/blog'), $fileName)) {
+                    echo "Done";
+            }
+
+            $img_location = 'images/blog/'.$fileName;
+
+            $post->image = $img_location;
+        }
+
+            $post->title = $request->title;
+            $post->slug = $request->slug;
+            $post->content = $request->content;
+            $post->category = $request->category;
+            $post->save();
+
+            
+            $post->tags()->sync($request->tags);                    
+
+
+
+            if($post)
+            {
+                
+                return redirect()->route('blog.posts.show',$id);
+            }else{
+                return redirect()->back()->with('status', 'Post Update Failed');
+            }        
+
+
+
+
+
+
     }
 
     /**
