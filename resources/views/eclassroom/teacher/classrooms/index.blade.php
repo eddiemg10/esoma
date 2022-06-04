@@ -12,7 +12,22 @@
 
 @endsection
 
+
+
 <div class="flex w-[100%] px-5 gap-9 justify-center flex-wrap" id="content">
+
+    @if($blocked)
+    <div class="flex flex-col items-center">
+        <p class='text-zinc-700 text-xl mt-20'>You have been blocked and cannot access your classes. Please
+            contact your
+            school
+            for more information</p>
+
+        <i class="fa-solid fa-lock fa-10x mt-20 text-zinc-600"></i>
+    </div>
+    @else
+
+
     @foreach ($classrooms as $classroom)
     <div class="bg-white w-[30%] relative pb-10 basis-[350px] text-center shadow-md hover:shadow-xl hover:cursor-pointer flex flex-col transition rounded-3xl classroom mt-20"
         id={{$classroom->id}}>
@@ -40,6 +55,8 @@
     </div>
 
     @endforeach
+
+    @endif
 </div>
 
 

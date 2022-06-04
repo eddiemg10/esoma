@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SchoolTeacher extends Model
+class Category extends Model
 {
-    protected $table = 'school_teacher';
-    protected $fillable = ['user_id','school_id'];
     use HasFactory;
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'category');
+    }
 }

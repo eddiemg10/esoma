@@ -7,8 +7,10 @@ use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SchoolTeacherController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
@@ -27,6 +29,13 @@ use App\Models\SubjectLevel;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
+    Route::resource('posts', PostController::class);
+});
+
+
+
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home']);
@@ -193,5 +202,14 @@ Route::get('/eclassroom', function () {
 Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
+//live search
+Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
+
+Route::post('/teacher/delete', [SchoolTeacherController::class, 'delete']);
+Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
+
+Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])->name('add-teacher');
+
+
 
 
