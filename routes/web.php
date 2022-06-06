@@ -183,8 +183,12 @@ Route::get('/aboutus', function () {
 
 Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
 
+Route::get('/adminview', [SchoolLevelController::class, 'adminview']);
+
 
 Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
+
+
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
 Route::post('/addclass', [ClassLevelController::class, 'store']);
 Route::post('/addsubject', [SubjectController::class, 'store']);
@@ -195,9 +199,7 @@ Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
 Route::get('/eclassroom', function () {
     return view('eclassroom', ['title' => 'Eclassroom Page']);
 });
-// Route::get('/elib', function(){
-//     return view('elib/user/libuser_dash');
-// });
+
 
 Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
