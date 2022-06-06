@@ -7,7 +7,6 @@ use App\Http\Controllers\AssignmentResultController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\SchoolController;
-use App\Http\Controllers\SchoolTeacherController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\PostController;
@@ -133,88 +132,60 @@ Route::get('/elibrary/pp1/1', function () {
     return view('elib/user/show');
 });
 
-
-
 Route::get('/aboutus', function () {
     return view('aboutus', ['title' => 'Aboutus Page']);
 });
 
 
-// Route::get('elib/', function () {
-//     $id = 6;
-//     $schools = SchoolLevel::all();
+Route::get('elib/', function () {
+    $id = 6;
+    $schools = SchoolLevel::all();
 
-//     $classes = DB::table('class_level')
-//         ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
-//         ->select('class_level.*')
-//         ->get();
-//     $subjects = DB::table('subjects')
-//         ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-//         ->select('subjects.*')
-//         ->where('subjects.class_level_id', $id)
-//         ->get();
-//     $classtitle = DB::table('class_level')
-//         ->select('class_level.*')
-//         ->where('class_level.id', $id)
-//         ->get();
-//     $schooltitle = DB::table('school_level')
-//         ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
-//         ->select('school_level.*')
-//         ->where('class_level.id', $id)
-//         ->get();
-//     $fileuploads = DB::table('file_uploads')
-//         ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
-//         ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-//         ->select('file_uploads.*')
-//         ->where('class_level.id', $id)
-//         ->get();
-
-//     $data = [
-//         "schools" => $schools,
-//         "classes" => $classes,
-//         "subjects" => $subjects,
-//         "classtitle" => $classtitle,
-//         "schooltitle" => $schooltitle,
-//         "fileuploads" => $fileuploads,
-        
-//     ];
-
-//     // return view('elib/user/libuser_dash', compact('schools', 'classes', 'subjects', 'classtitle', 'schooltitle','fileuploads'));
-//     return view('elib/user/libuser_dash',$data);
-
-// });
+    $classes = DB::table('class_level')
+        ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
+        ->select('class_level.*')
+        ->get();
+    $subjects = DB::table('subjects')
+        ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
+        ->select('subjects.*')
+        ->where('subjects.class_level_id', $id)
+        ->get();
+    $classtitle = DB::table('class_level')
+        ->select('class_level.*')
+        ->where('class_level.id', $id)
+        ->get();
+    $schooltitle = DB::table('school_level')
+        ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
+        ->select('school_level.*')
+        ->where('class_level.id', $id)
+        ->get();
+    $fileuploads = DB::table('file_uploads')
+        ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
+        ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
+        ->select('file_uploads.*')
+        ->where('class_level.id', $id)
+        ->get();
+    return view('elib/user/libuser_dash', compact('schools', 'classes', 'subjects', 'classtitle', 'schooltitle','fileuploads'));
+});
 
 Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
-
-Route::get('/adminview', [SchoolLevelController::class, 'adminview']);
-
-
 Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
-
-
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
 Route::post('/addclass', [ClassLevelController::class, 'store']);
 Route::post('/addsubject', [SubjectController::class, 'store']);
 Route::post('/addfile', [FileController::class, 'store']);
 
-Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
+Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showsub']);
 
 Route::get('/eclassroom', function () {
     return view('eclassroom', ['title' => 'Eclassroom Page']);
 });
-
+Route::get('/elib', function(){
+    return view('elib/user/libuser_dash');
+});
 
 Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
-//live search
-Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
-
-Route::post('/teacher/delete', [SchoolTeacherController::class, 'delete']);
-Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
-
-Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])->name('add-teacher');
-
-
 
 

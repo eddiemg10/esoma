@@ -29,29 +29,31 @@ class SchoolLevelController extends Controller
         return redirect()->back();
     }
 
-    public function show($id=14)
+    public function show($id)
     {
 
         $schools = SchoolLevel::all();
-
         $classes = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
             ->select('class_level.*')
             ->get();
-
-        $selectedclass = DB::table('class_level')
-            ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
-            ->select('class_level.*')
-            ->where('class_level.id', $id)
-            ->first();
-
+        //$files = FileLibLevel::where('subject_id', $id)->count(); //counting files in a class
         $subjects = DB::table('subjects')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
             ->select('subjects.*')
             ->where('subjects.class_level_id', $id)
             ->get();
 
+        $schooltitle = DB::table('school_level')
+            ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
+            ->select('school_level.*')
+            ->where('class_level.id', $id)
+            ->get();
 
+        $classtitle = DB::table('class_level')
+            ->select('class_level.*')
+            ->where('class_level.id', $id)
+            ->get();
 
         $fileuploads = DB::table('file_uploads')
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
@@ -63,93 +65,64 @@ class SchoolLevelController extends Controller
         $data = [
             'schools' => $schools,
             'classes' => $classes,
-            'selectedclass' => $selectedclass,
             'subjects' => $subjects,
+            'classtitle' => $classtitle,
+            'schooltitle' => $schooltitle,
             'fileuploads' => $fileuploads,
         ];
 
         return view('elib/user/libuser_dash', $data);
     }
 
-    public function showSubject($id = 6, $subject_id) //the class
+    public function showsub($id)
     {
 
         $schools = SchoolLevel::all();
-
         $classes = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
             ->select('class_level.*')
             ->get();
+        //$files = FileLibLevel::where('subject_id', $id)->count(); //counting files in a class
+        $subjects = DB::table('subjects')
+            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
+            ->select('subjects.*')
+            ->where('subjects.class_level_id', $id)
+            ->get();
 
-        $selectedclass = DB::table('class_level')
-            ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
+        $schooltitle = DB::table('school_level')
+            ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
+            ->select('school_level.*')
+            ->where('class_level.id', $id)
+            ->get();
+
+        $classtitle = DB::table('class_level')
             ->select('class_level.*')
             ->where('class_level.id', $id)
-            ->first();
+            ->get();
 
-
-        $subject = SubjectLevel::find($subject_id);
-        
-
-       
+        $subtitle = DB::table('subjects')
+            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
+            ->select('subjects.*')
+            ->where('class_level.id', $id)
+            ->get();
 
         $fileuploads = DB::table('file_uploads')
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
             ->select('file_uploads.*')
-            ->where('subjects.id', $subject_id)
+            ->where('subjects.id', $id)
             ->get();
-
+            
         $data = [
             'schools' => $schools,
             'classes' => $classes,
-            'subject' => $subject,
-            'selectedclass' => $selectedclass,
+            'subjects' => $subjects,
+            'classtitle' => $classtitle,
+            'schooltitle' => $schooltitle,
+            'subtitle' => $subtitle,
             'fileuploads' => $fileuploads,
 
         ];
 
         return view('elib/user/show', $data);
-    }
-
-    public function adminview($id = 6)
-    {
-
-        $schools = SchoolLevel::all();
-
-        $classes = DB::table('class_level')
-            ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
-            ->select('class_level.*')
-            ->get();
-
-        $selectedclass = DB::table('class_level')
-            ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
-            ->select('class_level.*')
-            ->where('class_level.id', $id)
-            ->first();
-
-        $subjects = DB::table('subjects')
-            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-            ->select('subjects.*')
-            ->get();
-
-
-
-
-        $fileuploads = DB::table('file_uploads')
-            ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
-            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-            ->select('file_uploads.*')
-            ->where('class_level.id', $id)
-            ->get();
-
-        $data = [
-            'schools' => $schools,
-            'classes' => $classes,
-            'selectedclass' => $selectedclass,
-            'subjects' => $subjects,
-            'fileuploads' => $fileuploads,
-        ];
-
-        return view('elib/admin/dash', $data);
     }
 }
