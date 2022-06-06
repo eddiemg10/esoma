@@ -31,8 +31,12 @@
 
         @csrf
         <select name="class_id">
+        @foreach($schools as $school)
             @foreach($classes as $class)
-            <option value="{{$class->id}}">{{$class->classlevel_name}}</option>
+            @if($school->id==$class->school_level_id)
+            <option value="{{$class->id}}">{{$school->schoollevel_name}}-{{$class->classlevel_name}}</option>
+            @endif
+            @endforeach
             @endforeach
         </select>
         <input type="text" name="name" placeholder="Subject">
@@ -43,8 +47,12 @@
 
         @csrf
         <select name="subject_id">
+            @foreach($classes as $class)
             @foreach($subjects as $subject)
-            <option value="{{$subject->id}}">{{$subject->subject_name}}</option>
+           @if($class->id==$subject->class_level_id)
+            <option value="{{$subject->id}}">{{$class->classlevel_name}}-{{$subject->subject_name}}</option>
+            @endif
+            @endforeach
             @endforeach
         </select>
         <input type="text" name="name" placeholder="File Name">

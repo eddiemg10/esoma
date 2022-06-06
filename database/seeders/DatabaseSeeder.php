@@ -13,14 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       
-
 
         $this->call([
             UserSeeder::class,
             ClassroomSeeder::class,
             UploadeddocSeeder::class,
-            SchoolSeeder::class
+            SchoolSeeder::class,
+            SchoollevelSeeder::class
         ]);
     }
 }
