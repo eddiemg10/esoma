@@ -14,6 +14,7 @@ use App\Models\Teacher;
 
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Post;
 
 class SchoolController extends Controller
 {
@@ -139,7 +140,7 @@ class SchoolController extends Controller
                        ->join('teachers', 'users.id', '=', 'teachers.user_id')
                        ->join('school_teacher', 'users.id', '=', 'school_teacher.user_id')
                        ->where('school_teacher.school_id', $school->id)
-                       ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'teachers.blocked')
+                       ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'school_teacher.id as teacher', 'school_teacher.blocked')
                        ->get();
 
         $data=[
@@ -151,4 +152,31 @@ class SchoolController extends Controller
     }
     
     //User::create($data)->teacher()->create($data);
+
+    public function searchPosts(Request $request){
+    
+        $posts=User::where('firstName','like', '%' .$request->get('searchQuest') . '%' )->get();
+
+        return json_encode($posts);
+    }
+
+    public function searchStudent(Request $request) {
+        $user = 1;
+        $school = School::where('user_id', $user)->first();
+        $searchQuest = $request->input("searchQuest");
+
+        $data = [
+            "students" => DB::table('users')
+            ->join('classroom_student', 'users.id', '=', 'classroom_student.user_id')
+            ->join('school_classroom', 'classroom_student.classroom_id', '=' ,'school_classroom.classroom_id')
+            ->where('school_classroom.school_id', $school->id)
+            ->where("firstName", "like", "$searchQuest%")
+            ->orWhere("secondName", "like",  "$searchQuest%")->orWhere("email", "like",  "$searchQuest%")
+            ->groupBy('users.id')
+            ->select('users.id', 'users.firstName', 'users.secondName', 'users.email')
+            ->get()
+        ];
+
+        return view('eclassroom.school.classes.student-search', $data);
+    }
 }

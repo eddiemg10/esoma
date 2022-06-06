@@ -31,10 +31,17 @@ class TeacherController extends Controller
                       ->where('classrooms.teacher', $user)
                       ->select('classrooms.*', 'users.firstName', 'users.secondName' , 'classrooms.created_at as created_on')
                       ->get();
+
+        $blocked = DB::table('school_teacher')
+                      ->where('user_id', $user)
+                      ->where('school_id', $school->id)
+                      ->select('blocked')
+                      ->first();
     
         $data = [
             'school' => $school,
             'classrooms' => $classes,
+            'blocked' => $blocked->blocked,
             
         ];
         return view('eclassroom/teacher/classrooms/index', $data);

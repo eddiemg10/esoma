@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="w-full flex justify-center items-center h-[25%]">
-                    <a href="#"
+                    <a href={{url('classroom/teacher')}}
                         class="text-center bg-blue-rich text-white w-[83%] py-2 rounded-md shadow-md transition ease-in-out hover:shadow-lg hover:">
                         Teacher Login</a>
                 </div>
