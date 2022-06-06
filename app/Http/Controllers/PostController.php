@@ -65,7 +65,7 @@ class PostController extends Controller
             $extension = $request->file('image')->extension();
 
 
-            if ($request->file('image')->move(public_path('images'), $fileName)) {
+            if ($request->file('image')->move(public_path('images/blog'), $fileName)) {
                 echo "Done";
             }else
             {
@@ -80,7 +80,7 @@ class PostController extends Controller
             $post->author = 1;
             $post->title = $request->title;
             $post->slug = $request->slug;
-            $post->image = $img_location;
+            $post->image = $fileName;
             $post->content = $request->content;
             $post->category = $request->category;
             $post->published = false;

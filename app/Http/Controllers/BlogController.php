@@ -21,6 +21,7 @@ class BlogController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
+
         return view('blog.user.index')->withPosts($posts)->withCategories($categories)->withTags($tags);
     }
 

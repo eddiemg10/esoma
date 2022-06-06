@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-	<title></title>
+	<script src="https://cdn.tailwindcss.com"></script>
+
+	<title>Blogs</title>
 </head>
+
 <body>
 
 	<span>Tags: </span>
 	@foreach( $post->tags as $tag)
 
-		<span>{{ $tag->tag }} </span>
-	
+	<span>{{ $tag->tag }} </span>
+
 	@endforeach
 
 	<br>
@@ -33,12 +37,12 @@
 
 		<h1>{{ $post->title }}</h1>
 		<div>
-			<img src="{{ asset($post->image) }}" alt="">	
+			<img src="{{ asset($post->image) }}" alt="">
 		</div>
 		{{ $post->user }}
 
 
-		<div>
+		<div class="p-20">
 			{!! $post->content !!}
 		</div>
 	</div>
@@ -46,4 +50,5 @@
 
 
 </body>
+
 </html>
