@@ -61,11 +61,8 @@ class PostController extends Controller
                 print_r($request->tags);
             echo "</pre>";
 
-            $originName = $request->file('image')->getClientOriginalName();
-
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
+            $fileName = $request->file('image')->hashName();
+            $extension = $request->file('image')->extension();
 
 
             if ($request->file('image')->move(public_path('images'), $fileName)) {
@@ -75,7 +72,7 @@ class PostController extends Controller
                 echo "Failed";
             }
         
-            $img_location = 'images/'.$fileName;         
+            $img_location = 'images/blog/'.$fileName;         
 
 
             $post = new Post;
