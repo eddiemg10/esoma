@@ -14,28 +14,37 @@
 	<title>Add Post</title>
 </head>
 <body>
-	<div class="w-full max-w-xs">
-	<form method="POST" action="{{route('blog.posts.store')}}" class="m-8 flex flex-col  bg-white shadow-md rounded px-8 pt-6 pb-8" enctype="multipart/form-data">
+
+	<form method="POST" action="{{route('blog.posts.store')}}" class="flex flex-col" enctype="multipart/form-data">
 		@csrf
+		@foreach($categories as $category)
 
-		<legend class="mt-8 justify-self-center mb-10 font-bold text-2xl">Add Post</legend>
+		{{ $category->category}}
 
-		<div class="mb-6 px-[25%] ">
-			<input class="border-solid border-b-4 border-black rounded p-4 w-[50%]" type="text" name="title" placeholder="Add Title" id="title" value="{{ old('title') }}"></div>
+		@endforeach
+		
+		@foreach($tags as $tag)
 
-		<div class="mb-6 ">
-			<input class="p-4 rounded border-b-4 border-solid border-black w-[50%]" type="text" name="slug" placeholder="Add Slug" id="slug" value="{{ old('slug') }}">
+		{{ $tag->tag}}
+
+		@endforeach
+
+		<div>
+			<input type="text" name="title" placeholder="Add Title" id="title" value="{{ old('title') }}"></div>
+
+		<div>
+			<input type="text" name="slug" placeholder="Add Slug" id="slug" value="{{ old('slug') }}">
 		</div>
 
-		<div class="mb-6">
-			<textarea name="content" id="content"  >
+		<div>
+			<textarea name="content" id="content" cols="10" rows="10" >
 				{{ old('content') }}
 			</textarea>
 		</div>
 
-		<div class="flex flex-col mb-6 w-24" >
+		<div class="flex flex-col">
 			<label for="category">Category</label>
-			<select class ="w-[50%] p-2 rounded" name="category" id="category">
+			<select name="category" id="category">
 				@foreach($categories as $category)
 
 				<option value="{{ $category->id }}">{{ $category->category}} </option>	
@@ -44,9 +53,9 @@
 			</select>
 		</div>
 
-		<div class="flex flex-col mb-6">
+		<div class="flex flex-col">
 			<label for="tags[]">Tags</label>
-			<select class="js-example-basic-multiple p-4 w-[50%] border-b-4 border-solid border-black" name="tags[]" id="tags" multiple="multiple">
+			<select class="js-example-basic-multiple" name="tags[]" id="tags" multiple="multiple">
 				@foreach($tags as $tag)
 				<option value="{{ $tag->id }}">{{ $tag->tag}}</option>
 
@@ -54,17 +63,15 @@
 			</select>
 		</div>
 
-		<div class="mb-6">
-			<input type="file" name="image" class="file:border file:border-solid p-4 rounded" id="image">
+		<div>
+			<input type="file" name="image" class="file:border file:border-solid" id="image">
 		</div>
 
-		<div class="mb-6 flex space-x-2 ">
-			<input class= "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="submit" name="submit" id="submit" value="Add Post">
+		<div>
+			<input type="submit" name="submit" id="submit">
 		</div>
 
 	</form>
-
-	</div>
 
 <script type="text/javascript">
 	

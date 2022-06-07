@@ -12,7 +12,7 @@
 
 <body>
 
-<!-- 	<span>Tags: </span>
+	<span>Tags: </span>
 	@foreach( $post->tags as $tag)
 
 	<span>{{ $tag->tag }} </span>
@@ -29,29 +29,24 @@
 
 	<br>
 	<span>By:</span>
-	<span>{{ $author->firstName }} {{ $author->secondName }}</span> -->
+	<span>{{ $author->firstName }} {{ $author->secondName }}</span>
 
-	<div class="flex flex-col p-20">
-		<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
+
+	<div>
+
+
+		<h1>{{ $post->title }}</h1>
 		<div>
-			<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
-						<div class="tags flex gap-x-3 px-[25%] mt-[5%]">
-
-							@foreach( $post->tags as $tag)
-
-							<span class="text-sm py-1 px-4 bg-sky-100 text-zinc-600 rounded-full">{{ $tag->tag }}</span>
-
-							@endforeach
-
-						</div>
-
-
-
+			<img src="{{ asset($post->image) }}" alt="">
 		</div>
-		<div class="p-20 px-40">
+		{{ $post->user }}
+
+
+		<div class="p-20">
 			{!! $post->content !!}
 		</div>
-</div>
+	</div>
+
 
 
 </body>
