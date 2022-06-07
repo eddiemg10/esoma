@@ -18,20 +18,33 @@
 @endif
 
 
-	<div class="flex flex-col p-20">
-		<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
-		<div>
-			<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
+	<div class="flex">
+		<div class="flex flex-col p-20 w-[80%]">
+			<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
+			<div>
+				<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
 
+
+			</div>
+			<div class="p-20 px-40">
+				{!! $post->content !!}
+			</div>
+
+				
 
 		</div>
-		<div class="p-20 px-40">
-			{!! $post->content !!}
-		</div>
 
-			<a class="inline-block px-6 py-2.5 w-24 mt-6 mb-6 mx-[25%] bg-sky-500 text-white font-medium" href="{{ route('blog.posts.edit', $post->id) }}"> Edit</a>
+			<div class="w-[20%] flex flex-col items-center  bg-slate-100">
+				
+				<div class="flex flex-col items-center gap-4 w-full pt-[5%]">
+					<a
+							class="font-semibold text-zinc-600 py-2 w-[80%] bg-white rounded-md pl-8 hover:shadow-lg transition"
+						href ="{{ route('blog.posts.edit', $post->id) }}"	>Edit Post</a>
 
+				</div>
+			</div>
 	</div>
+
 
 
 
