@@ -11,20 +11,31 @@
 </head>
 
 <body>
+@if (session('status'))
+    <div class="bg-green-100 alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+
 	<div class="flex flex-col p-20">
 		<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
 		<div>
-			<img src="{{asset('images/blog/'.$post->image)}}" alt="">
+			<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
 
 
 		</div>
 		<div class="p-20 px-40">
 			{!! $post->content !!}
 		</div>
+
+			<a class="inline-block px-6 py-2.5 w-24 mt-6 mb-6 mx-[25%] bg-sky-500 text-white font-medium" href="{{ route('blog.posts.edit', $post->id) }}"> Edit</a>
+
 	</div>
 
-	<a href="{{ route('blog.posts.edit', $post->id) }}"> Edit</a>
+
 
 </body>
 
 </html>
+

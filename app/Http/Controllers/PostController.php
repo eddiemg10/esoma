@@ -55,6 +55,17 @@ class PostController extends Controller
         //
         //dd($request);
 
+            $request->validate([
+                'title' => 'required|max:255',
+                'slug' => 'required|max:255|unique:posts,slug',
+                'image' => 'required',
+                'content' => 'required',
+                'tags' => 'required',
+                'category' =>'required|integer',
+
+
+            ]);            
+
 
 
             echo "<pre>";

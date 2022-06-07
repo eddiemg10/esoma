@@ -35,7 +35,7 @@
 
 			@foreach($posts as $post)
 
-			<a href="{{ route('blog.posts.show', $post->id)}}" class="hover:-translate-y-1 transition">
+			<a href="{{ route('blog.show', $post->id)}}" class="hover:-translate-y-1 transition">
 				<div class="bg-white shadow-md rounded-md flex gap-x-10 hover:shadow-lg transition">
 					<div class="w-[35%] p-4">
 						<img src="{{asset('images/blog/'.$post->image)}}"
