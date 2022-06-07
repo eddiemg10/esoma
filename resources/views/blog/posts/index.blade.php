@@ -70,7 +70,13 @@
 		</div>
 
 		<div class="w-[20%]">
+			
+			<div class="flex flex-col items-center gap-4 w-full">
+				<a
+						class="font-semibold text-zinc-600 py-2 w-[80%] bg-white rounded-md pl-8 hover:shadow-lg transition"
+					href ="{{ route('blog.posts.create') }}"	>Add New Posts</a>
 
+			</div>
 		</div>
 
 	</div>
