@@ -137,49 +137,8 @@ Route::get('/aboutus', function () {
 });
 
 
-// Route::get('elib/', function () {
-//     $id = 6;
-//     $schools = SchoolLevel::all();
 
-//     $classes = DB::table('class_level')
-//         ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
-//         ->select('class_level.*')
-//         ->get();
-//     $subjects = DB::table('subjects')
-//         ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-//         ->select('subjects.*')
-//         ->where('subjects.class_level_id', $id)
-//         ->get();
-//     $classtitle = DB::table('class_level')
-//         ->select('class_level.*')
-//         ->where('class_level.id', $id)
-//         ->get();
-//     $schooltitle = DB::table('school_level')
-//         ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
-//         ->select('school_level.*')
-//         ->where('class_level.id', $id)
-//         ->get();
-//     $fileuploads = DB::table('file_uploads')
-//         ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
-//         ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
-//         ->select('file_uploads.*')
-//         ->where('class_level.id', $id)
-//         ->get();
 
-//     $data = [
-//         "schools" => $schools,
-//         "classes" => $classes,
-//         "subjects" => $subjects,
-//         "classtitle" => $classtitle,
-//         "schooltitle" => $schooltitle,
-//         "fileuploads" => $fileuploads,
-        
-//     ];
-
-//     // return view('elib/user/libuser_dash', compact('schools', 'classes', 'subjects', 'classtitle', 'schooltitle','fileuploads'));
-//     return view('elib/user/libuser_dash',$data);
-
-// });
 
 Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
 
@@ -190,9 +149,27 @@ Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
 
 
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
+Route::post('/editschool/{id}', [SchoolLevelController::class, 'update']);
+Route::post('/school/delete', [SchoolLevelController::class, 'delete']);
+
+
 Route::post('/addclass', [ClassLevelController::class, 'store']);
+Route::post('/editclass/{id}', [ClassLevelController::class, 'update']);
+
+Route::post('/libclass/delete', [ClassLevelController::class, 'delete']);
+
+
+
 Route::post('/addsubject', [SubjectController::class, 'store']);
+Route::post('/editsubject/{id}', [SubjectController::class, 'update']);
+
+Route::post('/subject/delete', [SubjectController::class, 'delete']);
+
 Route::post('/addfile', [FileController::class, 'store']);
+Route::post('/editfile/{id}', [FileController::class, 'update']);
+
+Route::post('/fileupload/delete', [FileController::class, 'delete']);
+
 
 Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
 

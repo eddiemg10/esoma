@@ -29,7 +29,27 @@ class SchoolLevelController extends Controller
         return redirect()->back();
     }
 
-    public function show($id=14)
+
+    public function update(Request $request, $id)
+    {
+        $data = SchoolLevel::find($id);
+        $data->schoollevel_name = $request->name;
+        $data->update();
+        return redirect()->back();
+    }
+
+    public function delete(Request $request)
+    {
+
+        $data = $request->input('data')['school'];
+        $school = SchoolLevel::find($data);
+        // return $school;
+        $school->delete();
+        $request->session()->flash('success', 'School successfully deleted');
+        // return redirect()->back();
+    }
+
+    public function show($id)
     {
 
         $schools = SchoolLevel::all();
@@ -44,6 +64,7 @@ class SchoolLevelController extends Controller
             ->select('class_level.*')
             ->where('class_level.id', $id)
             ->first();
+     
 
         $subjects = DB::table('subjects')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
@@ -89,9 +110,9 @@ class SchoolLevelController extends Controller
 
 
         $subject = SubjectLevel::find($subject_id);
-        
 
-       
+
+
 
         $fileuploads = DB::table('file_uploads')
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
@@ -139,7 +160,6 @@ class SchoolLevelController extends Controller
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
             ->select('file_uploads.*')
-            ->where('class_level.id', $id)
             ->get();
 
         $data = [

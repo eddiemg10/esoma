@@ -43,7 +43,7 @@
         <input type="submit">
     </form>
 
-    <form action="{{url('/addfile')}}" method="post" enctype="multipart/form-data">
+    <form action= "" method="post" enctype="multipart/form-data">
 
         @csrf
         <select name="subject_id">

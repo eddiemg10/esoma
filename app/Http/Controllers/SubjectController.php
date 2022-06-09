@@ -15,4 +15,21 @@ class SubjectController extends Controller
         $data->save();
         return redirect()->back();
     }
+
+    public function update(Request $request, $id)
+    {
+        $data = SubjectLevel::find($id);
+        $data->subject_name = $request->name;
+        $data->update();
+        return redirect()->back();
+    }
+
+    public function delete(Request $request)
+    {
+
+        $data = $request->input('data')['subject'];
+        $sub = SubjectLevel::find($data);
+        $sub->delete();
+
+    }
 }
