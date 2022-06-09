@@ -1,3 +1,4 @@
+
 @extends('layouts.userLayout')
 @section('layoutContent')
 
@@ -58,7 +59,6 @@
                                     <input type="text" name="name" placeholder="New Class" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black" required>
 
                                     <input type="hidden" name="school_id" value='{{$school->id}}' />
-
 
                                     <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
                                         Class</button>
@@ -127,6 +127,7 @@
 
                     <div id="playingschool" class="flex w-[100%] flex-col items-center bg-white p-10 gap-4 rounded-md">
                         @foreach($classes as $class)
+                        
                         <div tabindex="-1" aria-hidden="true" class="add-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                             <div class="relative p-4 w-[70%]  h-full md:h-auto">
                                 <!-- Modal content -->
@@ -182,6 +183,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         @if($school->id==$class->school_level_id)
                         <div class="flex w-[98%] gap-40 bg-blue-200 p-1">
@@ -339,6 +341,7 @@
 </div>
 
 
+
 <script>
     $(document).ready(function() {
         $(".school").click(function(e) {
@@ -381,6 +384,7 @@
 
         $(".edit-class").click(function(e) {
             let modal = $(this).parent().parent().parent().prev();
+
             modal.removeClass('hidden');
             modal.addClass('flex');
             stopScroll();
@@ -435,6 +439,7 @@
 
         $(".edit-class-close-modal").click(function(e) {
 
+
             let modal = $(this).parent().parent().parent();
 
             modal.removeClass('flex');
@@ -442,6 +447,7 @@
             resumeScroll();
 
         });
+
 
         $(".edit-subject-close-modal").click(function(e) {
 
@@ -468,6 +474,7 @@
             var scrollPosition = [
                 self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
                 self.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+
             ];
             var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
             html.data('scroll-position', scrollPosition);
@@ -475,6 +482,7 @@
             html.css('overflow', 'hidden');
             window.scrollTo(scrollPosition[0], scrollPosition[1]);
         }
+
 
         function resumeScroll() {
             var html = jQuery('html');
