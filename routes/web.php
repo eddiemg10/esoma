@@ -177,4 +177,25 @@ Route::get('/elibrary/pp1/1', function(){
     return view('elib/user/show');
 });
 
+Route::get('/sign-up', function(){
+    return view('authentication/sign-up');
+});
+
+Route::get('/sign-in', function(){
+    return view('authentication/sign-in');
+});
+
+Route::get('/dashboard', function(){
+    return view('dashboard/dashboard');
+});
+
+Route::get('/view-subscription', function(){
+    return view('dashboard/view-subscription');
+});
+
+Route::get('/view-payment-history', function(){
+    return view('dashboard/view-payment-history');
+});
+
+
 

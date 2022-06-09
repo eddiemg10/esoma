@@ -8,18 +8,18 @@
         <div class="container p-4">
             <h1 class="text-center text-xl text-esomablue">Menu</h1>
         </div>
-        <div class="container flex flex-col space-y-4 text-sm font-base text-esomablue">
-            <div class="mt-4 flex flex-row items-center space-x-4 hover:text-esomagreen">
-                <i class="fa-solid fa-chart-line text-esomagreen"></i>
-                <a href="" class="text-esomagreen hover:text-esomagreen">Dashboard</a>
-            </div>
-            <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
-                <i class="fa-solid fa-check hover:text-esomagreen"></i>
-                <a href="" class="hover:text-esomagreen">Activate Account</a>
+        <div class="container flex flex-col space-y-4 text-sm font-base">
+            <div class="mt-4 flex flex-row items-center space-x-4 text-esomablue hover:text-esomagreen">
+                <i class="fa-solid fa-chart-line "></i>
+                <a href="" class="">Dashboard</a>
             </div>
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-chart-bar"></i>
-                <a href="" class="hover:text-esomagreen hover:text-esomagreen">View Subscription</a>
+                <a href="" class="hover:text-esomagreen hover:text-esomagreen">Activate Account</a>
+            </div>
+            <div class="flex flex-row items-center space-x-4 text-esomagreen">
+                <i class="fa-solid fa-check hover:text-esomagreen"></i>
+                <a href="" class="hover:text-esomagreen">View Subscription</a>
             </div>
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-receipt hover:text-esomagreen"></i>
@@ -37,35 +37,19 @@
         <div class="container p-4">
             <h1 class="text-xl font-semibold text-esomablue">Welcome back, Adala!👋</h1>
         </div>
-        <div class="container flex flex-row space-x-4 divide-x">
+        <div class="container flex flex-row justify-center">
             <div class="container flex flex-col text-esomablue px-4">
-                <h2 class="text-center text-lg font-medium py-2">Your user details</h2>
-                <div class="font-light">
-                    <div>
-                        <img src="" alt="">
-                    </div>
-                    <div class="space-y-1 text-sm">
-                        <p>Name: <span class="text-base font-medium">Benard Adala Wanyande</span></p>
-                        <p>Class: <span class="text-base font-medium">Form 1</span></p>
-                        <p>School: <span class="text-base font-medium">Strathmore School</span></p>
-                        <p>Email: <span class="text-base font-medium">benard.wanyande@strathmore.edu</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="container flex flex-col text-esomablue px-4">
-                <h2 class="text-center text-lg font-medium py-2">Your account status</h2>
-                <div class="mb-6">
+                <h2 class="text-center text-lg font-medium py-2">Your subscription</h2>
+                <div class="mb-6 flex justify-center mt-4 mb-8">
                     <div class="space-y-1 font-light text-sm">
-                        <p>Account status: <span class="text-base font-medium">Active</span></p>
-                        <p>Plan: <span class="text-base font-medium">Monthly</span></p>
+                        <p>Subscription type: <span class="text-base font-medium">Monthly</span></p>
+                        <p>Days left on subscription: <span class="text-base font-medium">3</span></p>
+                        <p>Date of purchase: <span class="text-base font-medium">04/06/2022</span></p>
                     </div>
                 </div>
                 <div class="container flex flex-row justify-center space-x-4 font-bold">
                     <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
-                        <a href="">Activate Account</a>
-                    </div>
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
-                        <a href="">View Subscription</a>
+                        <a href="">Make Payment</a>
                     </div>
                     <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">View Payment History</a>
