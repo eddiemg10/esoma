@@ -17,6 +17,7 @@ class CreateSchoolTeacherTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('school_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('blocked')->default(0);
             $table->timestamps();
         });
     }

@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function teacher(){
         return $this->hasOne(Teacher::class);
     }
+
+    public function posts(){
+        return $this->hasMany(Post::class, 'author');
+    }
 }
