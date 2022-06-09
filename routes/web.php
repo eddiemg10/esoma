@@ -10,6 +10,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolTeacherController;
 use App\Http\Controllers\SchoolLevelController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\DB;
@@ -86,6 +87,10 @@ Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherCo
 
 
 Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignments/store');});
+
+
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
 // Components
