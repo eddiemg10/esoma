@@ -97,10 +97,10 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+
 Route::get('/db', function(){
     return view('dashboard');
 })->name('dashboard');
-
 
 
 // Components
@@ -209,4 +209,29 @@ Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
 
 Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])->name('add-teacher');
 
+
+
+
+Route::get('/sign-up', function(){
+    return view('authentication/sign-up');
+});
+
+Route::get('/sign-in', function(){
+    return view('authentication/sign-in');
+});
+
+Route::get('/dashboard', function(){
+    return view('dashboard/dashboard');
+});
+
+Route::get('/view-subscription', function(){
+    return view('dashboard/view-subscription');
+});
+
+Route::get('/view-payment-history', function(){
+    return view('dashboard/view-payment-history');
+});
+
+
 require __DIR__.'/auth.php';
+
