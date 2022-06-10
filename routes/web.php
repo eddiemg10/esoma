@@ -74,16 +74,19 @@ Route::get('/test', [AssignmentController::class, 'test']);
 
 Route::get('/classroom/school/students', [SchoolController::class, 'student_management']);
 Route::get('/classroom/school/teachers', [SchoolController::class, 'teacher_management']);
-
-Route::get('/classroom/school', [SchoolController::class, 'allClassrooms']);
+Route::get('/classroom/school/register', function(){return view('eclassroom/school/register');});
+Route::post('/classroom/school/register', [SchoolController::class, 'register']);
+Route::get('/classroom/school', [SchoolController::class, 'allClassrooms'])->middleware('has_classroom');
 Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']); 
 
-Route::get('/classroom/teacher/', [TeacherController ::class, 'showSchools']);
-Route::get('/classroom/teacher/school/{id}', [TeacherController ::class, 'index']);
-Route::get('/classroom/teacher/{id}', [TeacherController ::class, 'show']);
-Route::get('/classroom/teacher/{id}/assignments', [TeacherController ::class, 'showAllAssignments']);
-Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController ::class, 'store']);
-Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController ::class, 'showAssignment']);
+Route::get('/classroom/teacher/', [TeacherController::class, 'showSchools'])->middleware('is_teacher');
+Route::get('/classroom/teacher/register', function(){return view('eclassroom/teacher/register');});
+Route::post('/classroom/teacher/register', [TeacherController::class, 'register']);
+Route::get('/classroom/teacher/school/{id}', [TeacherController::class, 'index']);
+Route::get('/classroom/teacher/{id}', [TeacherController::class, 'show']);
+Route::get('/classroom/teacher/{id}/assignments', [TeacherController::class, 'showAllAssignments']);
+Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController::class, 'store']);
+Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController::class, 'showAssignment']);
 
 
 Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignments/store');});
@@ -91,6 +94,11 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/db', function(){
+    return view('dashboard');
+})->name('dashboard');
+
 
 
 // Components
@@ -197,6 +205,4 @@ Route::post('/teacher/block', [SchoolTeacherController::class, 'block']);
 
 Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])->name('add-teacher');
 
-
-
-
+require __DIR__.'/auth.php';

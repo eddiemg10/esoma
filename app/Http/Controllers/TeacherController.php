@@ -12,7 +12,8 @@ use App\Models\SchoolClassroom;
 use App\Models\School;
 use App\Models\Classroom;
 use App\Models\Uploadeddoc;
-
+use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -22,7 +23,7 @@ class TeacherController extends Controller
 
     public function index($id){
 
-        $user = 11;
+        $user = Auth::User()->id;
 
         $school = School::find($id);
         $classes = DB::table('school_classroom')
@@ -51,10 +52,10 @@ class TeacherController extends Controller
 
         $uploads = Uploadeddoc::where('classroom_id', $id)->count();
         $classroom = DB::table('classrooms')
-                        ->join('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
+                        ->leftJoin('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
-                        ->where('classrooms.id', $id)
+                        // ->where('classrooms.id', $id)
                         ->select('classrooms.*', 'users.firstName', 'users.secondName', 'teachers.tsc_number', 'classrooms.created_at as joined_on')
                         ->get();
 
@@ -84,7 +85,7 @@ class TeacherController extends Controller
 
     public function showSchools(){
 
-        $user = 11;
+        $user = Auth::User()->id;
 
         $schools = DB::table('school_teacher')
                       ->join('schools', 'school_teacher.school_id', '=', 'schools.id')
@@ -162,5 +163,31 @@ class TeacherController extends Controller
         ];
 
         return view('eclassroom/teacher/assignments/store', $data);
+    }
+
+    public function register(Request $request){
+        
+        $validated = $request->validate([
+            'tsc_number' => 'required|unique:teachers|min:6',
+        ]);
+
+        try{
+            $teacher = new Teacher();
+            $user = User::find(Auth::user()->id);
+            $user->user_type = "teacher";
+            $user->save();
+    
+            $teacher->user_id = Auth::user()->id;
+            $teacher->tsc_number = $request->tsc_number;
+            $teacher->save();
+        }
+        catch(Exception $e){
+            dd($e);
+        }
+
+        return redirect('/classroom');
+        
+
+
     }
 }
