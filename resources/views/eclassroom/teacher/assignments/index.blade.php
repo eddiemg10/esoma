@@ -42,6 +42,7 @@
             <div class="w-[90%] h-[3px] bg-zinc-400 mt-10  mb-10"></div>
             <h1 class="text-xl font-semibold text-zinc-500">All assignments</h1>
             @foreach ($assignments as $assignment)
+            
 
             <a href={{"/classroom/teacher/".$classID."/assignments/".$assignment->id}} class="bg-rose-200 px-7 w-full
                 py-3 shadow-md hover:cursor-pointer transition assignment text-left"

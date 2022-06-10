@@ -82,6 +82,8 @@ Route::get('/classroom/teacher/', [TeacherController ::class, 'showSchools']);
 Route::get('/classroom/teacher/school/{id}', [TeacherController ::class, 'index']);
 Route::get('/classroom/teacher/{id}', [TeacherController ::class, 'show']);
 Route::get('/classroom/teacher/{id}/assignments', [TeacherController ::class, 'showAllAssignments']);
+Route::get('/classroom/teacher/{id}/upload', [UploadController ::class, 'create']);
+
 Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController ::class, 'store']);
 Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController ::class, 'showAssignment']);
 
@@ -116,9 +118,11 @@ Route::get('/classroom/students/{classID}', function ($classID) {
     return view('components/students-table', ['students' => $students]);
 });
 Route::get('/classroom/uploads/{classID}', function ($classID) {
-
-    $uploads = Uploadeddoc::all();
-    return view('components/class-uploads', ['uploads' => $uploads]);
+    $work= DB::table('uploadeddocs')
+    ->join('classrooms','uploadeddocs.classroom_id','=','id')
+    ->where('uploadeddocs.classroom_id',$classID)
+    ->select('name','doc')
+    ->get();
 });
 
 Route::get('/upload', [UploadController::class, 'create']);

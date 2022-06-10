@@ -11,9 +11,14 @@
     @csrf 
   
     <input class="ml-20 mt-8 p-5" type = "text" name="name" placeholder="Enter title">
-    <input class="ml-20 mt-8 p-5" type = "text" name="description" placeholder="Enter description">
     <input class="ml-20 mt-8 p-5" type = "file" name="doc">
-    <input class="ml-20 mt-8 p-2 rounded-lg bg-orange-500 shadow-md hover:bg-gray-400 cursor-pointer transition assignment text-left" type = "submit" name="Upload">
+    <input class="ml-20 mt-8 p-2 rounded-lg bg-orange-500 shadow-md hover:bg-gray-400 cursor-pointer transition assignment text-left" type = "submit" name="Upload" id="upload">
+    <input type="hidden" value="{{$classID}}" name="classroom_id">
+   
 </form>
-
+<script>
+$("#upload").click(function() {
+    alert("Upload Successful.");
+ });
+ </script>
 @endsection
