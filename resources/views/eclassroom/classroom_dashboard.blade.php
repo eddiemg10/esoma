@@ -70,7 +70,7 @@
         Our LMS is also designed to help schools, homeschooling institutions, and other institutions in managing their
         teaching and learning activities.</p>
 </div>
-<div class="md:px-36 px-8">
+<div class="md:px-36 mt-20 px-8">
     <h3 class="py-8 text-4xl font-semibold text-blue-rich md:text-left text-center"> What does the Esoma Classroom
         offer?</h3>
     <div class="flex justify-center flex-wrap gap-x-8 gap-y-10 my-6">

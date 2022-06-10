@@ -30,6 +30,7 @@ class TeacherController extends Controller
                       ->join('classrooms', 'school_classroom.classroom_id', '=', 'classrooms.id')
                       ->join('users', 'classrooms.teacher', '=', 'users.id')
                       ->where('classrooms.teacher', $user)
+                      ->where('school_classroom.school_id', $school)
                       ->select('classrooms.*', 'users.firstName', 'users.secondName' , 'classrooms.created_at as created_on')
                       ->get();
 
