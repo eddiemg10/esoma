@@ -31,7 +31,7 @@
     class="ml-20 mt-8 p-2 rounded-lg bg-sky-500 shadow-md hover:bg-sky-800 cursor-pointer transition assignment text-left">
 
     <a href={{asset('assets/'.$upload->doc)}}
-        target="_blank">{{$upload->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$upload->description}}&nbsp;&nbsp;&nbsp;&nbsp;{{$upload->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        target="_blank">{{$upload->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$upload->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;</a>
     <a class="fa-solid fa-download" href="#"></a>
 </div>
 

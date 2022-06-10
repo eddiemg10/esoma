@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 @section('layoutContent')
 <x-navbar />
@@ -79,6 +80,7 @@
             </div>
             <div class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-library</a>
+
 @extends('layouts.dashboardLayout')
 
 @section('content')
@@ -121,9 +123,11 @@
     </div>
 </div>
 
+
 <x-footer />
 
 @stop
+
 <div class="mt-10 p-10">
 
     <div class="p-5 bg-blue-rich rounded-md w-[50%] text-white">
@@ -178,4 +182,6 @@
 
     });
 </script>
+
 @endsection
+

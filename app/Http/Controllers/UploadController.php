@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
-    public function create()
+    public function create($id)
     {
-        $data=Uploadeddoc::all();
-        return view ('eclassroom/teacher/content/upload');
+        $data = ["classID" => $id,];
+            return view('eclassroom/teacher/content/upload', $data);
     }
 
     public function store(Request $request)

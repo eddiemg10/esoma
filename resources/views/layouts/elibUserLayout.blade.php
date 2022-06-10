@@ -1,4 +1,6 @@
 @extends('layouts.userLayout')
+
+
 @section('content')
 
 <div class="container min-h-screen min-w-full bg-white font-roboto">

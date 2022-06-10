@@ -63,7 +63,7 @@
                 <h1 class="text-4xl text-zinc-500">Class Material</h1>
                 <p class="font-light text-sm ml-3 mt-2 text-zinc-500">@if($uploads ===1)1 item posted @else
                     {{$uploads}} items posted @endif</p>
-                <a href={{url()->current()."/uploads"}} class="bg-pink-600 hover:cursor-pointer text-white text-xl
+                <a href={{url()->current()."/upload"}} class="bg-pink-600 hover:cursor-pointer text-white text-xl
                     mt-10 w-full py-[6px] ">
                     Upload Material</a>
             </div>
