@@ -49,6 +49,28 @@ Route::get('/classroom', function () {
     return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
 });
 
+Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
+
+
+Route::get('/elibrary/pp1/1', function(){
+    return view('elib/user/show');
+});
+
+Route::get('/elibrary/pp1/1', function () {
+    return view('elib/user/show');
+});
+
+
+
+Route::get('/aboutus', function () {
+    return view('aboutus', ['title' => 'Aboutus Page']);
+});
+
+
+Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
+
+Route::middleware(['auth'])->group(function(){
+
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
 
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
@@ -146,21 +168,7 @@ Route::get('/welcome', function () {
 
 
 
-Route::get('/elibrary/pp1/1', function () {
-    return view('elib/user/show');
-});
 
-
-
-Route::get('/aboutus', function () {
-    return view('aboutus', ['title' => 'Aboutus Page']);
-});
-
-
-
-
-
-Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
 
 Route::get('/adminview', [SchoolLevelController::class, 'adminview']);
 
@@ -191,16 +199,7 @@ Route::post('/editfile/{id}', [FileController::class, 'update']);
 Route::post('/fileupload/delete', [FileController::class, 'delete']);
 
 
-Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
 
-Route::get('/eclassroom', function () {
-    return view('eclassroom', ['title' => 'Eclassroom Page']);
-});
-
-
-Route::get('/elibrary/pp1/1', function(){
-    return view('elib/user/show');
-});
 //live search
 Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
 
@@ -232,6 +231,6 @@ Route::get('/view-payment-history', function(){
     return view('dashboard/view-payment-history');
 });
 
-
+});
 require __DIR__.'/auth.php';
 
