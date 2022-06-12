@@ -120,9 +120,9 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 
-Route::get('/db', function(){
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/db', function(){
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 // Components
@@ -219,9 +219,6 @@ Route::get('/sign-in', function(){
     return view('authentication/sign-in');
 });
 
-Route::get('/dashboard', function(){
-    return view('dashboard/dashboard');
-});
 
 Route::get('/view-subscription', function(){
     return view('dashboard/view-subscription');

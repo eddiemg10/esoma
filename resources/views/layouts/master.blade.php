@@ -29,6 +29,12 @@
             extend: {
                 colors: {
                 "blue-rich": "#0597F2",
+                'esomagreen': '#F2A81D',
+                'esomablue': '#014773',
+                'esomawhite': 'rgb(255 255 255)',
+                'esomagrey': '#757575',
+                'esomaoffwhite': '#F8F8F8',
+                'esomalightblue': '#0597F2'
             },
             screens: {
                 xmd: "860px",

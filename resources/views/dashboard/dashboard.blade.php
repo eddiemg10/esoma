@@ -1,7 +1,9 @@
-
 @extends('layouts.master')
 @section('layoutContent')
+
 <x-navbar />
+
+
 <!-- Dashboard -->
 <div class="container h-full flex flex-row pt-4 divide-x px-4 font-Roboto">
     <!-- Dashboard Menu -->
@@ -34,9 +36,10 @@
     </div>
 
     <!-- Dashboard Main Content -->
+
     <div class="container px-4">
         <div class="container p-4">
-            <h1 class="text-xl font-semibold text-esomablue">Welcome back, Adala!👋</h1>
+            <h1 class="text-xl font-semibold text-esomablue">Welcome back, {{Auth::USer()->firstName}}!👋</h1>
         </div>
         <div class="container flex flex-row space-x-4 divide-x">
             <div class="container flex flex-col text-esomablue px-4">
@@ -46,10 +49,12 @@
                         <img src="" alt="">
                     </div>
                     <div class="space-y-1 text-sm">
-                        <p>Name: <span class="text-base font-medium">Benard Adala Wanyande</span></p>
-                        <p>Class: <span class="text-base font-medium">Form 1</span></p>
-                        <p>School: <span class="text-base font-medium">Strathmore School</span></p>
-                        <p>Email: <span class="text-base font-medium">benard.wanyande@strathmore.edu</span></p>
+                        <p>Name: <span class="text-base font-medium">{{Auth::User()->firstName."
+                                ".Auth::User()->secondName}}</span></p>
+                        <a class="hover:cursor-pointer hover:underline transition" id="class-list">Classes:
+                            <span class="text-base font-medium">{{count($classrooms)}}</span> </a>
+                        <p>Schools: <span class="text-base font-medium">{{count($schools)}}</span></p>
+                        <p>Email: <span class="text-base font-medium">{{Auth::USer()->email}}</span></p>
                     </div>
                 </div>
             </div>
@@ -62,80 +67,76 @@
                     </div>
                 </div>
                 <div class="container flex flex-row justify-center space-x-4 font-bold">
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
+                    <div
+                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">Activate Account</a>
                     </div>
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
+                    <div
+                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">View Subscription</a>
                     </div>
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
+                    <div
+                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">View Payment History</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container flex flex-row justify-evenly font-bold my-32">
-            <div class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+            <div
+                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-Classroom</a>
             </div>
-            <div class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+            <div
+                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-library</a>
-
-@extends('layouts.dashboardLayout')
-
-@section('content')
-{{-- This is where the code goes --}}
-
-<!-- Main modal -->
-<div id="classrooms-modal" tabindex="-1" aria-hidden="true"
-    class="hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto right-0 left-10 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
-    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <!-- Modal header -->
-            <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Your Classrooms
-                </h3>
-                <button id="close-modal" type="button"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-toggle="defaultModal">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
             </div>
-            <!-- Modal body -->
-            <div class="p-6 space-y-6 flex flex-col items-center w-full">
-                @foreach($classrooms as $i => $classroom)
-                <a class="bg-sky-600 text-white text-xl w-[80%] py-3 rounded-md pl-5" target="_blank"
-                    href={{url("/classroom/student/".$classroom->id)}}>{{($i+1).".
-                    ".$classroom->name}}</a>
-                @endforeach
-            </div>
-            <!-- Modal footer -->
-            <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+        </div>
 
+
+        <!-- Main modal -->
+        <div id="classrooms-modal" tabindex="-1" aria-hidden="true"
+            class="hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto right-0 left-10 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            Your Classrooms
+                        </h3>
+                        <button id="close-modal" type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="defaultModal">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6 flex flex-col items-center w-full">
+                        @foreach($classrooms as $i => $classroom)
+                        <a class="bg-sky-600 text-white text-xl w-[80%] py-3 rounded-md pl-5" target="_blank"
+                            href={{url("/classroom/student/".$classroom->id)}}>{{($i+1).".
+                            ".$classroom->name}}</a>
+                        @endforeach
+                    </div>
+                    <!-- Modal footer -->
+                    <div
+                        class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
 <x-footer />
 
-@stop
-
-<div class="mt-10 p-10">
-
-    <div class="p-5 bg-blue-rich rounded-md w-[50%] text-white">
-        <a class="hover:cursor-pointer hover:underline transition" id="class-list">Classes: {{count($classrooms)}}</a>
-        Schools: {{count($schools)}}
-    </div>
-
-</div>
 
 
 <script>
@@ -183,5 +184,4 @@
     });
 </script>
 
-@endsection
-
+@stop
