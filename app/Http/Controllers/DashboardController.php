@@ -26,6 +26,7 @@ class DashboardController extends Controller
         $schools = DB::table('classroom_student')
                       ->join('school_classroom', 'classroom_student.classroom_id', '=', 'school_classroom.classroom_id')
                       ->groupBy('school_id')
+                      ->where('user_id', $user)
                       ->get();
 
         $data = [
