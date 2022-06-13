@@ -15,12 +15,14 @@ use App\Models\Teacher;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use App\Post;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class SchoolController extends Controller
 {
     public function AllClassrooms(){
 
-        $user = 1;
+        $user = Auth::User()->id;
         $school = School::where('user_id', $user)->first();
 
         $classrooms = DB::table('classrooms')
@@ -31,10 +33,13 @@ class SchoolController extends Controller
                         ->select('classrooms.*', 'users.firstName', 'users.secondName' , 'teachers.tsc_number', 'classrooms.created_at as created_on')
                         ->get();
 
-        $teachers = DB::table('school_teacher')
-                      ->join('users', 'school_teacher.user_id', '=', 'users.id')
-                      ->select('users.id', 'users.firstName', 'secondName', 'users.email')
+        $teachers = DB::table('users')
+                      ->join('teachers', 'users.id', '=', 'teachers.user_id')
+                      ->join('school_teacher', 'users.id', '=', 'school_teacher.user_id')
+                      ->where('school_teacher.school_id', $school->id)
+                      ->select('users.id', 'users.firstName', 'users.secondName', 'users.email', 'teachers.tsc_number', 'school_teacher.id as teacher', 'school_teacher.blocked')
                       ->get();
+
 
 
         $data = [
@@ -50,7 +55,7 @@ class SchoolController extends Controller
 
     public function showClassroom($id){
 
-        $user = 1;
+        $user = Auth::User()->id;
         $school = School::where('user_id', $user)->first();
         $classroom = DB::table('classrooms')
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
@@ -77,6 +82,23 @@ class SchoolController extends Controller
         ];
 
         return view("eclassroom/school/classes/show", $data);
+
+    }
+
+    public function register(Request $request){
+
+        try{
+
+            $school = new School();
+            $school->name = $request->name;
+            $school->user_id = Auth::User()->id;
+            $school->save();
+        }
+        catch(Exception $e){
+            return $e;       
+        }
+
+        return redirect('/classroom');
 
     }
 
@@ -114,7 +136,7 @@ class SchoolController extends Controller
 
     public function student_management(){
 
-        $user = 1;
+        $user = Auth::User()->id;
         $school = School::where('user_id', $user)->first();
 
         $students = DB::table('users')
@@ -133,7 +155,7 @@ class SchoolController extends Controller
     }
     public function teacher_management(){
 
-        $user = 1;
+        $user = Auth::User()->id;
         $school = School::where('user_id', $user)->first();
 
         $teachers = DB::table('users')
@@ -161,7 +183,7 @@ class SchoolController extends Controller
     }
 
     public function searchStudent(Request $request) {
-        $user = 1;
+        $user = Auth::User()->id;
         $school = School::where('user_id', $user)->first();
         $searchQuest = $request->input("searchQuest");
 

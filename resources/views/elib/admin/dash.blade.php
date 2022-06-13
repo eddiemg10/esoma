@@ -272,6 +272,7 @@
                                 </div>
                             </div>
 
+
                             @if($class->id==$sub->class_level_id)
                             <div class="w-[500px] bg-gray-200 p-2 font-medium text-zinc-900">
                                 <ul class="">
@@ -299,7 +300,6 @@
 
 
                             @foreach($fileuploads as $file)
-
                             <div tabindex="-1" aria-hidden="true" class="edit-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                                 <div class="relative p-4 w-[70%]  h-full md:h-auto">
                                     <!-- Modal content -->
@@ -349,6 +349,7 @@
                                 </ul>
 
                             </div>
+
                             @endif
                             @endforeach
 
@@ -401,6 +402,7 @@
 
         });
 
+
         $(".subject").click(function(e) {
             let modal = $(this).parent().parent().parent().parent().parent().prev().prev();
             // console.log(modal);
@@ -409,6 +411,7 @@
             stopScroll();
 
         });
+
 
         $(".edit-class").click(function(e) {
             let modal = $(this).parent().parent().parent().prev();
@@ -467,6 +470,7 @@
 
         $(".file-close-modal").click(function(e) {
 
+
             let modal = $(this).parent().parent().parent();
 
             modal.removeClass('flex');
@@ -485,6 +489,8 @@
             resumeScroll();
 
         });
+
+        $(".edit-file-close-modal").click(function(e) {
 
 
         $(".edit-subject-close-modal").click(function(e) {
@@ -506,6 +512,7 @@
             resumeScroll();
 
         });
+
 
         function stopScroll() {
 

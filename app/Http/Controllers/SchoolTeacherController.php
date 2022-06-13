@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\SchoolTeacher;
 use App\Models\School;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class SchoolTeacherController extends Controller
@@ -52,10 +53,12 @@ public function block(Request $request){
 
 public function addTeacher(Request $request){
     $teacher = Teacher::whereTscNumber($request->input('tsc'))->first();
+    $school = School::where('user_id', Auth::User()->id)->first();
+
     if (!$teacher) {
         throw ValidationException::withMessages(["tsc"=>"This Teacher does not exist"]);
     }
-    SchoolTeacher::create(['user_id'=>$teacher->user_id,'school_id'=>1]);
+    SchoolTeacher::create(['user_id'=>$teacher->user_id,'school_id'=>$school->id]);
     return back()->with('success','Teacher Added');
 }
 

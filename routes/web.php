@@ -49,6 +49,28 @@ Route::get('/classroom', function () {
     return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
 });
 
+Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
+
+
+Route::get('/elibrary/pp1/1', function(){
+    return view('elib/user/show');
+});
+
+Route::get('/elibrary/pp1/1', function () {
+    return view('elib/user/show');
+});
+
+
+
+Route::get('/aboutus', function () {
+    return view('aboutus', ['title' => 'Aboutus Page']);
+});
+
+
+Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
+
+Route::middleware(['auth'])->group(function(){
+
 Route::get('/classroom/student', [ClassroomController::class, 'index']);
 
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
@@ -70,20 +92,27 @@ Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::post('/assignments/delete', [AssignmentController::class, 'delete']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
+Route::post('/upload/delete', [UploadController::class, 'delete']);
+
 
 
 Route::get('/classroom/school/students', [SchoolController::class, 'student_management']);
 Route::get('/classroom/school/teachers', [SchoolController::class, 'teacher_management']);
-
-Route::get('/classroom/school', [SchoolController::class, 'allClassrooms']);
+Route::get('/classroom/school/register', function(){return view('eclassroom/school/register');});
+Route::post('/classroom/school/register', [SchoolController::class, 'register']);
+Route::get('/classroom/school', [SchoolController::class, 'allClassrooms'])->middleware('has_classroom');
 Route::get('/classroom/school/{id}', [SchoolController::class, 'showClassroom']); 
 
-Route::get('/classroom/teacher/', [TeacherController ::class, 'showSchools']);
-Route::get('/classroom/teacher/school/{id}', [TeacherController ::class, 'index']);
-Route::get('/classroom/teacher/{id}', [TeacherController ::class, 'show']);
-Route::get('/classroom/teacher/{id}/assignments', [TeacherController ::class, 'showAllAssignments']);
-Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController ::class, 'store']);
-Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController ::class, 'showAssignment']);
+Route::get('/classroom/teacher/', [TeacherController::class, 'showSchools'])->middleware('is_teacher');
+Route::get('/classroom/teacher/register', function(){return view('eclassroom/teacher/register');});
+Route::post('/classroom/teacher/register', [TeacherController::class, 'register']);
+Route::get('/classroom/teacher/school/{id}', [TeacherController::class, 'index']);
+Route::get('/classroom/teacher/{id}', [TeacherController::class, 'show']);
+Route::get('/classroom/teacher/{id}/assignments', [TeacherController::class, 'showAllAssignments']);
+Route::get('/classroom/teacher/{id}/upload', [UploadController ::class, 'create']);
+Route::get('/classroom/teacher/{classID}/assignments/create', [TeacherController::class, 'store']);
+Route::get('/classroom/teacher/{classID}/assignments/{assignmentID}', [TeacherController::class, 'showAssignment']);
+
 
 
 Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignments/store');});
@@ -91,6 +120,11 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+
+// Route::get('/db', function(){
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 // Components
@@ -116,9 +150,11 @@ Route::get('/classroom/students/{classID}', function ($classID) {
     return view('components/students-table', ['students' => $students]);
 });
 Route::get('/classroom/uploads/{classID}', function ($classID) {
-
-    $uploads = Uploadeddoc::all();
-    return view('components/class-uploads', ['uploads' => $uploads]);
+    $work= DB::table('uploadeddocs')
+    ->join('classrooms','uploadeddocs.classroom_id','=','id')
+    ->where('uploadeddocs.classroom_id',$classID)
+    ->select('name','doc')
+    ->get();
 });
 
 Route::get('/upload', [UploadController::class, 'create']);
@@ -134,21 +170,7 @@ Route::get('/welcome', function () {
 
 
 
-Route::get('/elibrary/pp1/1', function () {
-    return view('elib/user/show');
-});
 
-
-
-Route::get('/aboutus', function () {
-    return view('aboutus', ['title' => 'Aboutus Page']);
-});
-
-
-
-
-
-Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
 
 Route::get('/adminview', [SchoolLevelController::class, 'adminview']);
 
@@ -168,6 +190,17 @@ Route::post('/libclass/delete', [ClassLevelController::class, 'delete']);
 
 
 
+Route::post('/addschool', [SchoolLevelController::class, 'store']);
+Route::post('/editschool/{id}', [SchoolLevelController::class, 'update']);
+Route::post('/school/delete', [SchoolLevelController::class, 'delete']);
+
+
+Route::post('/addclass', [ClassLevelController::class, 'store']);
+Route::post('/editclass/{id}', [ClassLevelController::class, 'update']);
+
+Route::post('/libclass/delete', [ClassLevelController::class, 'delete']);
+
+
 Route::post('/addsubject', [SubjectController::class, 'store']);
 Route::post('/editsubject/{id}', [SubjectController::class, 'update']);
 
@@ -178,17 +211,10 @@ Route::post('/editfile/{id}', [FileController::class, 'update']);
 
 Route::post('/fileupload/delete', [FileController::class, 'delete']);
 
-
-Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
-
-Route::get('/eclassroom', function () {
-    return view('eclassroom', ['title' => 'Eclassroom Page']);
-});
+Route::post('/fileupload/delete', [FileController::class, 'delete']);
 
 
-Route::get('/elibrary/pp1/1', function(){
-    return view('elib/user/show');
-});
+
 //live search
 Route::post('/students/search', [SchoolController::class, 'searchStudent'])->name('students-search');
 
@@ -199,4 +225,24 @@ Route::post('/classes/teachers',[SchoolTeacherController::class, 'addTeacher'])-
 
 
 
+
+Route::get('/sign-up', function(){
+    return view('authentication/sign-up');
+});
+
+Route::get('/sign-in', function(){
+    return view('authentication/sign-in');
+});
+
+
+Route::get('/view-subscription', function(){
+    return view('dashboard/view-subscription');
+});
+
+Route::get('/view-payment-history', function(){
+    return view('dashboard/view-payment-history');
+});
+
+});
+require __DIR__.'/auth.php';
 

@@ -72,6 +72,7 @@ class SchoolLevelController extends Controller
             ->select('class_level.*')
             ->where('class_level.id', $id)
             ->first();
+     
 
 
         $subjects = DB::table('subjects')

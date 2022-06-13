@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\DB;
 use App\Models\ClassroomStudent;
 use App\Models\Classroom;
 use App\Models\Uploadeddoc;
+use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
 {
     public function index(){
-        $id = 2;
+        $id = Auth::User()->id;
         $classrooms = DB::table('classrooms')
                         ->join('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
