@@ -30,6 +30,7 @@ class SchoolLevelController extends Controller
     }
 
 
+
     public function update(Request $request, $id)
     {
         $data = SchoolLevel::find($id);
@@ -50,6 +51,7 @@ class SchoolLevelController extends Controller
     }
 
     public function show($id)
+
     {
 
         $schools = SchoolLevel::all();
@@ -178,6 +180,7 @@ class SchoolLevelController extends Controller
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
             ->select('file_uploads.*')
+            ->where('class_level.id', $id)
             ->get();
 
         $data = [
