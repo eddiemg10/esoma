@@ -6,10 +6,10 @@
 
 @section('bread_crumbs')
 <span class="text-slate-400 hover:cursor-pointer">
-    <!-- <a href="/elib" id="home-nav" class="hover:text-blue-900">Elib</a> | -->
-    <!-- <a href="/elib/" class="hover:text-blue-900"></a> |
-    <a href="/elib/" class="hover:text-blue-900"></a>
-    <a href="#" class="text-blue-rich font-normal"> </a> -->
+     <a href="/elib" id="home-nav" class="hover:text-blue-900">Elib</a> |
+     <a href="/elib/" class="hover:text-blue-900">{{$selectedschool->schoollevel_name}}</a> |
+    <a href="/elib/" class="hover:text-blue-900">{{$selectedclass->classlevel_name}}</a>
+    <a href="#" class="text-blue-rich font-normal"> </a> 
 
 </span>
 

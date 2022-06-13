@@ -54,6 +54,12 @@ class SchoolLevelController extends Controller
 
         $schools = SchoolLevel::all();
 
+        $selectedschool = DB::table('school_level')
+            ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
+            ->select('school_level.*')
+            ->where('class_level.id', $id)
+            ->first();
+
         $classes = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
             ->select('class_level.*')
@@ -64,7 +70,7 @@ class SchoolLevelController extends Controller
             ->select('class_level.*')
             ->where('class_level.id', $id)
             ->first();
-     
+
 
         $subjects = DB::table('subjects')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
@@ -72,6 +78,11 @@ class SchoolLevelController extends Controller
             ->where('subjects.class_level_id', $id)
             ->get();
 
+        $selectedsubject = DB::table('subjects')
+            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
+            ->select('subjects.*')
+            ->where('class_level.id', $id)
+            ->first();
 
 
         $fileuploads = DB::table('file_uploads')
@@ -83,6 +94,7 @@ class SchoolLevelController extends Controller
 
         $data = [
             'schools' => $schools,
+            'selectedschool' => $selectedschool,
             'classes' => $classes,
             'selectedclass' => $selectedclass,
             'subjects' => $subjects,
@@ -108,6 +120,11 @@ class SchoolLevelController extends Controller
             ->where('class_level.id', $id)
             ->first();
 
+        $selectedschool = DB::table('school_level')
+            ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
+            ->select('school_level.*')
+            ->where('class_level.id', $id)
+            ->first();
 
         $subject = SubjectLevel::find($subject_id);
 
@@ -124,6 +141,7 @@ class SchoolLevelController extends Controller
             'schools' => $schools,
             'classes' => $classes,
             'subject' => $subject,
+            'selectedschool' => $selectedschool,
             'selectedclass' => $selectedclass,
             'fileuploads' => $fileuploads,
 
