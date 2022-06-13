@@ -92,6 +92,8 @@ Route::post('/assignments/submit', [AssignmentController::class, 'check']);
 Route::post('/assignments/delete', [AssignmentController::class, 'delete']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
+Route::post('/upload/delete', [UploadController::class, 'delete']);
+
 
 
 Route::get('/classroom/school/students', [SchoolController::class, 'student_management']);

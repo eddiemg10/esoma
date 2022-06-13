@@ -21,14 +21,14 @@
             <p class="text-blue-rich font-bold text-xl mb-3 mt-10">School Institution Account</p>
 
             <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-sm font-light">
-                <li class="rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner  hover:cursor-pointer transition ease-out pl-4 mb-6 nav {{$tab==='classes'
+                <li class="rounded-full py-1 w-[80%] hover:shadow-inner  hover:cursor-pointer transition ease-out pl-4 mb-6 nav {{$tab==='classes'
                 ? " bg-zinc-100 shadow-md" : "" }}" data-url="/classroom/school" id="classroom">
                     Manage Classes
                 </li>
-                <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav mb-6 {{$tab==='teachers'
+                <li class=" rounded-full py-1  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav mb-6 {{$tab==='teachers'
                 ? " bg-zinc-100 shadow-md" : "" }}" data-url="/classroom/school/teachers" id="help">
                     Manage Teachers</li>
-                <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav {{$tab==='students'
+                <li class=" rounded-full py-1  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav {{$tab==='students'
                 ? " bg-zinc-100 shadow-md" : "" }}" data-url="/classroom/school/students" id="help">
                     Manage Students</li>
             </ul>

@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Uploadeddoc;
 use App\Models\Classroom;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
     public function create($id)
     {
-        $data = ["classID" => $id,];
+        $uploads=Uploadeddoc::where('classroom_id', $id)->orderBy('created_at', 'DESC')->get();
+        // return $uploads;
+
+        $data = [
+            "classID" => $id,
+            "uploads" =>$uploads
+        
+        ];
             return view('eclassroom/teacher/content/upload', $data);
     }
 
@@ -23,7 +31,7 @@ class UploadController extends Controller
         $file->move('assets/',$data['doc']);
         Uploadeddoc::create($data);
        
-        return back();
+        return redirect()->back()->with('success', 'Document successfully uploaded');
     }
     public function show($id)
     {
@@ -37,6 +45,25 @@ class UploadController extends Controller
             "uploads" => $docs
         ];
         return view('eclassroom/student/uploads/show',$data);
+    }
+
+    public function delete(Request $request){
+
+        
+        $doc = $request->file;
+
+        try{
+            $file = Uploadeddoc::find($doc);
+            $file->delete();
+
+            unlink(public_path("/assets/".$file->doc));
+        }catch(Exception $e){
+            dd($e);
+        }
+        
+
+        return redirect()->back()->with('success2', 'Document successfully deleted');
+        
     }
 }   
 
