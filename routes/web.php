@@ -190,6 +190,17 @@ Route::post('/libclass/delete', [ClassLevelController::class, 'delete']);
 
 
 
+Route::post('/addschool', [SchoolLevelController::class, 'store']);
+Route::post('/editschool/{id}', [SchoolLevelController::class, 'update']);
+Route::post('/school/delete', [SchoolLevelController::class, 'delete']);
+
+
+Route::post('/addclass', [ClassLevelController::class, 'store']);
+Route::post('/editclass/{id}', [ClassLevelController::class, 'update']);
+
+Route::post('/libclass/delete', [ClassLevelController::class, 'delete']);
+
+
 Route::post('/addsubject', [SubjectController::class, 'store']);
 Route::post('/editsubject/{id}', [SubjectController::class, 'update']);
 
@@ -197,6 +208,8 @@ Route::post('/subject/delete', [SubjectController::class, 'delete']);
 
 Route::post('/addfile', [FileController::class, 'store']);
 Route::post('/editfile/{id}', [FileController::class, 'update']);
+
+Route::post('/fileupload/delete', [FileController::class, 'delete']);
 
 Route::post('/fileupload/delete', [FileController::class, 'delete']);
 
