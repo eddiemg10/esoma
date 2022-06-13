@@ -85,6 +85,24 @@
             }
         });
 
+        $(".update-file").click(function(e){
+
+                $.ajax({
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: '/upload/update',
+                    type: 'POST',
+                    data: {
+                        file: $(this).data('file'),
+                        
+                    },
+                        success: function(response) {
+                        location.reload();
+                }
+                });
+
+
+        });
+
     });
 
 </script>

@@ -166,7 +166,7 @@ class SchoolLevelController extends Controller
         $selectedclass = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
             ->select('class_level.*')
-            ->where('class_level.id', $id)
+            // ->where('class_level.id', $id)
             ->first();
 
         $subjects = DB::table('subjects')
@@ -181,8 +181,9 @@ class SchoolLevelController extends Controller
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
             ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
             ->select('file_uploads.*')
-            ->where('class_level.id', $id)
+            // ->where('class_level.id', $id)
             ->get();
+
 
         $data = [
             'schools' => $schools,
