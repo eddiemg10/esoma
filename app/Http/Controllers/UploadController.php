@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Uploadeddoc;
 use App\Models\Classroom;
+use App\Models\SchoolClassroom;
+use App\Models\School;
+
 use Exception;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,11 +16,18 @@ class UploadController extends Controller
     public function create($id)
     {
         $uploads=Uploadeddoc::where('classroom_id', $id)->orderBy('created_at', 'DESC')->get();
-        // return $uploads;
+        
+        $schoolID = SchoolClassroom::where('classroom_id', $id)->first();
+        $school = School::find($schoolID)->first();
+
+
+        $classroom = Classroom::find($id);
 
         $data = [
             "classID" => $id,
-            "uploads" =>$uploads
+            "uploads" =>$uploads,
+            "school"=>$school,
+            "classroom"=>$classroom,
         
         ];
             return view('eclassroom/teacher/content/upload', $data);

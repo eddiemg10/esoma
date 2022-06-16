@@ -26,15 +26,15 @@
 
 @endif
 
-@foreach($uploads as $upload)
-<div
-    class="ml-20 mt-8 p-2 rounded-lg bg-sky-500 shadow-md hover:bg-sky-800 cursor-pointer transition assignment text-left">
+<div class="flex flex-col gap-y-5 items-center">
+    @foreach($uploads as $i=>$upload)
+    <a class="flex w-[80%] px-5 py-2  bg-blue-200 ml-14 text-xl hover:cursor-pointer" target="_blank"
+        href={{asset("assets/".$upload->doc)}}>
+        <p class="w-[90%] text-left pl-5">{{($i+1).". ".$upload->name}}</p>
+        <i class="fa-solid fa-file-arrow-down text-zinc-700"></i>
+    </a>
 
-    <a href={{asset('assets/'.$upload->doc)}}
-        target="_blank">{{$upload->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$upload->created_at}}&nbsp;&nbsp;&nbsp;&nbsp;</a>
-    <a class="fa-solid fa-download" href="#"></a>
+    @endforeach
 </div>
-
-@endforeach
 
 @endsection

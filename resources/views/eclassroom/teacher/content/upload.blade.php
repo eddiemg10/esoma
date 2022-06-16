@@ -3,6 +3,16 @@
 
 
 @section('bread_crumbs')
+
+<span class="text-slate-400 hover:cursor-pointer">
+    <a href={{url('/')}} id="home-nav" class="hover:text-blue-900">Esoma</a> |
+    <a href={{url('/classroom/teacher')}} id="home-nav" class="hover:text-blue-900">Schools</a> |
+    <a href={{url('/classroom/teacher/school/'.$school->id)}}
+        class="hover:text-blue-900">{{$school->name}}</a> |
+    <a href={{url('/classroom/teacher/'. $classroom->id)}} class="hover:text-blue-900"> {{$classroom->name}} |</a>
+    <a href="#" class="text-blue-rich font-normal"> Uploads </a>
+
+</span>
 @endsection
 
 @if (session('success'))

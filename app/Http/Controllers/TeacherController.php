@@ -56,9 +56,10 @@ class TeacherController extends Controller
                         ->leftJoin('classroom_student', 'classrooms.id', '=', 'classroom_student.classroom_id')
                         ->join('users', 'classrooms.teacher', '=', 'users.id')
                         ->join('teachers', 'users.id', '=', 'teachers.user_id')
-                        // ->where('classrooms.id', $id)
+                        ->where('classrooms.id', $id)
                         ->select('classrooms.*', 'users.firstName', 'users.secondName', 'teachers.tsc_number', 'classrooms.created_at as joined_on')
                         ->get();
+
 
         $total_assignments = DB::table('assignments')
                           ->where('assignments.classroom_id', $id)

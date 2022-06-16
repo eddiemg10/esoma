@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $user = Auth::User()->id;
         $classrooms = DB::table('classroom_student')
                         ->where('user_id', $user)
-                        ->join('classrooms', 'classroom_student.id', '=', 'classrooms.id')
+                        ->join('classrooms', 'classroom_student.classroom_id', '=', 'classrooms.id')
                         ->select('classrooms.*')
                         ->get();
 

@@ -76,6 +76,8 @@ Route::get('/classroom/student', [ClassroomController::class, 'index']);
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
 Route::put('/classroom', [ClassroomController::class, 'update']);
 Route::post('/classroom', [SchoolController::class, 'store']);
+Route::post('/classroom/enroll', [ClassroomController::class, 'enroll']);
+
 
 
 Route::get('/classroom/student/{id}/uploads', [UploadController::class, 'show']);
