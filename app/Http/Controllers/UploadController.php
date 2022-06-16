@@ -65,5 +65,24 @@ class UploadController extends Controller
         return redirect()->back()->with('success2', 'Document successfully deleted');
         
     }
+
+    public function update(Request $request){
+
+        
+        $doc = $request->file;
+
+        try{
+            $file = Uploadeddoc::find($doc);
+            $file->name = $request->name;
+
+            $file->save();
+        }catch(Exception $e){
+            dd($e);
+        }
+        
+
+        return redirect()->back()->with('success2', 'Document successfully updated');
+        
+    }
 }   
 

@@ -44,7 +44,6 @@ class SchoolLevelController extends Controller
 
         $data = $request->input('data')['school'];
         $school = SchoolLevel::find($data);
-        // return $school;
         $school->delete();
         $request->session()->flash('success', 'School successfully deleted');
         // return redirect()->back();

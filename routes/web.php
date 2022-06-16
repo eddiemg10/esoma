@@ -93,6 +93,8 @@ Route::post('/assignments/delete', [AssignmentController::class, 'delete']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
 Route::post('/upload/delete', [UploadController::class, 'delete']);
+Route::post('/upload/update', [UploadController::class, 'update']);
+
 
 
 
@@ -181,6 +183,7 @@ Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
 Route::post('/editschool/{id}', [SchoolLevelController::class, 'update']);
 Route::post('/school/delete', [SchoolLevelController::class, 'delete']);
+
 
 
 Route::post('/addclass', [ClassLevelController::class, 'store']);

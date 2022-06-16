@@ -237,8 +237,6 @@ $index = 0;
                         <div class="flex w-[98%] gap-40 bg-blue-200 p-1">
                             <!--the main div for classes-->
                             <div class="w-[40%] flex items-center flex-row gap-2 ml-4 text-sm">
-                                <button id='btn3' class=" flex hidden"><i class="fa-solid fa-play"></i></button>
-                                <button id='btn4' class=" flex"><i class="fa-solid fa-sort-down"></i></button>
                                 <h2 class=" font-normal flex">{{$class->classlevel_name}}</h2>
                             </div>
                             <div class="w-[60%] py-2 flex float-right gap-7 text-xs font-normal">
@@ -406,9 +404,9 @@ $index = 0;
                                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
                                                 <input type="text" name="desc" value="{{$file->description}}"
                                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                                                <input
+                                                {{-- <input
                                                     class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5"
-                                                    type="file" name="doc" value="{{$file->doc}}">
+                                                    type="file" name="doc" value="{{$file->doc}}"> --}}
                                                 <input type="hidden" name="subject_id" value='{{$sub->id}}'>
 
                                                 <button type="submit"
@@ -421,15 +419,17 @@ $index = 0;
                                 </div>
                             </div>
 
+
                             @if($sub->id==$file->subject_id)
 
                             <div
-                                class="hidden file-uploads w-[450px] ml-4 bg-orange-200 relative  text-sm text-zinc-900 p-2 gap-2">
+                                class="file-uploads w-[450px] ml-4 bg-orange-200 relative  text-sm text-zinc-900 p-2 gap-2">
 
                                 <div class="flex items-center">
 
-                                    <p class="pl-5 flex gap-x-5 items-center"><i
-                                            class="fa-solid fa-file"></i>{{$file->name}}</p>
+                                    <a href={{asset("assets/".$file->doc)}} target="_blank" class="pl-5
+                                        hover:cursor-pointer flex gap-x-5 items-center"><i
+                                            class="fa-solid fa-file"></i>{{$file->name}}</a>
                                     <div class="absolute right-10 flex gap-5 text-xs font-normal">
 
                                         <button class="edit-file flex text-l"><i class="fa-solid fa-pen"></i></button>
@@ -508,12 +508,14 @@ $index = 0;
 
         });
 
-        $(".subject-toggle").click(function(e){
+        // To be fixed
 
-            let target = $(".file-uploads").eq( $(this).data('toggle') );
-            target.toggle();
-            console.log(target);
-        });
+        // $(".subject-toggle").click(function(e){
+
+        //     let target = $(".file-uploads").eq( $(this).data('toggle') );
+        //     target.toggle();
+        //     console.log(target);
+        // });
 
 
         $(".edit-class").click(function(e) {
