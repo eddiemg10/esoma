@@ -18,20 +18,14 @@
             </div>
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-check hover:text-esomagreen"></i>
-                <a href="" class="hover:text-esomagreen">Activate Account</a>
+                <a href="/dashboard/activate" class="hover:text-esomagreen">Activate Account</a>
             </div>
-            <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
-                <i class="fa-solid fa-chart-bar"></i>
-                <a href="" class="hover:text-esomagreen hover:text-esomagreen">View Subscription</a>
-            </div>
+
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-receipt hover:text-esomagreen"></i>
                 <a href="" class="">View Payment History</a>
             </div>
-            <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
-                <i class="fa-solid fa-lock hover:text-esomagreen"></i>
-                <a href="" class="hover:text-esomagreen">Logout</a>
-            </div>
+
         </div>
     </div>
 
@@ -41,7 +35,7 @@
         <div class="container p-4">
             <h1 class="text-xl font-semibold text-esomablue">Welcome back, {{Auth::USer()->firstName}}!👋</h1>
         </div>
-        <div class="container flex flex-row space-x-4 divide-x">
+        <div class="container flex flex-row space-x-4 divide-x mt-20">
             <div class="container flex flex-col text-esomablue px-4">
                 <h2 class="text-center text-lg font-medium py-2">Your user details</h2>
                 <div class="font-light">
@@ -63,18 +57,15 @@
                 <div class="mb-6">
                     <div class="space-y-1 font-light text-sm">
                         <p>Account status: <span class="text-base font-medium">Active</span></p>
-                        <p>Plan: <span class="text-base font-medium">Monthly</span></p>
+                        <p>Plan: <span class="text-base font-medium">{{$subscription->type ?? "None"}}</span></p>
                     </div>
                 </div>
                 <div class="container flex flex-row justify-center space-x-4 font-bold">
                     <div
                         class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
-                        <a href="">Activate Account</a>
+                        <a href="/dashboard/activate">Activate Account</a>
                     </div>
-                    <div
-                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
-                        <a href="">View Subscription</a>
-                    </div>
+
                     <div
                         class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">View Payment History</a>
@@ -84,11 +75,11 @@
         </div>
         <div class="container flex flex-row justify-evenly font-bold my-32">
             <div
-                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+                class="bg-esomablue rounded p-4 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-Classroom</a>
             </div>
             <div
-                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+                class="bg-esomablue rounded p-4 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-library</a>
             </div>
         </div>

@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\ClassLevel;
+use App\Models\Payment;
 use App\Models\SchoolLevel;
 use App\Models\SubjectLevel;
 
@@ -124,11 +126,10 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard/activate', [DashboardController::class, 'activate']);
 
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
-// Route::get('/db', function(){
-//     return view('dashboard');
-// })->name('dashboard');
 
 
 // Components

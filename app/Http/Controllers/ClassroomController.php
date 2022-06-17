@@ -21,6 +21,7 @@ class ClassroomController extends Controller
                         ->where('classroom_student.user_id', $id)
                         ->select('classrooms.*', 'users.firstName', 'users.secondName', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
                         ->get();
+
         
         $data = [
             "title" => "EClassroom | Student",
