@@ -19,6 +19,7 @@ class CreateFileUploadsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('doc');
+            $table->boolean('restrict_download');
             $table->timestamps();
         });
     }

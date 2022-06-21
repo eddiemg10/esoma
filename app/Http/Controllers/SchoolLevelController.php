@@ -13,6 +13,11 @@ use App\Models\FileLibLevel;
 
 class SchoolLevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function uploadpage()
     {
         $schools = SchoolLevel::all();
@@ -49,11 +54,16 @@ class SchoolLevelController extends Controller
         // return redirect()->back();
     }
 
-    public function show($id)
+    public function show($name)
 
     {
-
         $schools = SchoolLevel::all();
+
+        $id = DB::table('class_level')
+            ->select('class_level.id')
+            ->where('classlevel_name', $name)
+            ->first()->id;
+      
 
         $selectedschool = DB::table('school_level')
             ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
@@ -71,7 +81,8 @@ class SchoolLevelController extends Controller
             ->select('class_level.*')
             ->where('class_level.id', $id)
             ->first();
-     
+
+
 
 
         $subjects = DB::table('subjects')
@@ -102,6 +113,7 @@ class SchoolLevelController extends Controller
             'subjects' => $subjects,
             'fileuploads' => $fileuploads,
         ];
+
 
         return view('elib/user/libuser_dash', $data);
     }

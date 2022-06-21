@@ -284,6 +284,7 @@ $index = 0;
                                                 enctype="multipart/form-data">
 
                                                 @csrf
+
                                                 <input type="text" name="name" placeholder="New File Name"
                                                     class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
                                                 <input type="text" name="desc" placeholder="File Description"
@@ -291,6 +292,8 @@ $index = 0;
                                                 <input
                                                     class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5"
                                                     type="file" name="doc">
+                                                <input type="checkbox" name="restrict">
+                                                <label>Mark as Premium</label>
                                                 <input type="hidden" name="subject_id" value='{{$sub->id}}'>
 
 
@@ -303,6 +306,7 @@ $index = 0;
                                     </div>
                                 </div>
                             </div>
+
 
                             <div tabindex="-1" aria-hidden="true"
                                 class="edit-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
@@ -333,8 +337,10 @@ $index = 0;
                                                 <input type="hidden" name="subject_id" value='{{$sub->id}}'>
 
 
+
                                                 <button type="submit"
                                                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+
                                                     Subject</button>
                                             </form>
 
@@ -378,6 +384,7 @@ $index = 0;
 
 
                             @foreach($fileuploads as $file)
+
 
                             <div tabindex="-1" aria-hidden="true"
                                 class="edit-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
@@ -508,6 +515,7 @@ $index = 0;
 
         });
 
+
         // To be fixed
 
         // $(".subject-toggle").click(function(e){
@@ -516,6 +524,7 @@ $index = 0;
         //     target.toggle();
         //     console.log(target);
         // });
+
 
 
         $(".edit-class").click(function(e) {
@@ -576,6 +585,7 @@ $index = 0;
         $(".file-close-modal").click(function(e) {
 
 
+
             let modal = $(this).parent().parent().parent();
 
             modal.removeClass('flex');
@@ -587,6 +597,7 @@ $index = 0;
         $(".edit-class-close-modal").click(function(e) {
 
 
+
             let modal = $(this).parent().parent().parent();
 
             modal.removeClass('flex');
@@ -594,6 +605,19 @@ $index = 0;
             resumeScroll();
 
         });
+
+
+        $(".edit-class-close-modal").click(function(e) {
+
+
+            let modal = $(this).parent().parent().parent();
+
+            modal.removeClass('flex');
+            modal.addClass('hidden');
+            resumeScroll();
+
+        });
+
 
         $(".edit-subject-close-modal").click(function(e) {
 

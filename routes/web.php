@@ -69,7 +69,9 @@ Route::get('/aboutus', function () {
 });
 
 
-Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
+Route::get('/elib', [SchoolLevelController::class, 'show']);
+Route::get('/elib/{name}',
+ [SchoolLevelController::class, 'show']);
 
 Route::middleware(['auth'])->group(function(){
 
