@@ -232,6 +232,8 @@
                                                 <input type="text" name="name" placeholder="New File Name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
                                                 <input type="text" name="desc" placeholder="File Description" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
                                                 <input type="file" name="doc">
+                                                <input type="checkbox" name="restrict">
+                                                <label>Restrict Download</label>
                                                 <input type="hidden" name="subject_id" value='{{$sub->id}}'>
 
 
@@ -490,7 +492,7 @@
 
         });
 
-        $(".edit-file-close-modal").click(function(e) {
+    
 
 
         $(".edit-subject-close-modal").click(function(e) {

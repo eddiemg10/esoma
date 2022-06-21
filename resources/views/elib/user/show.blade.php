@@ -43,23 +43,7 @@
             </div>
             @endif
 
-            <div class="flex justify-center mt-14 text-4xl mb-2 font-bold text-zinc-600">
-                <h2>Revision Questions and Answers</h2>
-            </div>
-            <div class="flex flex-col gap-y-6 w-[80%] m-12">
-                @foreach($fileuploads as $key=>$file)
-                <a href={{asset("assets/".$file->doc)}} target="_blank" class="flex p-4 bg-green-200 ml-14 text-xl">
-                    <p>{{$key+1}}.</p>
-                    <p class="w-[90%] ml-4">{{$file->name}}</p>
 
-                </a>
-                @endforeach
-            </div>
-            @if(count($fileuploads) == 0)
-            <div class="flex bg-sky-100 text-xl w-[90%] justify-center py-4 text-zinc-400 shadow-md transition assignment">
-                <p>No file uploads available😭</p>
-            </div>
-            @endif
         </div>
     </div>
 </div>

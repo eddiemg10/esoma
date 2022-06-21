@@ -11,6 +11,12 @@ use Illuminate\Http\UploadedFile;
 
 class FileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(Request $request)
     {
         $data = new FileLibLevel();
@@ -41,6 +47,5 @@ class FileController extends Controller
         $data = $request->input('data')['fileupload'];
         $file = FileLibLevel::find($data);
         $file->delete();
-
     }
 }
