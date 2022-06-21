@@ -4,10 +4,10 @@
 @section('bread_crumbs')
 <span class="text-slate-400 hover:cursor-pointer">
 
-     <a href="/elib" id="home-nav" class="hover:text-blue-900">Elib</a> |
-     <a href="" class="hover:text-blue-900">{{$selectedschool->schoollevel_name}}</a> |
+    <a href="/elib" id="home-nav" class="hover:text-blue-900">Elib</a> |
+    <a href="" class="hover:text-blue-900">{{$selectedschool->schoollevel_name}}</a> |
     <a href="" class="hover:text-blue-900">{{$selectedclass->classlevel_name}}</a> |
-    <a href="#" class="text-blue-rich font-normal">{{$subject->subject_name}}</a> 
+    <a href="#" class="text-blue-rich font-normal">{{$subject->subject_name}}</a>
 
 
 </span>
@@ -34,7 +34,9 @@
             </div>
             <div class="flex flex-col gap-y-6 w-[80%] m-12">
                 @foreach($fileuploads as $key=>$file)
-                <a href={{asset("assets/".$file->doc)}} target="_blank" class="flex p-4 bg-blue-200 ml-14 text-xl">
+                <a href={{$file->premium ? url('/premium/'.$file->id) : asset("assets/".$file->doc)}} target="_blank"
+                    class="flex
+                    p-4 bg-blue-200 ml-14 text-xl">
                     <p>{{$key+1}}.</p>
                     <p class="w-[70%] ml-4">{{$file->name}}</p>
                 </a>

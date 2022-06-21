@@ -54,7 +54,7 @@ class SchoolLevelController extends Controller
         // return redirect()->back();
     }
 
-    public function show($name)
+    public function show($name="PP1")
 
     {
         $schools = SchoolLevel::all();

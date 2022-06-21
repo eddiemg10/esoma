@@ -62,14 +62,16 @@ Route::get('/elibrary/pp1/1', function () {
     return view('elib/user/show');
 });
 
-
+Route::get('/premium/{id}', function(){
+    return view('aboutus');
+})->middleware('is_premium');
 
 Route::get('/aboutus', function () {
     return view('aboutus', ['title' => 'Aboutus Page']);
 });
 
 
-Route::get('/elib', [SchoolLevelController::class, 'show']);
+Route::get('/elib/PP1', [SchoolLevelController::class, 'show']);
 Route::get('/elib/{name}',
  [SchoolLevelController::class, 'show']);
 

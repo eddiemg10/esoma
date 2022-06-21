@@ -23,9 +23,11 @@ class FileController extends Controller
         $data->subject_id = $request->subject_id;
         $data->name = $request->name;
         $data->description = $request->desc;
+        $data->premium = $request->restrict ?? '0';
         $file = $request->file('doc');
 
         $data['doc'] = 'doc_' . time() . "{$file->guessClientExtension()}";
+        
         $file->move('assets/', $data['doc']);
         $data->save();
 
