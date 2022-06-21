@@ -6,8 +6,42 @@
         class="text-blue-rich font-normal">Classrooms</a> </span>
 @endsection
 
-<div class="flex w-[full] px-5 gap-10 justify-center flex-wrap" id="content">
+<div class="flex w-full px-5 gap-10 justify-center flex-wrap" id="content">
 
+    <div class="w-full mb-20">
+        <form method="POST" action="/classroom/enroll">
+            @csrf
+
+            <input type="hidden" name="user" value={{Auth::User()->id}}>
+            <div class="flex w-full justify-center px-40">
+                <input type="text" placeholder="Enter class access code" name="classroom" required autocomplete="off"
+                    class="shadow appearance-none border rounded-l-md w-[40%] py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <button type="submit" class="bg-esomablue rounded-r-md w-[30%] px-3 text-white py-3">Join Class</button>
+            </div>
+
+        </form>
+
+        @if (session('success'))
+        <div class="flex justify-center">
+            <div
+                class="w-[25%] mt-5 flash text-green-500 font-bold border text-sm border-green-500 bg-green-50 text-center py-2 rounded-md">
+                {{ session('success')}}
+            </div>
+
+        </div>
+        @endif
+
+        @if (session('error'))
+        <div class="flex justify-center">
+            <div
+                class="w-[25%] mt-5 flash text-red-500 font-bold border text-sm border-red-500 bg-red-50 text-center py-2 rounded-md">
+                {{ session('error')}}
+            </div>
+
+        </div>
+        @endif
+
+    </div>
     @foreach ($classrooms as $classroom)
     <div class="bg-white w-[30%] relative h-[16vw] text-center shadow-md hover:shadow-xl hover:cursor-pointer flex flex-col transition rounded-3xl classroom"
         id={{$classroom->id}}>

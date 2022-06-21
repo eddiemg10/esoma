@@ -21,11 +21,14 @@ class ClassroomController extends Controller
                         ->where('classroom_student.user_id', $id)
                         ->select('classrooms.*', 'users.firstName', 'users.secondName', 'teachers.tsc_number', 'classroom_student.created_at as joined_on')
                         ->get();
+
         
         $data = [
             "title" => "EClassroom | Student",
             "classrooms" => $classrooms
         ];
+
+
         return view('eclassroom/student/classrooms/index', $data);
     }
 
@@ -70,6 +73,33 @@ class ClassroomController extends Controller
         $classroom = Classroom::find($id);
         $classroom->status = !$classroom->status;
         $classroom->save();
+
+    }
+
+    public function enroll(Request $request){
+
+        $user = $request->user;
+        $classroom = $request->classroom;
+
+        $searchClass = Classroom::where('access_code', '=', $classroom)->first();
+
+        if($searchClass){
+
+            $classStudent = new ClassroomStudent();
+            $classStudent->user_id = $user;
+            $classStudent->classroom_id = $searchClass->id;
+            $classStudent->save();
+
+
+            return redirect()->back()->with('success', 'Successfully enrolled');
+
+        }
+        else{
+            return redirect()->back()->with('error', 'Class not found');
+
+        }
+        return $user;
+
 
     }
 

@@ -21,7 +21,7 @@
             <p class="text-blue-rich font-bold text-xl mb-3 mt-10">Student Account</p>
 
             <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">
-                <li class="bg-zinc-100 rounded-full  xmd:w-[50%] w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav"
+                <li class="bg-zinc-100 rounded-full py-1 w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav"
                     id="classroom">
                     My Classes</li>
                 <li class=" rounded-full  w-[80%] hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav"

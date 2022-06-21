@@ -37,7 +37,6 @@ class FileController extends Controller
         $data = FileLibLevel::find($id);
         $data->name = $request->name;
         $data->description = $request->desc;
-        $data->doc = $request->doc;
         $data->update();
         return redirect()->back();
     }

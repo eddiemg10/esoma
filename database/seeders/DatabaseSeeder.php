@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             ClassroomSeeder::class,
             UploadeddocSeeder::class,
             SchoolSeeder::class,
-            SchoollevelSeeder::class
+            SchoollevelSeeder::class,
+            PaymentSeeder::class,
         ]);
     }
 }

@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\ClassLevel;
+use App\Models\Payment;
 use App\Models\SchoolLevel;
 use App\Models\SubjectLevel;
 
@@ -78,6 +80,8 @@ Route::get('/classroom/student', [ClassroomController::class, 'index']);
 Route::get('/classroom/student/{id}', [ClassroomController::class, 'show']);
 Route::put('/classroom', [ClassroomController::class, 'update']);
 Route::post('/classroom', [SchoolController::class, 'store']);
+Route::post('/classroom/enroll', [ClassroomController::class, 'enroll']);
+
 
 
 Route::get('/classroom/student/{id}/uploads', [UploadController::class, 'show']);
@@ -95,6 +99,8 @@ Route::post('/assignments/delete', [AssignmentController::class, 'delete']);
 Route::get('/test', [AssignmentController::class, 'test']);
 
 Route::post('/upload/delete', [UploadController::class, 'delete']);
+Route::post('/upload/update', [UploadController::class, 'update']);
+
 
 
 
@@ -122,11 +128,10 @@ Route::get('/classroom/ass', function(){return view('eclassroom/teacher/assignme
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard/activate', [DashboardController::class, 'activate']);
 
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
-// Route::get('/db', function(){
-//     return view('dashboard');
-// })->name('dashboard');
 
 
 // Components
@@ -183,6 +188,7 @@ Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
 Route::post('/editschool/{id}', [SchoolLevelController::class, 'update']);
 Route::post('/school/delete', [SchoolLevelController::class, 'delete']);
+
 
 
 Route::post('/addclass', [ClassLevelController::class, 'store']);
