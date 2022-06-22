@@ -51,7 +51,7 @@ Route::get('/classroom', function () {
     return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
 });
 
-Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
+Route::get('/elib/{name}/{subname}', [SchoolLevelController::class, 'showSubject']);
 
 
 Route::get('/elibrary/pp1/1', function(){

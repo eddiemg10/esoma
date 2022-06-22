@@ -118,10 +118,21 @@ class SchoolLevelController extends Controller
         return view('elib/user/libuser_dash', $data);
     }
 
-    public function showSubject($id = 6, $subject_id) //the class
+    public function showSubject($name="PP1", $sub_name) //the class
     {
 
         $schools = SchoolLevel::all();
+
+        $id = DB::table('class_level')
+        ->select('class_level.id')
+        ->where('classlevel_name', $name)
+        ->first()->id;
+      
+
+        $subject_id = DB::table('subjects')
+        ->select('subjects.id')
+        ->where('subject_name', $sub_name)
+        ->first()->id;
 
         $classes = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
