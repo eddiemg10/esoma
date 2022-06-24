@@ -122,8 +122,10 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
+        $category = Category::find($post->category);
+        $author = User::find($post->author);
 
-        return view('blog.posts.single')->withPost($post);
+        return view('blog.posts.single')->withPost($post)->withCategory($category)->withAuthor($author);
     }
 
     /**
@@ -197,7 +199,7 @@ class PostController extends Controller
 
             $img_location = 'images/blog/'.$fileName;
 
-            $post->image = $img_location;
+            $post->image = $fileName;
         }
 
             $post->title = $request->title;

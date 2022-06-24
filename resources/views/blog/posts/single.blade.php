@@ -34,7 +34,7 @@
 
 		</div>
 
-			<div class="w-[20%] flex flex-col items-center  bg-slate-100">
+			<div class="w-[20%] flex flex-col items-center gap-4 bg-slate-100">
 				
 				<div class="flex flex-col items-center gap-4 w-full pt-[5%]">
 					<a
@@ -42,8 +42,34 @@
 						href ="{{ route('blog.posts.edit', $post->id) }}"	>Edit Post</a>
 
 				</div>
-			</div>
-	</div>
+				<div class="font-semibold text-zinc-600 pt-10 py-2 w-[80%] bg-white rounded-md pl-8">
+					
+
+					<span>Tags: </span>
+					@foreach( $post->tags as $tag)
+
+						<span>{{ $tag->tag }} </span>
+					
+					@endforeach
+
+					<br>
+					<span>Category: </span>
+					<span>{{ $category->category }}</span>
+
+					<br>
+					<span>Created:</span>
+					<span>{{ date('M j, Y', strtotime($post->created_at)) }}</span>
+
+					<br>
+					<span>Last  Updated:</span>
+					<span>{{ date('M j, Y  h:i:sa', strtotime($post->updated_at)) }}</span>
+
+					<br>
+					<span>By:</span>
+					<span>{{ $author->firstName }} {{ $author->secondName }}</span>
+								</div>
+							</div>
+				</div>
 
 
 
