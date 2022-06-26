@@ -25,7 +25,7 @@
     @if($selectedclass->id==$subject->class_level_id)
     <div class="h-[200px] w-[300px] rounded-xl bg-white shadow-md md:w-[300px] transition ease-in-out hover:shadow-lg hover:">
         <div class="w-100 flex justify-center items-center h-16 rounded-tr-md rounded-tl-md">
-            <a href="{{url('elib/'.$selectedclass->id.'/'.$subject->id)}}" class="text-center bg-yellow-500 text-white w-[100%] py-5 rounded-tr-md rounded-tl-md shadow-md">{{$subject->subject_name}}</a>
+            <a href="{{url('elib/'.$selectedclass->classlevel_name.'/'.$subject->subject_name)}}" class="text-center bg-yellow-500 text-white w-[100%] py-5 rounded-tr-md rounded-tl-md shadow-md">{{$subject->subject_name}}</a>
         </div>
 
         @foreach($fileuploads as $file)

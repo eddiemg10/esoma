@@ -28,7 +28,7 @@ class isPremium
 
         if($isPremiumMember){
             //redirect to the file if premium...change the file name 
-            return redirect(asset("assets/doc_1655795826pdf"));
+            return redirect(asset("assets/"));
         }
         else{
             return redirect('dashboard/activate');

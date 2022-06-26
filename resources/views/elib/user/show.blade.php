@@ -21,11 +21,11 @@
 </div>
 
 <div class="flex flex-wrap justify-center gap-6 mt-10 pb-40 ">
-    <div
-        class="w-[95%] bg-white flex-row rounded-3xl pb-20 shadow-md md:w-[90%] transition ease-in-out hover:shadow-lg hover:">
+    <div class="w-[95%] bg-white flex-row rounded-3xl pb-20 shadow-md md:w-[90%] transition ease-in-out hover:shadow-lg hover:">
         <div class="w-100 flex justify-center items-center rounded-tr-md rounded-tl-md">
             <p class="text-center bg-blue-rich text-white w-[100%] py-5 rounded-t-3xl shadow-md text-2xl ">
-                {{$subject->subject_name}}</p>
+                {{$subject->subject_name}}
+            </p>
         </div>
 
         <div class="flex flex-col items-center">
@@ -34,18 +34,25 @@
             </div>
             <div class="flex flex-col gap-y-6 w-[80%] m-12">
                 @foreach($fileuploads as $key=>$file)
-                <a href={{$file->premium ? url('/premium/'.$file->id) : asset("assets/".$file->doc)}} target="_blank"
-                    class="flex
-                    p-4 bg-blue-200 ml-14 text-xl">
-                    <p>{{$key+1}}.</p>
-                    <p class="w-[70%] ml-4">{{$file->name}}</p>
-                </a>
+                 <a href={{$file->premium ? url('/premium/'.$file->id) : asset($file->doc)}} target="_blank" class="flex p-4 bg-blue-200 ml-14 text-xl">
+                    <div class="flex flex-row gap-24">
+                        <div class="flex">
+                            <p>{{$key+1}}.</p>
+                            <p class="w-[70%] ml-4">{{$file->name}}</p>
+                        </div>
+
+                        @if($file->premium==1)
+                        <div class="flex ml-96">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        @endif
+                    </div>
+                </a> 
                 @endforeach
             </div>
 
             @if(count($fileuploads) == 0)
-            <div
-                class="flex bg-sky-100 text-xl w-[90%] justify-center py-4 text-zinc-400 shadow-md transition assignment">
+            <div class="flex bg-sky-100 text-xl w-[90%] justify-center py-4 text-zinc-400 shadow-md transition assignment">
                 <p>No file uploads available😭</p>
             </div>
             @endif
