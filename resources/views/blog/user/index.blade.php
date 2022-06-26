@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 
+<x-navbar />
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/css/app.css" rel="stylesheet">
-	 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://kit.fontawesome.com/6d51c26809.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
@@ -18,10 +20,11 @@
 
 
 
-	<title></title>
+	<title>Blog</title>
 </head>
 
 <body class="">
+
 	<div class="w-full flex p-40 bg-slate-50">
 
 
@@ -44,11 +47,11 @@
 			@if(count($posts) == 0)
 
 
-				<div class="bg-white shadow-md rounded-md flex p-16">
+			<div class="bg-white shadow-md rounded-md flex p-16">
 
-					<p class="text-lg text-zinc-600">No posts Available for that filter</p>
+				<p class="text-lg text-zinc-600">No posts Available for that filter</p>
 
-				</div>
+			</div>
 
 			@endif
 
@@ -108,11 +111,11 @@
 				<h2 class="text-xl font-bold text-blue-900 mb-10">Categories</h2>
 
 				<div class="flex flex-col items-center gap-4 w-full">
-					<a href="{{ route('blog.index') }}" 
+					<a href="{{ route('blog.index') }}"
 						class="font-semibold text-zinc-600 py-2 w-[80%] bg-white rounded-md pl-8">All Posts</a>
 
 					@foreach($categories as $category)
-					<a href="{{ route('blog.index', ['category' => $category->category ]) }}" 
+					<a href="{{ route('blog.index', ['category' => $category->category ]) }}"
 						class="font-semibold text-zinc-600 py-2 w-[80%] bg-white rounded-md pl-8">{{$category->category}}</a>
 					@endforeach
 				</div>
@@ -127,7 +130,7 @@
 				<div
 					class="flex flex-wrap py-8 items-center gap-4 font-semibold text-zinc-600 w-[80%] bg-white rounded-md pl-8">
 					@foreach($tags as $tag)
-					<a href="{{ route('blog.index', ['tag' => $tag->tag ]) }}" 
+					<a href="{{ route('blog.index', ['tag' => $tag->tag ]) }}"
 						class="text-sm hover:bg-sky-200 hover:cursor-pointer transition py-1 px-4 bg-sky-100 text-zinc-600 rounded-full">{{$tag->tag}}</a>
 					@endforeach
 				</div>
@@ -139,8 +142,8 @@
 
 
 
-	  <script>
-    $(document).ready(function(){
+	<script>
+		$(document).ready(function(){
 	    fetch_posts();
 	    function fetch_posts(query = '')
 	    {
@@ -163,7 +166,7 @@
 		    fetch_posts(query);
 	    });
 	});
-    </script>
+	</script>
 
 </body>
 

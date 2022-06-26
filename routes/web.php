@@ -35,13 +35,23 @@ use App\Models\SubjectLevel;
 |
 */
 
-Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
+// Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
+//     Route::resource('posts', PostController::class);
+//     Route::get('/tags', [TagController::class,'create'])->name('tags.create');
+//     Route::get('/', [BlogController::class, 'index'])->name('index');
+//     Route::get('/{id}', [BlogController::class, 'show'])->name('show');
+// });
+
+
+Route::prefix('blog')->group(function(){
+
+
     Route::resource('posts', PostController::class);
     Route::get('/tags', [TagController::class,'create'])->name('tags.create');
     Route::get('/', [BlogController::class, 'index'])->name('index');
     Route::get('/{id}', [BlogController::class, 'show'])->name('show');
-});
 
+});
 
 
 
@@ -51,7 +61,7 @@ Route::get('/', function () {
 
 Route::get('/classroom', function () {
     return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
-});
+})->name('classroom');
 
 Route::get('/elib/{name}/{subname}', [SchoolLevelController::class, 'showSubject']);
 
