@@ -7,12 +7,18 @@ use App\Models\School;
 use Illuminate\Http\Request;
 use App\Models\SchoolLevel;
 use App\Models\SubjectLevel;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\DB;
 use App\Models\FileLibLevel;
-
+use Illuminate\Support\Facades\Auth;
 
 class SchoolLevelController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function uploadpage()
     {
         $schools = SchoolLevel::all();
@@ -49,11 +55,16 @@ class SchoolLevelController extends Controller
         // return redirect()->back();
     }
 
-    public function show($id)
+    public function show($id=1)
 
     {
-
         $schools = SchoolLevel::all();
+
+        // $id = DB::table('class_level')
+        //     ->select('class_level.id')
+        //     ->where('classlevel_name', $name)
+        //     ->first()->id;
+      
 
         $selectedschool = DB::table('school_level')
             ->join('class_level', 'class_level.school_level_id', '=', 'school_level.id')
@@ -71,7 +82,8 @@ class SchoolLevelController extends Controller
             ->select('class_level.*')
             ->where('class_level.id', $id)
             ->first();
-     
+
+
 
 
         $subjects = DB::table('subjects')
@@ -103,13 +115,25 @@ class SchoolLevelController extends Controller
             'fileuploads' => $fileuploads,
         ];
 
+
         return view('elib/user/libuser_dash', $data);
     }
 
-    public function showSubject($id = 6, $subject_id) //the class
+    public function showSubject($name="PP1", $sub_name) //the class
     {
 
         $schools = SchoolLevel::all();
+
+        $id = DB::table('class_level')
+        ->select('class_level.id')
+        ->where('classlevel_name', $name)
+        ->first()->id;
+      
+
+        $subject_id = DB::table('subjects')
+        ->select('subjects.id')
+        ->where('subject_name', $sub_name)
+        ->first()->id;
 
         $classes = DB::table('class_level')
             ->join('school_level', 'school_level.id', '=', 'class_level.school_level_id')
@@ -131,6 +155,7 @@ class SchoolLevelController extends Controller
         $subject = SubjectLevel::find($subject_id);
 
 
+        $isPremiumMember = Subscription::where('user_id', Auth::User()->id)->where('valid', 1)->first();
 
 
         $fileuploads = DB::table('file_uploads')
@@ -146,6 +171,7 @@ class SchoolLevelController extends Controller
             'selectedschool' => $selectedschool,
             'selectedclass' => $selectedclass,
             'fileuploads' => $fileuploads,
+            'isPremiumMember' => $isPremiumMember
 
         ];
 

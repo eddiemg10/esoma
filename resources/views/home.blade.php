@@ -12,6 +12,8 @@
 @extends('layouts.userLayout')
 @section('content')
 
+<x-navbar focus="home" />
+
 <body>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');

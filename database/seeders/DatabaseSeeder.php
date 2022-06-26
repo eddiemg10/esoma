@@ -17,10 +17,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             ClassroomSeeder::class,
-            UploadeddocSeeder::class,
             SchoolSeeder::class,
+            UploadeddocSeeder::class,
             SchoollevelSeeder::class,
+            ClassLevelSeeder::class,
+            SubjectSeeder::class,
+            FileUploadSeeder::class,
             PaymentSeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.userLayout')
 @section('content')
+<x-navbar focus="classroom" />
 
 <div class="flex flex-row justify-center mt-10 mb-40">
 

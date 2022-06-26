@@ -55,6 +55,17 @@ class PostController extends Controller
         //
         //dd($request);
 
+            $request->validate([
+                'title' => 'required|max:255',
+                'slug' => 'required|max:255|unique:posts,slug',
+                'image' => 'required',
+                'content' => 'required',
+                'tags' => 'required',
+                'category' =>'required|integer',
+
+
+            ]);            
+
 
 
             echo "<pre>";
@@ -111,8 +122,10 @@ class PostController extends Controller
     {
         //
         $post = Post::find($id);
+        $category = Category::find($post->category);
+        $author = User::find($post->author);
 
-        return view('blog.posts.single')->withPost($post);
+        return view('blog.posts.single')->withPost($post)->withCategory($category)->withAuthor($author);
     }
 
     /**
@@ -186,7 +199,7 @@ class PostController extends Controller
 
             $img_location = 'images/blog/'.$fileName;
 
-            $post->image = $img_location;
+            $post->image = $fileName;
         }
 
             $post->title = $request->title;

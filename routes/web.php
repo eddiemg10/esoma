@@ -13,6 +13,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Uploadeddoc;
 use App\Http\Controllers\ClassLevelController;
@@ -34,12 +35,23 @@ use App\Models\SubjectLevel;
 |
 */
 
-Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
-    Route::resource('posts', PostController::class);
-    Route::get('/', [BlogController::class, 'index'])->name('index');
-    Route::get('/{id}', [BlogController::class, 'show'])->name('show');
-});
+// Route::domain('blog.'.env('APP_URL'))->name('blog.')->group(function(){
+//     Route::resource('posts', PostController::class);
+//     Route::get('/tags', [TagController::class,'create'])->name('tags.create');
+//     Route::get('/', [BlogController::class, 'index'])->name('index');
+//     Route::get('/{id}', [BlogController::class, 'show'])->name('show');
+// });
 
+
+Route::prefix('blog')->group(function(){
+
+
+    Route::resource('posts', PostController::class, ['as'=> 'blog']);
+    Route::get('/tags', [TagController::class,'create'])->name('tags.create');
+    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+});
 
 
 
@@ -49,9 +61,9 @@ Route::get('/', function () {
 
 Route::get('/classroom', function () {
     return view('eclassroom/classroom_dashboard', ['title' => 'EClassroom']);
-});
+})->name('classroom');
 
-Route::get('/elib/{id}/{subid}', [SchoolLevelController::class, 'showSubject']);
+Route::get('/elib/{name}/{subname}', [SchoolLevelController::class, 'showSubject']);
 
 
 Route::get('/elibrary/pp1/1', function(){
@@ -62,14 +74,18 @@ Route::get('/elibrary/pp1/1', function () {
     return view('elib/user/show');
 });
 
-
+Route::get('/premium/{id}', function(){
+    return view('aboutus');
+})->middleware('is_premium');
 
 Route::get('/aboutus', function () {
     return view('aboutus', ['title' => 'Aboutus Page']);
 });
 
 
-Route::get('/elib/{id}', [SchoolLevelController::class, 'show']);
+Route::get('/elib/PP1', [SchoolLevelController::class, 'show']);
+Route::get('/elib/{name}',
+ [SchoolLevelController::class, 'show']);
 
 Route::middleware(['auth'])->group(function(){
 

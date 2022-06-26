@@ -95,6 +95,7 @@ class TeacherController extends Controller
                       ->select('schools.*')
                       ->get();
 
+        
         $data = [
             "schools" => $schools,
         ];

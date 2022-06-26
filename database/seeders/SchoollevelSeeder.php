@@ -16,12 +16,16 @@ class SchoollevelSeeder extends Seeder
     {
         SchoolLevel::insert([
             [
-                'schoollevel_name'=>'school1',
+                'schoollevel_name'=>'Kids Learning',
                
             ],
             [
-                'schoollevel_name'=>'school2',
-            ]
+                'schoollevel_name'=>'Primary School',
+            ],
+            [
+                'schoollevel_name'=>'Secondary School',
+            ],
+          
             ]);
     }
 }

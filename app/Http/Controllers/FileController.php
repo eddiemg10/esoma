@@ -11,15 +11,23 @@ use Illuminate\Http\UploadedFile;
 
 class FileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(Request $request)
     {
         $data = new FileLibLevel();
         $data->subject_id = $request->subject_id;
         $data->name = $request->name;
         $data->description = $request->desc;
+        $data->premium = $request->restrict ?? '0';
         $file = $request->file('doc');
 
         $data['doc'] = 'doc_' . time() . "{$file->guessClientExtension()}";
+        
         $file->move('assets/', $data['doc']);
         $data->save();
 
@@ -40,6 +48,5 @@ class FileController extends Controller
         $data = $request->input('data')['fileupload'];
         $file = FileLibLevel::find($data);
         $file->delete();
-
     }
 }

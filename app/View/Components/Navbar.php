@@ -11,9 +11,10 @@ class Navbar extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $focus;
+    public function __construct($focus)
     {
-        //
+        $this->focus = $focus;
     }
 
     /**
