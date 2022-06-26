@@ -22,38 +22,38 @@ class SchoolSeeder extends Seeder
         School::insert([
             [
                 'name'=>'Test School',
-                'user_id'=>'1',
+                'user_id'=>2,
             ]
             ]);
 
         SchoolClassroom::insert([
             [
-            'classroom_id' => '1',
-            'school_id' => '1'
+            'classroom_id' => 1,
+            'school_id' => 1
             ],
             [
-            'classroom_id' => '2',
-            'school_id' => '1'
+            'classroom_id' => 2,
+            'school_id' => 1
             ],
             [
-            'classroom_id' => '3',
-            'school_id' => '1'
+            'classroom_id' => 3,
+            'school_id' => 1
             ],
 
         ]);
 
         SchoolTeacher::insert([
             [
-            'user_id' => '11',
-            'school_id' => '1'
+            'user_id' => 22,
+            'school_id' => 1
             ],
             [
-            'user_id' => '12',
-            'school_id' => '1'
+            'user_id' => 23,
+            'school_id' => 1
             ],
             [
-            'user_id' => '13',
-            'school_id' => '1'
+            'user_id' => 24,
+            'school_id' => 1
             ],
 
         ]);

@@ -36,16 +36,17 @@
             <div class="flex flex-col gap-y-6 w-[80%] m-12">
                 @foreach($fileuploads as $key=>$file)
                 <a href={{$file->premium ? url('/premium/'.$file->id) : asset("assets/".$file->doc)}} target="_blank"
-                    class="flex p-4 bg-blue-200 ml-14 text-xl">
-                    <div class="flex flex-row gap-24">
-                        <div class="flex">
+                    class="flex p-4 {{$file->premium && !$isPremiumMember ? 'bg-cyan-200' : 'bg-blue-200' }} ml-14
+                    text-xl">
+                    <div class="flex w-full">
+                        <div class="flex w-full ">
                             <p>{{$key+1}}.</p>
                             <p class="w-[70%] ml-4">{{$file->name}}</p>
                         </div>
 
-                        @if($file->premium==1)
-                        <div class="flex ml-96">
-                            <i class="fa-solid fa-lock"></i>
+                        @if($file->premium==1 && !$isPremiumMember)
+                        <div class="flex">
+                            <i class="fa-solid fa-lock mr-4"></i>
                         </div>
                         @endif
                     </div>

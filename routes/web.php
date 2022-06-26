@@ -46,10 +46,10 @@ use App\Models\SubjectLevel;
 Route::prefix('blog')->group(function(){
 
 
-    Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class, ['as'=> 'blog']);
     Route::get('/tags', [TagController::class,'create'])->name('tags.create');
-    Route::get('/', [BlogController::class, 'index'])->name('index');
-    Route::get('/{id}', [BlogController::class, 'show'])->name('show');
+    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 });
 

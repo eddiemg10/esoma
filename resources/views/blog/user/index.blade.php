@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<x-navbar />
+<x-navbar focus="classroom" />
+
 
 <head>
 	<meta charset="utf-8">

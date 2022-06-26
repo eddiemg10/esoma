@@ -3,8 +3,9 @@
 @extends('layouts.master')
 
 @section('layoutContent')
-<x-navbar />
- 
+{{--
+<x-navbar /> --}}
+
 @yield('content')
 
 <x-footer />

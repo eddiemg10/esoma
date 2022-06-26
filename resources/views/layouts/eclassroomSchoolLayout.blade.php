@@ -1,6 +1,8 @@
 @extends('layouts.userLayout')
 @section('content')
 
+<x-navbar focus="classroom" />
+
 
 <style>
     .active {

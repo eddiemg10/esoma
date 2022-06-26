@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+<x-navbar focus="blog" />
+
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +15,7 @@
 
 <body>
 
-<!-- 	<span>Tags: </span>
+	<!-- 	<span>Tags: </span>
 	@foreach( $post->tags as $tag)
 
 	<span>{{ $tag->tag }} </span>
@@ -35,15 +38,15 @@
 		<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
 		<div>
 			<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
-						<div class="tags flex gap-x-3 px-[25%] mt-[5%]">
+			<div class="tags flex gap-x-3 px-[25%] mt-[5%]">
 
-							@foreach( $post->tags as $tag)
+				@foreach( $post->tags as $tag)
 
-							<span class="text-sm py-1 px-4 bg-sky-100 text-zinc-600 rounded-full">{{ $tag->tag }}</span>
+				<span class="text-sm py-1 px-4 bg-sky-100 text-zinc-600 rounded-full">{{ $tag->tag }}</span>
 
-							@endforeach
+				@endforeach
 
-						</div>
+			</div>
 
 
 
@@ -51,7 +54,7 @@
 		<div class="p-20 px-40">
 			{!! $post->content !!}
 		</div>
-</div>
+	</div>
 
 
 </body>

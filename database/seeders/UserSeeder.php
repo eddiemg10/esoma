@@ -31,27 +31,25 @@ class UserSeeder extends Seeder
         Classroom::truncate();
         Schema::enableForeignKeyConstraints();
 
-        \App\Models\User::factory(10)->create();
+        User::insert([
+            [
+            'firstName'=>"Collin",
+            'secondName'=>"Powell",
+            'email' => "admin@gmail.com",
+            'email_verified_at' => now(),
+            'user_type'=>'admin',
+            'password' => Hash::make('password123'), // password
+            'remember_token' => Str::random(10),
+            'created_at' => now()
+            ]
+        ]);
+
+        \App\Models\User::factory(20)->create();
         \App\Models\Teacher::factory(10)->create();
         
         
 
-        for($i=0; $i<4; $i++){
-            Classroom::create([
-                'name'=>"Random Class ".Str::random(3),
-                'teacher' => 11,
-                'access_code' => Str::random(6),
-                'description' => 'This is a dummy class and has no description',
-                'status' => 1,
-            ]);
-
-            ClassroomStudent::create([
-                'user_id'=> 2,
-                'classroom_id' => $i+1,
-            ]);
-
-            
-        }
+        
 
     }
 }

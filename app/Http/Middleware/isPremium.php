@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Subscription;
+use App\Models\FileLibLevel;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,10 +26,11 @@ class isPremium
 
         //Fetch the file using Id
         $fileId = $request->route('id');
+        $file = FileLibLevel::find($fileId);
 
         if($isPremiumMember){
             //redirect to the file if premium...change the file name 
-            return redirect(asset("assets/"));
+            return redirect(asset("assets/".$file->doc));
         }
         else{
             return redirect('dashboard/activate');

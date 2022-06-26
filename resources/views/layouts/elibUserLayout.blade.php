@@ -3,7 +3,9 @@
 
 @section('content')
 
-<div class="container min-h-screen min-w-full bg-white font-roboto">
+<x-navbar focus="elib" />
+
+<div class="container min-h-screen min-w-full bg-white font-roboto pb-40">
 
     <div class="flex-row flex">
 
@@ -13,16 +15,19 @@
             <p class="text-blue-rich font-bold text-xl mb-3 mt-10"><a href='#'>{{$school->schoollevel_name}}</a></p>
             @foreach($classes as $class)
             @if($school->id===$class->school_level_id)
-            <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">            
-                <li class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav mb-3"><a href={{url('elib/'.$class->classlevel_name)}}>{{$class->classlevel_name}}</a></li>
-               
-              @endif
+            <ul class=" pt-3 leading-7 text-zinc-500 xmd:text-sm text-xs font-light">
+                <li
+                    class="rounded-full  xmd:w-[50%] hover:shadow-inner w-[80%] hover:cursor-pointer transition ease-out pl-4 nav">
+                    <a href={{url('elib/'.$class->id)}}>{{$class->classlevel_name}}</a>
+                </li>
+
+                @endif
             </ul>
             @endforeach
-    
+
             @endforeach
             </ul>
-        </div> 
+        </div>
 
         <div class="flex flex-col mt-10 items-center w-[80%]">
             <div class="font-light flex items-end pl-5 w-[90%] py-3 mt-7">

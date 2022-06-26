@@ -7,9 +7,10 @@ use App\Models\School;
 use Illuminate\Http\Request;
 use App\Models\SchoolLevel;
 use App\Models\SubjectLevel;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\DB;
 use App\Models\FileLibLevel;
-
+use Illuminate\Support\Facades\Auth;
 
 class SchoolLevelController extends Controller
 {
@@ -54,15 +55,15 @@ class SchoolLevelController extends Controller
         // return redirect()->back();
     }
 
-    public function show($name="PP1")
+    public function show($id=1)
 
     {
         $schools = SchoolLevel::all();
 
-        $id = DB::table('class_level')
-            ->select('class_level.id')
-            ->where('classlevel_name', $name)
-            ->first()->id;
+        // $id = DB::table('class_level')
+        //     ->select('class_level.id')
+        //     ->where('classlevel_name', $name)
+        //     ->first()->id;
       
 
         $selectedschool = DB::table('school_level')
@@ -154,6 +155,7 @@ class SchoolLevelController extends Controller
         $subject = SubjectLevel::find($subject_id);
 
 
+        $isPremiumMember = Subscription::where('user_id', Auth::User()->id)->where('valid', 1)->first();
 
 
         $fileuploads = DB::table('file_uploads')
@@ -169,6 +171,7 @@ class SchoolLevelController extends Controller
             'selectedschool' => $selectedschool,
             'selectedclass' => $selectedclass,
             'fileuploads' => $fileuploads,
+            'isPremiumMember' => $isPremiumMember
 
         ];
 

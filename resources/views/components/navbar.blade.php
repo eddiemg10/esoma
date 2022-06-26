@@ -24,22 +24,22 @@
       <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium font-light">
         <li>
           <a href="/"
-            class="block font-medium py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+            class="block {{$focus==='home' ? 'font-medium text-white' : 'text-neutral-200 font-normal'}} py-2 pr-4 pl-3   rounded md:bg-transparent hover:text-white  md:p-0 dark:text-white"
             aria-current="page">Home</a>
         </li>
         <li>
 
-          <a href="{{url('elib/PP1')}}"
-            class="block py-2 font-normal pr-4 pl-3 text-neutral-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">E-Library</a>
+          <a href="{{url('elib/1')}}"
+            class="block py-2 {{$focus==='elib' ? 'font-medium text-white' : 'text-neutral-200 font-normal'}} pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">E-Library</a>
         </li>
         <li>
 
           <a href="{{route('classroom')}}"
-            class="block py-2 font-normal pr-4 pl-3 text-neutral-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">E-classroom</a>
+            class="block py-2 {{$focus==='classroom' ? 'font-medium text-white' : 'text-neutral-200 font-normal'}} pr-4 pl-3  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">E-classroom</a>
         </li>
         <li>
           <a href="{{route('blog.index')}}"
-            class="block py-2 font-normal pr-4 pl-3 text-neutral-200 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tex-white0 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Blog</a>
+            class="block py-2 {{$focus==='blog' ? 'font-medium text-white' : 'text-neutral-200 font-normal'}} pr-4 pl-3 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:tex-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Blog</a>
         </li>
 
         <li>
