@@ -35,23 +35,15 @@
 	<span>{{ $author->firstName }} {{ $author->secondName }}</span> -->
 
 	<div class="flex flex-col p-20">
-		<h1 class="text-5xl text-blue-900 font-bold mb-20 text-center">{{ $post->title }}</h1>
-		<div>
-			<img class="px-[25%]" src="{{asset('images/blog/'.$post->image)}}" alt="">
-			<div class="tags flex gap-x-3 px-[25%] mt-[5%]">
+		<h1 class="text-4xl text-blue-900 font-bold mb-10 text-center">{{ $post->title }}</h1>
 
-				@foreach( $post->tags as $tag)
-
-				<span class="text-sm py-1 px-4 bg-sky-100 text-zinc-600 rounded-full">{{ $tag->tag }}</span>
-
-				@endforeach
-
-			</div>
-
-
-
+		<div class="flex w-full justify-center">
+			<img class=" w-[500px] object-cover rounded-md justify-center ml-30"
+				src="{{asset('images/blog/'.$post->image)}}" alt="">
 		</div>
-		<div class="p-20 px-40">
+		<br><br>
+
+		<div class="p-20 px-40 rounded-md border-2 border-black-100 blog-container flex flex-col  items-center text-lg">
 			{!! $post->content !!}
 		</div>
 	</div>

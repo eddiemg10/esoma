@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<x-navbar focus="classroom" />
+<x-navbar focus="blog" />
 
 
 <head>
