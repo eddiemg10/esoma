@@ -18,20 +18,27 @@
             <div>
                 <h5 class="font-bold mb-4">About Esoma-KE</h5>
                 <ul class="space-y-3 text-sm">
-                    <li>About Us</li>
-                    <li>Privacy Policy</li>
-                    <li>Our Terms of Service</li>
+                    <li><a href="/aboutus" target="_blank">About Us</a></li>
+                    <li><a href="https://esomake.co.ke/about/privacy-policy/" target="_blank">Privacy Policy</a></li>
+                    <li><a href="https://esomake.co.ke/about/terms-of-service/" target="_blank"> Our Terms of Service
+                        </a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="font-bold mb-4">Our Socials</h5>
-                <ul class="space-y-3 text-sm"></ul>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="https://www.youtube.com/channel/UCEwGPFeu4JnxQMtZCIYABsg"><i
+                                class="fa-brands fa-youtube mr-4"></i>Youtube</a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter mr-4"></i>Twitter</a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram mr-4"></i>Instagram</a></li>
+
+                </ul>
             </div>
             <div>
                 <h5 class="font-bold mb-4">Get in Touch</h5>
                 <ul class="space-y-3 text-sm">
-                    <li>0716 858334</li>
-                    <li>admin@esomake.co.ke</li>
+                    <li><i class="fa-solid fa-phone mr-4"></i> 0716 858334</li>
+                    <li><i class="fa-solid fa-envelope mr-4"></i>admin@esomake.co.ke</li>
                 </ul>
             </div>
         </div>

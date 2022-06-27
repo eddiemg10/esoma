@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class SubscriptionController extends Controller
 {
@@ -48,6 +51,24 @@ class SubscriptionController extends Controller
             return "yearly";
 
         }
+
+    }
+
+    public function show(){
+        $user = Auth::User()->id;
+
+        $payments = DB::table('subscriptions')
+                       ->join('payments', 'subscriptions.payment_id', '=', 'payments.id')
+                       ->where('subscriptions.user_id', $user)
+                       ->select('payments.*')
+                       ->get();
+
+
+        $data=[
+            'payments' => $payments
+        ];
+
+    return view('dashboard/view-payment-history', $data);
 
     }
 }

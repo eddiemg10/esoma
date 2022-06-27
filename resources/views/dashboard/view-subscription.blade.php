@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('layoutContent')
-<x-navbar />
+<x-navbar focus="" />
 <!-- Dashboard -->
 <div class="container h-full flex flex-row pt-4 divide-x px-4 font-Roboto">
     <!-- Dashboard Menu -->
@@ -48,20 +48,24 @@
                     </div>
                 </div>
                 <div class="container flex flex-row justify-center space-x-4 font-bold">
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
+                    <div
+                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">Make Payment</a>
                     </div>
-                    <div class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
+                    <div
+                        class="bg-esomalightblue rounded p-2 text-esomawhite text-xs hover:text-esomalightblue hover:bg-esomawhite hover:outline hover:outline-esomalightblue">
                         <a href="">View Payment History</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container flex flex-row justify-evenly font-bold my-32">
-            <div class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+            <div
+                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-Classroom</a>
             </div>
-            <div class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
+            <div
+                class="bg-esomablue rounded p-2 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
                 <a href="">Go to E-library</a>
             </div>
         </div>

@@ -160,8 +160,10 @@ class SchoolLevelController extends Controller
 
         $fileuploads = DB::table('file_uploads')
             ->join('subjects', 'subjects.id', '=', 'file_uploads.subject_id')
+            ->join('class_level', 'class_level.id', '=', 'subjects.class_level_id')
             ->select('file_uploads.*')
             ->where('subjects.id', $subject_id)
+            ->where('class_level.id', $id)
             ->get();
 
         $data = [

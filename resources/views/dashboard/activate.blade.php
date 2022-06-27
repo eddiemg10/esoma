@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('layoutContent')
 
-<x-navbar />
+<x-navbar focus="" />
 
 
 <!-- Dashboard -->
@@ -23,7 +23,7 @@
 
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-receipt hover:text-esomagreen"></i>
-                <a href="" class="">View Payment History</a>
+                <a href="/dashboard/history" class="">View Payment History</a>
             </div>
 
         </div>

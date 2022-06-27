@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('layoutContent')
 
-<x-navbar />
+<x-navbar focus="" />
 
 
 <!-- Dashboard -->
@@ -23,7 +23,7 @@
 
             <div class="flex flex-row items-center space-x-4 hover:text-esomagreen">
                 <i class="fa-solid fa-receipt hover:text-esomagreen"></i>
-                <a href="" class="">View Payment History</a>
+                <a href="/dashboard/history" class="">View Payment History</a>
             </div>
 
         </div>
@@ -33,7 +33,7 @@
 
     <div class="container px-4">
         <div class="container p-4">
-            <h1 class="text-xl font-semibold text-esomablue">Welcome back, {{Auth::USer()->firstName}}!👋</h1>
+            <h1 class="text-xl font-semibold text-esomablue">Welcome back, {{Auth::User()->firstName}}!👋</h1>
         </div>
         <div class="container flex flex-row space-x-4 divide-x mt-20">
             <div class="container flex flex-col text-esomablue px-4">
@@ -76,11 +76,11 @@
         <div class="container flex flex-row justify-evenly font-bold my-32">
             <div
                 class="bg-esomablue rounded p-4 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
-                <a href="">Go to E-Classroom</a>
+                <a href="{{route('classroom')}}">Go to E-Classroom</a>
             </div>
             <div
                 class="bg-esomablue rounded p-4 text-esomawhite text-sm hover:text-esomablue hover:bg-esomawhite hover:outline hover:outline-esomablue">
-                <a href="">Go to E-library</a>
+                <a href="{{url('elib/1')}}">Go to E-library</a>
             </div>
         </div>
 

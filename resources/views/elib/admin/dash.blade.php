@@ -6,30 +6,36 @@ $index = 0;
 @endphp
 
 <div class="w-100vw flex">
-    <div class="w-[20%] bg-blue-900 text-white">
-        <ul>
+    <div class="w-[20%] bg-sky-900 text-white">
+        <ul class="flex flex-col w-full items-center">
             <div class="flex flex-col items-center py-4">
                 <h1 class="text-4xl font-bold p-2">E-s<a class="text-yellow-500">o</a>ma</h1>
                 <h3 class="text-xl font-normal">ADMIN PANEL</h3>
             </div>
-            <div class="h-[2px] w-[80%] bg-white"></div>
+            <div class="h-[2px] w-[90%] bg-white"></div>
             <div class="flex flex-col gap-3 rounded-md p-3 pb-[1000px]">
-                <a href="adminview" class="w-[250px] rounded-md p-2 hover:bg-blue-900 hover:shadow-inner">E-Library</a>
-                <a href="#" class="w-[250px] rounded-md p-2 hover:bg-blue-900">Esoma LMS</a>
-                <a href="#" class="w-[250px] rounded-md p-2 hover:bg-blue-900">Esoma Blog</a>
+                <a href="#" class="w-[250px] rounded-md px-4 py-3 bg-cyan-600 hover:shadow-inner"><i
+                        class="fa-solid fa-book mr-4"></i>E-Library</a>
+                <a href="{{url('/blog/posts')}}" class="w-[250px] rounded-md px-4 py-3 hover:bg-cyan-800 "><i
+                        class="fa-solid fa-blog mr-4"></i>Esoma
+                    Blog</a>
             </div>
         </ul>
     </div>
 
     <div class="w-[80%] p-10">
-        <h1 class="ml-5 text-2xl font-semibold text-zinc-700">E-Library</h1>
+        <div class="flex gap-5 mb-20">
+            <span class="w-[6px] rounded h-[40px] bg-slate-300"></span>
+            <h1 class="text-blue-900 text-4xl font-bold">E-Library</h1>
+        </div>
 
         <!-- Use relative widths -->
         <div class="mt-10 flex w-full flex-col items-center bg-slate-100 py-20">
             <!-- using w-full cause I can add a padding to the continer to separate the gray box
                         from the white bg -->
             <div class="flex w-[100%] justify-center">
-                <form action="{{url('/addschool')}}" method="post" enctype="multipart/form-data" class="flex flex-row rounded-md p-6">
+                <form action="{{url('/addschool')}}" method="post" enctype="multipart/form-data"
+                    class="flex flex-row rounded-md p-6">
 
                     @csrf
                     <div class="flex">
@@ -48,13 +54,19 @@ $index = 0;
             </div>
             @foreach($schools as $school)
             <div class="flex w-[80%] flex-col items-center rounded-md bg-white pb-16 shadow-md mb-12">
-              
-                <div tabindex="-1" aria-hidden="true" class="add-class-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+
+                <div tabindex="-1" aria-hidden="true"
+                    class="add-class-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class=" close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class=" close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
@@ -62,11 +74,14 @@ $index = 0;
                                 </h3>
                                 <form class="" action="{{url('/addclass')}}" id="classroom-form" method="POST">
                                     @csrf
-                                    <input type="text" name="name" placeholder="New Class" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black" required>
+                                    <input type="text" name="name" placeholder="New Class"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black"
+                                        required>
 
                                     <input type="hidden" name="school_id" value='{{$school->id}}' />
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
                                         Class</button>
 
                                 </form>
@@ -74,24 +89,34 @@ $index = 0;
                         </div>
                     </div>
                 </div>
-                <div tabindex="-1" aria-hidden="true" class="edit-school-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="edit-school-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="edit-school-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class="edit-school-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
                                 <h3 class="mb-6 text-xl font-medium text-gray-900 dark:text-black">Edit School
                                 </h3>
-                                <form class="" action="{{url('/editschool/'.$school->id)}}" id="classroom-form" method="POST">
+                                <form class="" action="{{url('/editschool/'.$school->id)}}" id="classroom-form"
+                                    method="POST">
                                     @csrf
-                                    <input type="text" name="name" value="{{$school->schoollevel_name}}" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black" required>
+                                    <input type="text" name="name" value="{{$school->schoollevel_name}}"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black"
+                                        required>
 
                                     <input type="hidden" name="school_id" value='{{$school->id}}' />
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
                                         School</button>
                                 </form>
                             </div>
@@ -100,36 +125,46 @@ $index = 0;
                 </div>
                 <div class="flex flex-row w-full rounded-t-md bg-yellow-400 p-2 text-white">
                     <div class="flex flex-row gap-4 p-2 ml-4">
-                        <button id="{{$school->id}}" class="text-2xl flex hidden"><i class="fa-solid fa-play"></i></button>
+                        <button id="{{$school->id}}" class="text-2xl flex hidden"><i
+                                class="fa-solid fa-play"></i></button>
                         <button id='btn2' class="text-xl flex"><i class="fa-solid fa-play rotate-90"></i></button>
                         <h2 class="text-2xl font-normal flex">{{$school->schoollevel_name}}</h2>
                     </div>
                     <div class="flex absolute right-80 w-[20%] justify-center gap-7 text-xs font-normal">
                         <div class="flex flex-col items-center gap-1">
-                            <button data-school='{{$school->id}}' class="edit-school flex text-2xl"><i class="fa-solid fa-pen"></i></button>
+                            <button data-school='{{$school->id}}' class="edit-school flex text-2xl"><i
+                                    class="fa-solid fa-pen"></i></button>
                             <p class="flex">Edit</p>
                         </div>
                         <div class="flex flex-col items-center gap-1">
-                            <button class="delete-school flex text-2xl" data-school="{{$school->id}}"><i class="fa-solid fa-circle-minus"></i></button>
+                            <button class="delete-school flex text-2xl" data-school="{{$school->id}}"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
                             <p class="flex">Delete</p>
                         </div>
                         <div class="flex  flex-col items-center gap-1">
                             <p class="flex text-3xl font-thin">|</p>
                         </div>
                         <div class="flex flex-col items-center gap-1">
-                            <button data-school='{{$school->id}}' class="school flex text-2xl"><i class="fa-solid fa-circle-plus"></i></button>
+                            <button data-school='{{$school->id}}' class="school flex text-2xl"><i
+                                    class="fa-solid fa-circle-plus"></i></button>
                             <p class="flex">Add Class</p>
                         </div>
                     </div>
                 </div>
 
                 @foreach($classes as $class)
-                <div tabindex="-1" aria-hidden="true" class="add-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="add-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="subject-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class="subject-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
@@ -138,12 +173,15 @@ $index = 0;
                                 </h3>
                                 <form class="" action="{{url('/addsubject')}}" id="classroom-form" method="POST">
                                     @csrf
-                                    <input type="text" name="name" placeholder="New Subject" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" required>
+                                    <input type="text" name="name" placeholder="New Subject"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+                                        required>
 
                                     <input type="hidden" name="class_id" value='{{$class->id}}'>
 
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create
                                         Subject</button>
                                 </form>
 
@@ -151,25 +189,35 @@ $index = 0;
                         </div>
                     </div>
                 </div>
-                <div tabindex="-1" aria-hidden="true" class="edit-class-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="edit-class-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="edit-class-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class="edit-class-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
                                 <h3 class="mb-6 text-xl font-medium text-gray-900 dark:text-black">Edit Class
                                 </h3>
-                                <form class="" action="{{url('/editclass/'.$class->id)}}" id="classroom-form" method="POST">
+                                <form class="" action="{{url('/editclass/'.$class->id)}}" id="classroom-form"
+                                    method="POST">
                                     @csrf
-                                    <input type="text" name="name" value="{{$class->classlevel_name}}" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" required>
+                                    <input type="text" name="name" value="{{$class->classlevel_name}}"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+                                        required>
 
                                     <input type="hidden" name="class_id" value='{{$class->id}}'>
 
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
                                         Class</button>
                                 </form>
 
@@ -188,7 +236,8 @@ $index = 0;
                             <p class="flex">Edit</p>
                         </div>
                         <div class="flex flex-col items-center gap-1">
-                            <button class="delete-class flex text-xl" data-class1="{{$class->id}}"><i class="fa-solid fa-circle-minus"></i></button>
+                            <button class="delete-class flex text-xl" data-class1="{{$class->id}}"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
                             <p class="flex">Delete</p>
                         </div>
                         <div class="flex flex-col items-center gap-1">
@@ -201,12 +250,18 @@ $index = 0;
                     </div>
                 </div>
                 @foreach($subjects as $sub)
-                <div tabindex="-1" aria-hidden="true" class="add-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="add-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="file-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class="file-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
@@ -217,15 +272,20 @@ $index = 0;
 
                                     @csrf
 
-                                    <input type="text" name="name" placeholder="New File Name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                                    <input type="text" name="desc" placeholder="File Description" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                                    <input class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5" type="file" name="doc">
+                                    <input type="text" name="name" placeholder="New File Name"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
+                                    <input type="text" name="desc" placeholder="File Description"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
+                                    <input
+                                        class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5"
+                                        type="file" name="doc">
                                     <input type="checkbox" name="restrict" value='1'>
                                     <label>Mark as Premium</label>
                                     <input type="hidden" name="subject_id" value=' {{$sub->id}}'>
 
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-8 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
                                         File</button>
                                 </form>
 
@@ -233,24 +293,35 @@ $index = 0;
                         </div>
                     </div>
                 </div>
-                <div tabindex="-1" aria-hidden="true" class="edit-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="edit-subject-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto flex justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
 
                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="edit-subject-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            <button type="button"
+                                class="edit-subject-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
                                 <h3 class="mb-6 text-xl font-medium text-gray-900 dark:text-black">Edit
                                     Subject
                                 </h3>
-                                <form class="" action="{{url('/editsubject/'.$sub->id)}}" id="classroom-form" method="POST">
+                                <form class="" action="{{url('/editsubject/'.$sub->id)}}" id="classroom-form"
+                                    method="POST">
                                     @csrf
-                                    <input type="text" name="name" value="{{$sub->subject_name}}" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black" required>
+                                    <input type="text" name="name" value="{{$sub->subject_name}}"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+                                        required>
                                     <input type="hidden" name="subject_id" value='{{$sub->id}}'>
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit Subject</button>
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                                        Subject</button>
                                 </form>
 
                             </div>
@@ -260,21 +331,25 @@ $index = 0;
                 @if($class->id==$sub->class_level_id)
                 <div class="mt-2 w-[70%] bg-slate-200 py-2 px-5">
                     <ul class="">
-                        <li class="ml-6" data-subject="{{$sub->id}}"><i data-toggle="{{$index++}}" class="hover:cursor-pointer subject-toggle fa-solid fa-sort-down -rotate-90 mr-4 classroom" data-subject="{{$sub->id}}"></i>{{$sub->subject_name}}
+                        <li class="ml-6" data-subject="{{$sub->id}}"><i data-toggle="{{$index++}}"
+                                class="hover:cursor-pointer subject-toggle fa-solid fa-sort-down -rotate-90 mr-4 classroom"
+                                data-subject="{{$sub->id}}"></i>{{$sub->subject_name}}
                             <div class="w-[40%] flex float-right gap-4 text-xs font-normal">
                                 <div class="flex flex-col items-center gap-1">
                                     <button class="edit-subject flex text-xl"><i class="fa-solid fa-pen"></i></button>
                                     <p class="flex">Edit</p>
                                 </div>
                                 <div class="flex flex-col items-center gap-1">
-                                    <button class="delete-subject flex text-xl" data-subject="{{$sub->id}}"><i class="fa-solid fa-circle-minus"></i></button>
+                                    <button class="delete-subject flex text-xl" data-subject="{{$sub->id}}"><i
+                                            class="fa-solid fa-circle-minus"></i></button>
                                     <p class="flex">Delete</p>
                                 </div>
                                 <div class="flex flex-col items-center gap-1">
                                     <p class="flex text-3xl font-thin">|</p>
                                 </div>
                                 <div class="flex flex-col items-center gap-1">
-                                    <button class="subject flex text-xl"><i class="fa-solid fa-circle-plus"></i></button>
+                                    <button class="subject flex text-xl"><i
+                                            class="fa-solid fa-circle-plus"></i></button>
                                     <p class="flex">Add File</p>
                                 </div>
                             </div>
@@ -283,41 +358,53 @@ $index = 0;
                 </div>
 
                 @foreach($fileuploads as $file)
-                <div tabindex="-1" aria-hidden="true" class="edit-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+                <div tabindex="-1" aria-hidden="true"
+                    class="edit-file-modal hidden bg-slate-200 bg-opacity-80 overflow-y-hidden overflow-x-hidden fixed top-0 inset-x-0 mx-auto justify-center z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
                     <div class="relative p-4 w-[70%]  h-full md:h-auto">
 
-                         <div class="relative bg-white rounded-lg shadow">
-                            <button type="button" class="edit-file-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="add-class-modal">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        <div class="relative bg-white rounded-lg shadow">
+                            <button type="button"
+                                class="edit-file-close-modal absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                data-modal-toggle="add-class-modal">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <div class="py-6 px-6 lg:px-8">
                                 <h3 class="mb-6 text-xl font-medium text-gray-900 dark:text-black">Edit File
                                 </h3>
-                                <form class="" action="{{url('/editfile/'.$file->id)}}" id="classroom-form" method="POST">
+                                <form class="" action="{{url('/editfile/'.$file->id)}}" id="classroom-form"
+                                    method="POST">
                                     @csrf
-                                    <input type="text" name="name" value="{{$file->name}}" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
-                                    <input type="text" name="desc" value="{{$file->description}}" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
+                                    <input type="text" name="name" value="{{$file->name}}"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
+                                    <input type="text" name="desc" value="{{$file->description}}"
+                                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 mb-10 focus:border-blue-500 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-black">
                                     {{-- <input
-                                                    class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5"
-                                                    type="file" name="doc" value="{{$file->doc}}"> --}}
+                                        class="text-sm text-gray-900 bg-white rounded-md border border-gray-300 cursor-pointer file:p-2 w-full focus:outline-none mb-5"
+                                        type="file" name="doc" value="{{$file->doc}}"> --}}
                                     <input type="hidden" name="subject_id" value='{{$sub->id}}'>
 
-                                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
+                                    <button type="submit"
+                                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit
                                         File</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
                 @if($sub->id==$file->subject_id)
                 <div class="flex mt-2 w-[60%] bg-orange-200 py-1 px-5">
                     <div class="flex items-center">
-                        <a href={{asset("assets/".$file->doc)}} target="_blank" class="pl-5 hover:cursor-pointer flex gap-x-5 items-center"><i class="fa-solid fa-file"></i>{{$file->name}}</a>
+                        <a href={{asset("assets/".$file->doc)}} target="_blank" class="pl-5 hover:cursor-pointer flex
+                            gap-x-5 items-center"><i class="fa-solid fa-file"></i>{{$file->name}}</a>
                         <div class="absolute right-96 flex gap-5 text-xs font-normal">
                             <button class="edit-file flex text-l"><i class="fa-solid fa-pen"></i></button>
-                            <button class="delete-file flex text-l" data-fileupload="{{$file->id}}"><i class="fa-solid fa-circle-minus"></i></button>
+                            <button class="delete-file flex text-l" data-fileupload="{{$file->id}}"><i
+                                    class="fa-solid fa-circle-minus"></i></button>
 
                         </div>
                     </div>
@@ -328,13 +415,13 @@ $index = 0;
                 @endif
                 @endforeach
 
-                 @endif
+                @endif
                 @endforeach
-                
-               
+
+
             </div>
             @endforeach
-           
+
         </div>
 
     </div>

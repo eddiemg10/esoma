@@ -25,9 +25,10 @@
                 <li class="bg-zinc-100 rounded-full  py-1 w-[80%] hover:shadow-inner shadow-md hover:cursor-pointer transition ease-out pl-4 mb-6 nav"
                     id="classroom">
                     My Classes</li>
-                <li class=" rounded-full  w-[80%] py-1  hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav"
+                {{-- <li
+                    class=" rounded-full  w-[80%] py-1  hover:shadow-inner hover:cursor-pointer transition ease-out pl-4 nav"
                     id="help">
-                    Help</li>
+                    Help</li> --}}
             </ul>
         </div>
         <div class="md:w-[80%] w-[90%] flex md:justify-start justify-center">

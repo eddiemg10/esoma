@@ -193,10 +193,13 @@ Route::get('/welcome', function () {
 
 
 
-Route::get('/adminview', [SchoolLevelController::class, 'adminview']);
+Route::get('/admin/elib', [SchoolLevelController::class, 'adminview']);
+
+// Route::get('/admin/elib', [SchoolLevelController::class, 'adminview']);
 
 
-Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
+
+// Route::get('/admin', [SchoolLevelController::class, 'uploadpage']);
 
 
 Route::post('/addschool', [SchoolLevelController::class, 'store']);
@@ -261,9 +264,7 @@ Route::get('/view-subscription', function(){
     return view('dashboard/view-subscription');
 });
 
-Route::get('/view-payment-history', function(){
-    return view('dashboard/view-payment-history');
-});
+Route::get('/dashboard/history', [SubscriptionController::class, 'show']);
 
 });
 require __DIR__.'/auth.php';

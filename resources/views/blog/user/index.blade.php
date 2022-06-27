@@ -31,12 +31,12 @@
 
 		<div class="w-[75%] pr-10 flex flex-col gap-10">
 
-			<div class="bg-sky-100 p-4">
+			{{-- <div class="bg-sky-100 p-4">
 				<form action="" method="get">
 					@csrf
 					<input type="text" name="search" class="form-control" id="search" placeholder="Search">
 				</form>
-			</div>
+			</div> --}}
 
 
 			<div class="flex gap-5 mb-20">
@@ -157,8 +157,12 @@
 			    dataType:'json',
 			    success:function(data)
 			    {
+					console.log(data);
 			    	location.reload(true);
-			    }
+			    },
+				error:function(err){
+					console.log(err)
+				}
 		    })
 	    }
 	    $(document).on('keyup', '#search', function(){

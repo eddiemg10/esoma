@@ -82,7 +82,7 @@
             margin-right: 40px;
         }
 
-        .auth-redirect-button button {
+        .auth-redirect-button a {
             padding: 12px 28px;
             border-radius: 15px;
             background: #F2A81D;
@@ -94,7 +94,7 @@
             font-weight: 700;
         }
 
-        .auth-redirect-button button:hover {
+        .auth-redirect-button a:hover {
             padding: 12px 28px;
             border-radius: 15px;
             background: #C28819;
@@ -154,7 +154,7 @@
             margin-top: 30px;
         }
 
-        .main-content button {
+        .main-content a {
             padding: 12px 28px;
             border-radius: 15px;
             background: #F2A81D;
@@ -246,9 +246,10 @@
             font-weight: 700;
             color: #A3A3A3;
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .card button {
+        .card a {
             margin-top: 15px;
             padding: 12px 28px;
             border-radius: 15px;
@@ -361,8 +362,9 @@
                 <p>E-soma is an interesting platform that will teach you in an interactive way</p>
             </div>
             <div class="main-content-buttons">
-                <button class="join-button">Join for free</button>
-                <button class="watch-button">Watch how it works</button>
+                <a href="/dashboard" class="join-button">Join for free</a>
+                <a href="https://www.youtube.com/channel/UCEwGPFeu4JnxQMtZCIYABsg" target="_blank"
+                    class="watch-button">Watch how it works</a>
             </div>
         </div>
 
@@ -414,7 +416,7 @@
                         revision notes from the comfort of their own homes.</p>
                 </div>
                 <div>
-                    <button>Check it out</button>
+                    <a href="{{url('elib/1')}}">Check it out</a>
                 </div>
             </div>
             <div class="card">
@@ -436,7 +438,7 @@
                         and devoted staff.</p>
                 </div>
                 <div>
-                    <button>Check it out</button>
+                    <a href="{{route('blog.index')}}">Check it out</a>
                 </div>
             </div>
             <div class="card">
@@ -458,7 +460,7 @@
                         well as maintain organized student and class records.</p>
                 </div>
                 <div>
-                    <button>Check it out</button>
+                    <a href="{{route('classroom')}}">Check it out</a>
                 </div>
             </div>
         </div>

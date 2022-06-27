@@ -18,7 +18,7 @@
 @if (session('success'))
 <div class="flex justify-center">
     <div
-        class="w-[25%] mt-[-50px] flash text-green-500 font-bold border text-sm border-green-500 bg-green-50 text-center py-2 rounded-md absolute">
+        class="w-[25%] mt-[-20px] flash text-green-500 font-bold border text-sm border-green-500 bg-green-50 text-center py-2 rounded-md absolute">
         {{ session('success')}}
     </div>
 
